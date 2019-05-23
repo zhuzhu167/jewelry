@@ -3,7 +3,7 @@
     <div class="row">
       <div
         class="col-md-8 banner-sec"
-        style="background: url(static/img/nav/9.webp) no-repeat bottom;"
+        style="background: url(http://pry3timq7.bkt.clouddn.com/9.webp) no-repeat bottom;"
       ></div>
       <div class="col-md-4 register-sec">
         <h2 class="text-center" style="font-weight: lighter;">您好，新用户</h2>

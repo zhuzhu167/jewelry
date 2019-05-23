@@ -18,7 +18,7 @@
             <strong class="d-block">
               <h5>用 户 名：</h5>
             </strong>
-            梁柱
+            {{ personInfo.username }}
           </p>
         </div>
         <div class="media text-muted pt-3">
@@ -31,7 +31,7 @@
             <strong class="d-block">
               <h5>手 机 号：</h5>
             </strong>
-            13112357605
+            {{ personInfo.phone}}
           </p>
         </div>
         <div class="media text-muted pt-3">
@@ -47,7 +47,7 @@
             <strong class="d-block">
               <h5>邮 箱 号：</h5>
             </strong>
-            1678881243@qq.com
+            {{ personInfo.email }}
           </p>
         </div>
         <small class="d-block text-right mt-3 col" style="font-size: 17px;font-weight: lighter;">
@@ -78,16 +78,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="index in 3" :key="index">
-                <td>梁柱</td>
-                <td>广东省珠海市金凤路16号北京理工大学珠海学院</td>
-                <td>13112357605</td>
-                <td>510000</td>
+              <tr v-for="(item, index) in $store.state.consigneeList" :key="index">
+                <td>{{ item.name }}</td>
+                <td>{{ item.province+item.city+item.district+item.address }}</td>
+                <td>{{ item.phone }}</td>
+                <td>{{ item.zipCode }}</td>
                 <td>
-                  <a href>修 改</a>
+                  <a @click="modify(item)">修 改</a>
                 </td>
                 <td>
-                  <button class="btn btn-sm btn-danger">
+                  <button class="btn btn-sm btn-danger" @click="confirmDelet(item.receiverUuid)">
                     <i class="fa fa-minus"></i>
                   </button>
                 </td>
@@ -101,11 +101,36 @@
 </template>
 
 <script>
-import Rotation from "@/components/Rotation";
+import store from "@/vuex/store";
+import { mapState, mapActions } from "vuex";
 export default {
-  components: {
-    Rotation
-  }
+  created() {
+    this.LoadUserInfo();
+    this.LoadConsignee();
+  },
+  methods: {
+    ...mapActions([
+      "LoadUserInfo",
+      "LoadConsignee",
+      "DeleteConsignee",
+      "setConsigneeUuid"
+    ]),
+    confirmDelet(uuid) {
+      this.DeleteConsignee(uuid).then(result => {
+        if (result) {
+          this.LoadConsignee();
+        }
+      });
+    },
+    modify(data) {
+      store.state.cRASwitch = true;
+      this.setConsigneeUuid(data);
+    }
+  },
+  computed: {
+    ...mapState(["personInfo"])
+  },
+  store
 };
 </script>
 

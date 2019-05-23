@@ -7,7 +7,7 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="first-slide" src="static/img/nav/5.webp" alt="First slide">
+        <img class="first-slide" src="http://pry3timq7.bkt.clouddn.com/5.webp" alt="First slide">
         <div class="container">
           <div class="carousel-caption text-left">
             <h1>JewelrySource</h1>
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img class="second-slide" src="static/img/nav/7.jpg" alt="Second slide">
+        <img class="second-slide" src="http://pry3timq7.bkt.clouddn.com/7.webp" alt="Second slide">
         <div class="container">
           <div class="carousel-caption">
             <h1>GALANTERIE</h1>
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img class="third-slide" src="static/img/nav/6.jpg" alt="Third slide">
+        <img class="third-slide" src="http://pry3timq7.bkt.clouddn.com/6.webp" alt="Third slide">
         <div class="container">
           <div class="carousel-caption text-right">
             <h1>CARESSE</h1>

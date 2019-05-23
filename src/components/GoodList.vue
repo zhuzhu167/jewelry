@@ -1,19 +1,25 @@
 <template>
   <div class="container">
     <div class="row" style="  margin-top: 40px;">
-      <div class="col-md-3 col-sm-6" v-for="index in 10" :key="index" style="margin-top: 20px;">
+      <div
+        class="col-md-3 col-sm-6"
+        v-for="(item, index) in $store.state.commodityList"
+        :key="index"
+        style="margin-top: 20px;"
+      >
         <div class="product-grid6">
-          <div class="product-image6">
+          <div
+            class="product-image6"
+            v-for="(img_item, img_index) in item.imageList"
+            :key="img_index"
+          >
             <a href="#">
-              <img
-                class="pic-1"
-                src="https://static.darryring.com/images/2016-07-11/1468219559.jpg"
-              >
+              <img class="pic-1" v-if="img_index == 0" :src="img_item.imageUrl">
             </a>
           </div>
           <div class="product-content">
-            <h3 class="title" style="font-weight: lighter;">Tiffany True系列铂金槽式镶嵌钻戒圈</h3>
-            <div class="price" style="font-weight: lighter;">￥100000</div>
+            <h3 class="title" style="font-weight: lighter;">{{ item.title }}</h3>
+            <div class="price" style="font-weight: lighter;">￥{{ item.commodityPrice }}</div>
           </div>
           <ul class="social">
             <li>
@@ -27,6 +33,28 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapActions } from "vuex";
+import store from "@/vuex/store";
+export default {
+  created() {
+    this.LoadCommodityList();
+  },
+  methods: {
+    ...mapActions(["LoadCommodityList", "SetCommodityUuid"]),
+    toGoodInfo(uuid) {
+      if (uuid !== "") {
+        this.SetCommodityUuid(uuid);
+        this.$router.push({
+          path: "/GoodInfo"
+        });
+      }
+    }
+  },
+  store
+};
+</script>
 
 <style scope>
 .product-grid6,
@@ -61,6 +89,7 @@
   opacity: 0;
 }
 .product-grid6 .title {
+  height: 50px;
   font-size: 20px;
   font-weight: 600;
   text-transform: capitalize;

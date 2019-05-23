@@ -6,14 +6,29 @@
           <h2 style="font-weight: lighter;">JewelrySource</h2>
           <h4 style="font-weight: lighter;">探索更多</h4>
         </div>
-        <form>
-          <input type="text" id="login" class="fadeIn second" name="login" placeholder="请输入账号">
-          <input type="text" id="password" class="fadeIn third" name="login" placeholder="请输入密码">
+        <form :model="formDate">
+          <input
+            v-model="formDate.account"
+            type="text"
+            id="login"
+            class="fadeIn second"
+            name="login"
+            placeholder="请输入账号"
+          >
+          <input
+            v-model="formDate.password"
+            type="password"
+            id="login"
+            class="fadeIn third"
+            name="login"
+            placeholder="请输入密码"
+          >
           <input
             style="margin-top: 30px; font-weight: lighter;"
             type="button"
             class="fadeIn fourth bg-primary"
             value="登 录"
+            @click="doLogin()"
           >
         </form>
       </div>
@@ -22,13 +37,32 @@
 </template>
 
 <script>
+import store from "@/vuex/store";
+import { mapMutations, mapActions } from "vuex";
 export default {
-  name: "HelloWorld",
+  name: "Login",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+      formDate: {
+        account: "",
+        password: ""
+      }
     };
-  }
+  },
+  methods: {
+    ...mapMutations(["SET_USER_LOGIN_INFO"]),
+    ...mapActions(["Login"]),
+    doLogin(name) {
+      this.Login(this.formDate).then(result => {
+        if (result) {
+          this.$router.push({
+            path: "/"
+          });
+        }
+      });
+    }
+  },
+  store
 };
 </script>
 
@@ -97,15 +131,13 @@ h2.inactive {
 
 h2.active {
   color: #0d0d0d;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #007bff;
 }
 
 /* FORM TYPOGRAPHY*/
 
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
-  background-color: #56baed;
+input[type="button"] {
+  background-color: #007bff;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -126,10 +158,8 @@ input[type="reset"] {
   transition: all 0.3s ease-in-out;
 }
 
-input[type="button"]:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover {
-  background-color: #39ace7;
+input[type="button"]:hover {
+  background-color: #007bff;
 }
 
 input[type="button"]:active,
@@ -142,10 +172,11 @@ input[type="reset"]:active {
   transform: scale(0.95);
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   background-color: #f6f6f6;
   border: none;
-  color: #0d0d0d;
+  color: #000;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -163,12 +194,14 @@ input[type="text"] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
   background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #007bff;
 }
 
-input[type="text"]:placeholder {
+input[type="text"] :placeholder,
+input[type="password"]:placeholder {
   color: #cccccc;
 }
 
