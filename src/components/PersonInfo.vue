@@ -51,8 +51,8 @@
           </p>
         </div>
         <small class="d-block text-right mt-3 col" style="font-size: 17px;font-weight: lighter;">
-          <a href="#">修改密码</a>
-          <a href="#">修改资料</a>
+          <button class="btn btn-sm btn-primary" @click="toMdPwd()">修改密码</button>
+          <button class="btn btn-sm btn-primary" @click="toMdInfo()">修改资料</button>
         </small>
       </div>
       <section class="jumbotron text-center bg-white">
@@ -71,7 +71,7 @@
                 <th>邮 政 编 号</th>
                 <th>操 作</th>
                 <th>
-                  <button class="btn btn-sm btn-success">
+                  <button class="btn btn-sm btn-success" @click="toAdd()">
                     <i class="fa fa-plus"></i>
                   </button>
                 </th>
@@ -84,7 +84,7 @@
                 <td>{{ item.phone }}</td>
                 <td>{{ item.zipCode }}</td>
                 <td>
-                  <a @click="modify(item)">修 改</a>
+                  <button class="btn btn-sm btn-primary" @click="modify(item)">修改</button>
                 </td>
                 <td>
                   <button class="btn btn-sm btn-danger" @click="confirmDelet(item.receiverUuid)">
@@ -122,9 +122,18 @@ export default {
         }
       });
     },
+    toAdd() {
+      this.$router.push("/AddAss");
+    },
     modify(data) {
-      store.state.cRASwitch = true;
       this.setConsigneeUuid(data);
+      this.$router.push("/MdAss");
+    },
+    toMdPwd() {
+      this.$router.push("/MdPwd");
+    },
+    toMdInfo() {
+      this.$router.push("/MdInfo");
     }
   },
   computed: {

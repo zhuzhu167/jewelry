@@ -58,7 +58,17 @@
 </template>
 
 <script>
-export default {};
+import { mapActions } from "vuex";
+import store from "@/vuex/store";
+export default {
+  created() {
+    this.LoadCart();
+  },
+  methods: {
+    ...mapActions(["LoadCart"])
+  },
+  store
+};
 </script>
 
 <style scoped>

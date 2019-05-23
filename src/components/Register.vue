@@ -7,25 +7,36 @@
       ></div>
       <div class="col-md-4 register-sec">
         <h2 class="text-center" style="font-weight: lighter;">您好，新用户</h2>
-        <form class="register-form">
+        <form v-if="this.is_register_success==false" class="register-form" :model="formDate">
           <div class="form-group">
             <label for="exampleInputName1" class="text-uppercase">账 号</label>
-            <input type="text" class="form-control" placeholder>
+            <input type="text" class="form-control" v-model="formDate.account">
           </div>
           <div class="form-group">
             <label for="exampleInputAddress1" class="text-uppercase">密 码</label>
-            <input type="password" class="form-control" placeholder>
+            <input type="password" class="form-control" v-model="formDate.password">
           </div>
           <div class="form-group">
             <label for="exampleInputAddress2" class="text-uppercase">重新输入密码</label>
-            <input type="password" class="form-control" placeholder>
+            <input type="password" class="form-control" v-model="formDate.re_password">
           </div>
           <div style="margin-top: 50px;">
             <button
               type="button"
               class="btn btn-primary btn-block btn-lg"
               style="font-weight: lighter;"
+              @click="doRegister()"
             >注 册</button>
+          </div>
+        </form>
+        <form v-if="this.is_register_success==true">
+          <h3 class="text-center text-success" style="margin-top: 130px;">注册成功</h3>
+          <div class="text-center" style="margin-top: 140px;font-weight: lighter;">
+            <button
+              class="btn btn-primary btn-block btn-lg"
+              style="font-weight: lighter;"
+              @click="toLogin()"
+            >立刻登录</button>
           </div>
         </form>
       </div>
@@ -34,13 +45,34 @@
 </template>
 
 <script>
+import store from "@/vuex/store";
+import { mapActions } from "vuex";
 export default {
-  name: "HelloWorld",
+  name: "InputMess",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+      formDate: {
+        account: "",
+        password: "",
+        re_password: ""
+      },
+      is_register_success: false // 是否注册成功
     };
-  }
+  },
+  methods: {
+    ...mapActions(["Register"]),
+    doRegister() {
+      this.Register(this.formDate).then(result => {
+        if (result) {
+          this.is_register_success = true;
+        }
+      });
+    },
+    toLogin() {
+      this.$router.push("/Login");
+    }
+  },
+  store
 };
 </script>
 

@@ -14,10 +14,10 @@ export default new Vuex.Store({
     }, // 用户信息
 
     personInfo: {
-      account: '111111111',
-      email: '0000000123@yeah.net',
-      phone: '13700000000',
-      username: 'admin'
+      account: '无',
+      email: '无',
+      phone: '无',
+      username: '无'
     }, // 个人资料
 
     categoryList: {}, // 首页分类列表
@@ -38,6 +38,7 @@ export default new Vuex.Store({
     token: '', // 请求令牌
     is_login: false, // 是否登录
     signUpStep: 0, // 注册步骤
+
 
     errorpopupSwitch: false, // 错误弹窗开关
     addSwitch: false, // 添加钻石开关

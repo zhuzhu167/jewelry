@@ -48,7 +48,7 @@
           <h2 class="featurette-heading">礼物</h2>
           <p class="lead">
             玫瑰花的香味飘荡在空气中，巧克力的甜蜜洋溢在喜悦中，没有华丽的辞藻，只有真心的表白：爱你的心，永远不变——
-            <a href="/#/GoodList">了解更多</a>
+            <a href="/#/JewelryList">了解更多</a>
           </p>
         </div>
         <div class="col-md-5">

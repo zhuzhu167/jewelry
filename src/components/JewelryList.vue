@@ -1,33 +1,40 @@
 <template>
-  <div class="container">
-    <div class="row" style="margin-top: 40px;">
-      <div
-        class="col-md-3 col-sm-6"
-        v-for="(item, index) in $store.state.commodityList"
-        :key="index"
-        style="margin-top: 20px;"
-      >
-        <div class="product-grid6">
-          <div
-            class="product-image6"
-            v-for="(img_item, img_index) in item.imageList"
-            :key="img_index"
-          >
-            <a>
-              <img class="pic-1" v-if="img_index == 0" :src="img_item.imageUrl">
-            </a>
-          </div>
-          <div class="product-content">
-            <h3 class="title" style="font-weight: lighter;">{{ item.title }}</h3>
-            <div class="price" style="font-weight: lighter;">￥{{ item.commodityPrice }}</div>
-          </div>
-          <ul class="social">
-            <li>
-              <a href data-tip="了解更多" style="font-weight: lighter;">
-                <i class="fa fa-eye" aria-hidden="true"></i>
+  <div>
+    <section class="jumbotron text-center" style="border-radius: 0px;">
+      <div class="container">
+        <h1 class="jumbotron-heading">挑 选 钻 石</h1>
+      </div>
+    </section>
+    <div class="container">
+      <div class="row" style="margin-top: 40px;">
+        <div
+          class="col-md-3 col-sm-6"
+          v-for="(item, index) in $store.state.jewelryList"
+          :key="index"
+          style="margin-top: 20px;"
+        >
+          <div class="product-grid6">
+            <div
+              class="product-image6"
+              v-for="(img_item, img_index) in item.imageList"
+              :key="img_index"
+            >
+              <a>
+                <img class="pic-1" v-if="img_index == 0" :src="img_item.imageUrl">
               </a>
-            </li>
-          </ul>
+            </div>
+            <div class="product-content">
+              <h3 class="title" style="font-weight: lighter;">钻石编号： {{ item.jewelryNo }}</h3>
+              <div class="price" style="font-weight: lighter;">￥{{ item.jewelryPrice }}</div>
+            </div>
+            <ul class="social">
+              <li>
+                <a href data-tip="了解更多" style="font-weight: lighter;">
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -39,24 +46,21 @@ import { mapActions } from "vuex";
 import store from "@/vuex/store";
 export default {
   created() {
-    this.LoadCommodityList();
+    this.LoadJewelryList();
   },
   methods: {
-    ...mapActions(["LoadCommodityList", "SetCommodityUuid"]),
-    toGoodInfo(uuid) {
-      if (uuid !== "") {
-        this.SetCommodityUuid(uuid);
-        this.$router.push({
-          path: "/GoodInfo"
-        });
-      }
-    }
+    ...mapActions(["LoadJewelryList"])
   },
   store
 };
 </script>
 
 <style scope>
+h1 {
+  margin-bottom: 1%;
+  font-size: 30px;
+  font-weight: lighter;
+}
 .product-grid6,
 .product-grid6 .product-image6 {
   overflow: hidden;

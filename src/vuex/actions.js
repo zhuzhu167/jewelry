@@ -112,7 +112,7 @@ export const LoadCart = ({
 }) => {
   getCart().then(result => {
     if (result.data !== '') {
-      console.log(result.data.cartCommodityVOList[0]);
+      console.log(result.data.cartCommodityVOList);
     }
   });
 };

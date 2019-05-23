@@ -9,6 +9,11 @@ import PersonInfo from '@/components/PersonInfo'
 import ShoppingCart from '@/components/ShoppingCart'
 import Order from '@/components/Order'
 import GoodList from '@/components/GoodList'
+import AddAss from '@/components/person/AddAss'
+import MdAss from '@/components/person/MdAss'
+import MdPwd from '@/components/person/MdPwd'
+import MdInfo from '@/components/person/MdInfo'
+import JewelryList from '@/components/JewelryList'
 Vue.use(Router)
 
 export default new Router({
@@ -56,6 +61,31 @@ export default new Router({
       path: '/GoodList',
       name: 'GoodList',
       component: GoodList
+    },
+    {
+      path: '/AddAss',
+      name: 'AddAss',
+      component: AddAss
+    },
+    {
+      path: '/MdAss',
+      name: 'MdAss',
+      component: MdAss
+    },
+    {
+      path: '/MdPwd',
+      name: 'MdPwd',
+      component: MdPwd
+    },
+    {
+      path: '/MdInfo',
+      name: 'MdInfo',
+      component: MdInfo
+    },
+    {
+      path: '/JewelryList',
+      name: 'JewelryList',
+      component: JewelryList
     }
   ]
 })
