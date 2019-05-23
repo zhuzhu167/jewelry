@@ -3,10 +3,10 @@
     <div class="row">
       <div
         class="col-md-8 banner-sec"
-        style="background: url(static/img/nav/5.webp) no-repeat bottom;"
+        style="background: url(static/img/nav/9.webp) no-repeat bottom;"
       ></div>
       <div class="col-md-4 register-sec">
-        <h2 class="text-center">您好，新用户</h2>
+        <h2 class="text-center" style="font-weight: lighter;">您好，新用户</h2>
         <form class="register-form">
           <div class="form-group">
             <label for="exampleInputName1" class="text-uppercase">账 号</label>
@@ -21,7 +21,11 @@
             <input type="password" class="form-control" placeholder>
           </div>
           <div style="margin-top: 50px;">
-            <button type="button" class="btn btn-primary btn-block btn-lg">注 册</button>
+            <button
+              type="button"
+              class="btn btn-primary btn-block btn-lg"
+              style="font-weight: lighter;"
+            >注 册</button>
           </div>
         </form>
       </div>

@@ -8,6 +8,7 @@ import Register from '@/components/Register'
 import PersonInfo from '@/components/PersonInfo'
 import ShoppingCart from '@/components/ShoppingCart'
 import Order from '@/components/Order'
+import GoodList from '@/components/GoodList'
 Vue.use(Router)
 
 export default new Router({
@@ -50,6 +51,11 @@ export default new Router({
       path: '/Order',
       name: 'Order',
       component: Order
+    },
+    {
+      path: '/GoodList',
+      name: 'GoodList',
+      component: GoodList
     }
   ]
 })

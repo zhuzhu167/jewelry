@@ -10,7 +10,7 @@
           <h2 class="featurette-heading">订婚钻戒</h2>
           <p class="lead">
             你轻轻的，走进了我的心里，和我的心灵有个约定，只要是说，你爱我，我就会永生永世等你——
-            <a href>了解更多</a>
+            <a href="/#/GoodList">了解更多</a>
           </p>
         </div>
         <div class="col-md-5">
@@ -29,7 +29,7 @@
           <h2 class="featurette-heading">结婚对戒</h2>
           <p class="lead">
             拉开爱情的帷幕，唱响柔情的序曲，讲句甜蜜的台词，在爱情的舞台上，愿为你打造一世幸福——
-            <a href>了解更多</a>
+            <a href="/#/GoodList">了解更多</a>
           </p>
         </div>
         <div class="col-md-5 order-md-1">
@@ -48,7 +48,7 @@
           <h2 class="featurette-heading">礼物</h2>
           <p class="lead">
             玫瑰花的香味飘荡在空气中，巧克力的甜蜜洋溢在喜悦中，没有华丽的辞藻，只有真心的表白：爱你的心，永远不变——
-            <a href>了解更多</a>
+            <a href="/#/GoodList">了解更多</a>
           </p>
         </div>
         <div class="col-md-5">
@@ -75,7 +75,7 @@ export default {
 </script>
 
 <style scoped>
-.box {
-  margin: 0 auto;
+h2 {
+  font-weight: normal;
 }
 </style>

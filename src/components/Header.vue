@@ -5,7 +5,7 @@
       id="ftco-navbar"
     >
       <div class="container">
-        <a class="navbar-brand" href="/#/">JewelrySource</a>
+        <a class="navbar-brand" style="font-size: 25px;" href="/#/">JewelrySource</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -15,12 +15,16 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="oi oi-menu"></span> 目录
+          <span class="oi oi-menu"></span>
+          <i class="fa fa-bars" aria-hidden="true"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
+              <a href="/#/" class="nav-link">首页</a>
+            </li>
+            <li class="nav-item">
               <a href="/#/ShoppingCart" class="nav-link">购物车</a>
             </li>
             <li class="nav-item">
@@ -46,4 +50,7 @@
 </template>
 
 <style scoped>
+a {
+  font-weight: lighter;
+}
 </style>

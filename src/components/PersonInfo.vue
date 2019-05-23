@@ -1,10 +1,8 @@
 <template>
   <div>
-    <Rotation></Rotation>
-
-    <section class="jumbotron text-center">
+    <section class="jumbotron text-center" style="border-radius: 0px;">
       <div class="container">
-        <h1 class="jumbotron-heading">我 的</h1>
+        <h1 class="jumbotron-heading">个 人 中 心</h1>
       </div>
     </section>
 
@@ -16,8 +14,8 @@
             alt
             class="mr-2 rounded"
           >
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom" style="color: black;">
+            <strong class="d-block">
               <h5>用 户 名：</h5>
             </strong>
             梁柱
@@ -29,8 +27,8 @@
             alt
             class="mr-2 rounded"
           >
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom" style="color: black;">
+            <strong class="d-block">
               <h5>手 机 号：</h5>
             </strong>
             13112357605
@@ -42,26 +40,29 @@
             alt
             class="mr-2 rounded"
           >
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark">
+          <p
+            class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"
+            style="color: black;"
+          >
+            <strong class="d-block">
               <h5>邮 箱 号：</h5>
             </strong>
             1678881243@qq.com
           </p>
         </div>
-        <small class="d-block text-right mt-3 col">
+        <small class="d-block text-right mt-3 col" style="font-size: 17px;font-weight: lighter;">
           <a href="#">修改密码</a>
           <a href="#">修改资料</a>
         </small>
       </div>
       <section class="jumbotron text-center bg-white">
         <div class="container">
-          <h4 class="jumbotron-heading">收 货 信 息</h4>
+          <h1 class="jumbotron-heading">收 货 信 息</h1>
         </div>
       </section>
       <div class="box">
         <div class="table-responsive">
-          <table class="table table-hover">
+          <table class="table table-hover text-center" style="font-weight: lighter;color: black;">
             <thead>
               <tr>
                 <th>收 货 人</th>
@@ -77,35 +78,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>梁柱</td>
-                <td>广东省珠海市金凤路16号北京理工大学珠海学院</td>
-                <td>13112357605</td>
-                <td>510000</td>
-                <td>
-                  <a href>修 改</a>
-                </td>
-                <td>
-                  <button class="btn btn-sm btn-danger">
-                    <i class="fa fa-minus"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>梁柱</td>
-                <td>北京理工大学珠海学院</td>
-                <td>13112357605</td>
-                <td>510000</td>
-                <td>
-                  <a href>修 改</a>
-                </td>
-                <td>
-                  <button class="btn btn-sm btn-danger">
-                    <i class="fa fa-minus"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
+              <tr v-for="index in 3" :key="index">
                 <td>梁柱</td>
                 <td>广东省珠海市金凤路16号北京理工大学珠海学院</td>
                 <td>13112357605</td>
@@ -137,6 +110,14 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  margin-bottom: 1%;
+  font-size: 30px;
+  font-weight: lighter;
+}
+h4 h5 {
+  font-weight: lighter;
+}
 .box {
   padding: 16px;
   color: #6c757d;

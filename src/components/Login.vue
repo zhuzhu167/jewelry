@@ -3,14 +3,14 @@
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <div class="fadeIn first">
-          <h2>JewelrySource</h2>
-          <h4>探索更多</h4>
+          <h2 style="font-weight: lighter;">JewelrySource</h2>
+          <h4 style="font-weight: lighter;">探索更多</h4>
         </div>
         <form>
           <input type="text" id="login" class="fadeIn second" name="login" placeholder="请输入账号">
           <input type="text" id="password" class="fadeIn third" name="login" placeholder="请输入密码">
           <input
-            style="margin-top: 30px;width:85%"
+            style="margin-top: 30px; font-weight: lighter;"
             type="button"
             class="fadeIn fourth bg-primary"
             value="登 录"

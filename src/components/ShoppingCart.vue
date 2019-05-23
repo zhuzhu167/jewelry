@@ -1,7 +1,6 @@
 <template>
   <div>
-    <Rotation></Rotation>
-    <section class="jumbotron text-center">
+    <section class="jumbotron text-center" style="border-radius: 0px;">
       <div class="container">
         <h1 class="jumbotron-heading">购 物 车</h1>
       </div>
@@ -11,37 +10,24 @@
       <div class="row">
         <div class="col-12">
           <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover text-center" style="font-weight: lighter;">
               <thead>
                 <tr>
-                  <th scope="col">图 片</th>
-                  <th scope="col">标 题</th>
-                  <th scope="col">价 钱</th>
-                  <th scope="col" class="text-right">操 作</th>
+                  <th scope="col" width="18%">图 片</th>
+                  <th scope="col" width="50%">标 题</th>
+                  <th scope="col" width="10%">价 钱</th>
+                  <th scope="col" width="12%">操 作</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr v-for="index in 5" :key="index">
                   <td>
-                    <img src="https://dummyimage.com/50x50/55595c/fff">
+                    <img src="https://static.darryring.com/images/2016-07-11/1468219559.jpg">
                   </td>
-                  <td>xxxxxxxxxxxxxx</td>
+                  <td>Tiffany True系列铂金槽式镶嵌钻戒圈</td>
 
-                  <td>124,90</td>
-                  <td class="text-right">
-                    <button class="btn btn-sm btn-danger">
-                      <i class="fa fa-minus"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
+                  <td>￥ 10000</td>
                   <td>
-                    <img src="https://dummyimage.com/50x50/55595c/fff">
-                  </td>
-                  <td>xxxxxxxxxxxxxx</td>
-
-                  <td>33,90</td>
-                  <td class="text-right">
                     <button class="btn btn-sm btn-danger">
                       <i class="fa fa-minus"></i>
                     </button>
@@ -54,7 +40,7 @@
                     <strong>总金额：</strong>
                   </td>
                   <td class="text-right">
-                    <strong>346,90</strong>
+                    <strong>346,2222290</strong>
                   </td>
                 </tr>
               </tbody>
@@ -72,13 +58,16 @@
 </template>
 
 <script>
-import Rotation from "@/components/Rotation";
-export default {
-  components: {
-    Rotation
-  }
-};
+export default {};
 </script>
 
 <style scoped>
+h1 {
+  margin-bottom: 1%;
+  font-size: 30px;
+  font-weight: lighter;
+}
+img {
+  width: 150px;
+}
 </style>
