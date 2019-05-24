@@ -76,6 +76,15 @@ export default {
 
 <style scoped>
 h2 {
-  font-weight: normal;
+  font-size: 40px;
+  margin-top: 30px;
+  font-weight: 200;
+}
+p {
+  margin-top: 20px;
+}
+a {
+  color: #007bff;
+  font-weight: 350;
 }
 </style>

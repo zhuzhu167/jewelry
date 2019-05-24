@@ -14,7 +14,7 @@
             alt
             class="mr-2 rounded"
           >
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom" style="color: black;">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom">
             <strong class="d-block">
               <h5>用 户 名：</h5>
             </strong>
@@ -27,7 +27,7 @@
             alt
             class="mr-2 rounded"
           >
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom" style="color: black;">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom">
             <strong class="d-block">
               <h5>手 机 号：</h5>
             </strong>
@@ -40,17 +40,14 @@
             alt
             class="mr-2 rounded"
           >
-          <p
-            class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"
-            style="color: black;"
-          >
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom">
             <strong class="d-block">
               <h5>邮 箱 号：</h5>
             </strong>
             {{ personInfo.email }}
           </p>
         </div>
-        <small class="d-block text-right mt-3 col" style="font-size: 17px;font-weight: lighter;">
+        <small class="d-block text-right mt-3 col" style="font-size: 17px;">
           <button class="btn btn-sm btn-primary" @click="toMdPwd()">修改密码</button>
           <button class="btn btn-sm btn-primary" @click="toMdInfo()">修改资料</button>
         </small>
@@ -62,7 +59,7 @@
       </section>
       <div class="box">
         <div class="table-responsive">
-          <table class="table table-hover text-center" style="font-weight: lighter;color: black;">
+          <table class="table table-hover text-center">
             <thead>
               <tr>
                 <th>收 货 人</th>
@@ -146,14 +143,26 @@ export default {
 <style scoped>
 h1 {
   margin-bottom: 1%;
-  font-size: 30px;
-  font-weight: lighter;
+  font-size: 40px;
+  font-weight: 340;
 }
-h4 h5 {
-  font-weight: lighter;
+h5 {
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+p {
+  color: #000;
+  font-weight: 300;
+  font-size: 20px;
 }
 .box {
   padding: 16px;
   color: #6c757d;
+}
+th,
+td {
+  color: #000;
+  font-size: 20px;
+  font-weight: 300;
 }
 </style>

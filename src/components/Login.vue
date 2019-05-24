@@ -3,34 +3,40 @@
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <div class="fadeIn first">
-          <h2 style="font-weight: lighter;">JewelrySource</h2>
-          <h4 style="font-weight: lighter;">探索更多</h4>
+          <h2 style="font-weight: 340;">JewelrySource</h2>
+          <h4 style="font-weight: 340;">探索更多</h4>
         </div>
-        <form :model="formDate">
-          <input
-            v-model="formDate.account"
-            type="text"
-            id="login"
-            class="fadeIn second"
-            name="login"
-            placeholder="请输入账号"
-          >
-          <input
-            v-model="formDate.password"
-            type="password"
-            id="login"
-            class="fadeIn third"
-            name="login"
-            placeholder="请输入密码"
-          >
-          <input
-            style="margin-top: 30px; font-weight: lighter;"
-            type="button"
-            class="fadeIn fourth bg-primary"
-            value="登 录"
-            @click="doLogin()"
-          >
-        </form>
+        <div class="box">
+          <Form ref="formInline" :model="formDate" :rules="ruleInline">
+            <FormItem prop="account">
+              <input
+                v-model="formDate.account"
+                type="text"
+                id="login"
+                class="fadeIn second"
+                name="login"
+                placeholder="请输入账号"
+              >
+            </FormItem>
+            <FormItem prop="password">
+              <input
+                v-model="formDate.password"
+                type="password"
+                id="login"
+                class="fadeIn third"
+                name="login"
+                placeholder="请输入密码"
+              >
+            </FormItem>
+            <input
+              style="font-weight: 400;"
+              type="button"
+              class="fadeIn fourth bg-primary"
+              value="登 录"
+              @click="doLogin('formInline')"
+            >
+          </Form>
+        </div>
       </div>
     </div>
   </div>
@@ -46,6 +52,34 @@ export default {
       formDate: {
         account: "",
         password: ""
+      },
+      ruleInline: {
+        account: [
+          {
+            validator: (rule, value, callback) => {
+              if (value === "") {
+                callback(new Error("请输入账号"));
+              } else if (value.length < 6 || value.length > 12) {
+                callback(new Error("长度应该为6-12位"));
+              } else {
+                callback();
+              }
+            },
+            trigger: "blur"
+          }
+        ],
+        password: [
+          {
+            validator: (rule, value, callback) => {
+              if (value === "") {
+                callback(new Error("请输入密码"));
+              } else {
+                callback();
+              }
+            },
+            trigger: "blur"
+          }
+        ]
       }
     };
   },
@@ -53,10 +87,14 @@ export default {
     ...mapMutations(["SET_USER_LOGIN_INFO"]),
     ...mapActions(["Login"]),
     doLogin(name) {
-      this.Login(this.formDate).then(result => {
-        if (result) {
-          this.$router.push({
-            path: "/"
+      this.$refs[name].validate(valid => {
+        if (valid) {
+          this.Login(this.formDate).then(result => {
+            if (result) {
+              this.$router.push({
+                path: "/"
+              });
+            }
           });
         }
       });
@@ -67,6 +105,9 @@ export default {
 </script>
 
 <style scoped>
+.box >>> .ivu-form-item-error-tip {
+  left: 10%;
+}
 a {
   color: #92badd;
   display: inline-block;

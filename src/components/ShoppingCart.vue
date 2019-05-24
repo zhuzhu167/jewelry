@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-12">
           <div class="table-responsive">
-            <table class="table table-hover text-center" style="font-weight: lighter;">
+            <table class="table table-hover text-center">
               <thead>
                 <tr>
                   <th scope="col" width="18%">图 片</th>
@@ -74,10 +74,16 @@ export default {
 <style scoped>
 h1 {
   margin-bottom: 1%;
-  font-size: 30px;
-  font-weight: lighter;
+  font-size: 40px;
+  font-weight: 340;
 }
 img {
   width: 150px;
+}
+th,
+td {
+  color: #000;
+  font-size: 18px;
+  font-weight: 300;
 }
 </style>

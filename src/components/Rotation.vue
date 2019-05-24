@@ -61,13 +61,19 @@ img {
 }
 p {
   color: black;
+  font-size: 20px;
   font-weight: lighter;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 h1 {
   color: black;
+  font-size: 45px;
   font-weight: lighter;
   text-overflow: ellipsis;
+}
+a {
+  color: #007bff;
+  font-weight: 350;
 }
 </style>

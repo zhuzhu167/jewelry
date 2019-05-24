@@ -4,33 +4,41 @@
       <div class="row" style="box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);">
         <div class="col-md-3">
           <div class="contact-info">
-            <h1 style="font-weight: lighter; color: #fff;">修改密码</h1>
-            <h5 style="font-weight: lighter; color: #fff;">为了保证我们的服务质量，请务必认真地填写您的信息 ！</h5>
+            <h1 style="font-weight: 340; color: #fff;">修改密码</h1>
+            <h5 style="font-weight: 340; color: #fff;">为了保证我们的服务质量，请务必认真地填写您的信息 ！</h5>
           </div>
         </div>
-        <div class="col-md-9" :model="formData">
+        <div class="col-md-9">
           <div class="contact-form">
-            <div class="form-group">
-              <label class="col-sm" style="font-size:12px">旧密码</label>
-              <div class="col-sm-10">
-                <input class="form-control" v-model="formData.oldPwd">
+            <Form ref="formInline" :model="formData" :rules="ruleInline">
+              <div class="form-group">
+                <label class="col-sm" style="font-size:14px">旧密码</label>
+                <div class="col-sm-10">
+                  <FormItem prop="oldPwd">
+                    <input type="password" class="form-control" v-model="formData.oldPwd">
+                  </FormItem>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm" style="font-size:12px">旧密码</label>
-              <div class="col-sm-10">
-                <input class="form-control" v-model="formData.newPwd">
+              <div class="form-group">
+                <label class="col-sm" style="font-size:14px">新密码</label>
+                <div class="col-sm-10">
+                  <FormItem prop="newPwd">
+                    <input type="password" class="form-control" v-model="formData.newPwd">
+                  </FormItem>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm" style="font-size:12px">重新输入新密码</label>
-              <div class="col-sm-10">
-                <input class="form-control" v-model="formData.re_newPwd">
+              <div class="form-group">
+                <label class="col-sm" style="font-size:14px">重新输入新密码</label>
+                <div class="col-sm-10">
+                  <FormItem prop="re_newPwd">
+                    <input type="password" class="form-control" v-model="formData.re_newPwd">
+                  </FormItem>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
+            </Form>
+            <div class="form-group" style="margin-top: 40px;">
               <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn" @click="modify()">保存</button>
+                <button class="btn" @click="modify('formInline')">保存</button>
                 <button class="btn" @click="cancel()">取消</button>
               </div>
             </div>
@@ -52,6 +60,46 @@ export default {
         newPwd: "",
         oldPwd: "",
         re_newPwd: ""
+      },
+      ruleInline: {
+        oldPwd: [
+          {
+            validator: (rule, value, callback) => {
+              if (value === "") {
+                callback(new Error("不能为空"));
+              } else {
+                callback();
+              }
+            },
+            trigger: "blur"
+          }
+        ],
+        newPwd: [
+          {
+            validator: (rule, value, callback) => {
+              if (value === "") {
+                callback(new Error("不能为空"));
+              } else {
+                callback();
+              }
+            },
+            trigger: "blur"
+          }
+        ],
+        re_newPwd: [
+          {
+            validator: (rule, value, callback) => {
+              if (value === "") {
+                callback(new Error("不能为空"));
+              } else if (value !== this.formData.newPwd) {
+                callback(new Error("与上面输入的新密码不符"));
+              } else {
+                callback();
+              }
+            },
+            trigger: "blur"
+          }
+        ]
       }
     };
   },
@@ -100,12 +148,12 @@ export default {
   padding: 3%;
 }
 .contact-form label {
-  font-weight: 600;
+  font-weight: 400;
 }
 .contact-form button {
   background: #007bff;
   color: #fff;
-  font-weight: 600;
+  font-weight: 400;
   width: 25%;
 }
 .contact-form button:focus {

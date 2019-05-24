@@ -24,8 +24,8 @@
               </a>
             </div>
             <div class="product-content">
-              <h3 class="title" style="font-weight: lighter;">钻石编号： {{ item.jewelryNo }}</h3>
-              <div class="price" style="font-weight: lighter;">￥{{ item.jewelryPrice }}</div>
+              <h3 class="title" style="font-weight: 340;">钻石编号： {{ item.jewelryNo }}</h3>
+              <div class="price" style="font-weight: 340;color: #007bff;">￥{{ item.jewelryPrice }}</div>
             </div>
             <ul class="social">
               <li>
@@ -58,8 +58,8 @@ export default {
 <style scope>
 h1 {
   margin-bottom: 1%;
-  font-size: 30px;
-  font-weight: lighter;
+  font-size: 40px;
+  font-weight: 340;
 }
 .product-grid6,
 .product-grid6 .product-image6 {

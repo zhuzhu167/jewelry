@@ -18,12 +18,12 @@
             </a>
           </div>
           <div class="product-content">
-            <h3 class="title" style="font-weight: lighter;">{{ item.title }}</h3>
-            <div class="price" style="font-weight: lighter;">￥{{ item.commodityPrice }}</div>
+            <h3 class="title" style="font-weight: 340;">{{ item.title }}</h3>
+            <div class="price" style="font-weight: 340; color: #007bff;">￥{{ item.commodityPrice }}</div>
           </div>
-          <ul class="social">
-            <li>
-              <a href data-tip="了解更多" style="font-weight: lighter;">
+          <ul class="social" style="color: #007bff;">
+            <li @click="toGoodInfo(item.commodityUuid)">
+              <a data-tip="了解更多">
                 <i class="fa fa-eye" aria-hidden="true"></i>
               </a>
             </li>

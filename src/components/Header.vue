@@ -5,7 +5,7 @@
       id="ftco-navbar"
     >
       <div class="container">
-        <a class="navbar-brand" style="font-size: 25px;" href="/#/">JewelrySource</a>
+        <a class="navbar-brand" style="font-size: 27px;" href="/#/">JewelrySource</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -34,13 +34,13 @@
               <a href="/#/PersonInfo" class="nav-link">我的</a>
             </li>
             <li class="nav-item">
+              <a href="/#/HelloWorld" class="nav-link">退出</a>
+            </li>
+            <li class="nav-item">
               <a href="/#/Login" class="nav-link">登录</a>
             </li>
             <li class="nav-item">
               <a href="/#/Register" class="nav-link">注册</a>
-            </li>
-            <li class="nav-item">
-              <a href="/#/HelloWorld" class="nav-link">退出</a>
             </li>
           </ul>
         </div>
@@ -51,6 +51,7 @@
 
 <style scoped>
 a {
-  font-weight: lighter;
+  font-size: 17px;
+  font-weight: 200;
 }
 </style>
