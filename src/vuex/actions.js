@@ -25,7 +25,7 @@ import {
 } from '@/api/goodAPI';
 import {
   getIndexCategory
-} from '@/api/IndexAPI.js';
+} from '@/api/indexAPI.js';
 import store from './store';
 export const Login = ({
   commit

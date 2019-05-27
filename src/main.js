@@ -8,8 +8,6 @@ import 'iview/dist/styles/iview.css';
 import VueCookies from 'vue-cookies'; // cookies插件
 
 Vue.use(VueCookies);
-var VueValidator = require("vue-validator"); // 表单验证
-Vue.use(VueValidator);
 Vue.use(iView);
 Vue.config.productionTip = false
 
