@@ -7,6 +7,7 @@
 <style scoped>
 img {
   width: 60%;
+  margin-top: 100px;
   margin-left: 20%;
   margin-right: 20%;
 }
