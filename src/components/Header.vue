@@ -24,22 +24,22 @@
             <li class="nav-item active">
               <a href="/#/" class="nav-link">首页</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="$store.state.is_login">
               <a href="/#/ShoppingCart" class="nav-link">购物车</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="$store.state.is_login">
               <a href="/#/Order" class="nav-link">订单</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="$store.state.is_login">
               <a href="/#/PersonInfo" class="nav-link">我的</a>
             </li>
-            <li class="nav-item">
-              <a href="/#/HelloWorld" class="nav-link">退出</a>
+            <li class="nav-item" @click="toLogin()" v-if="$store.state.is_login">
+              <a class="nav-link">退出</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="!$store.state.is_login">
               <a href="/#/Login" class="nav-link">登录</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="!$store.state.is_login">
               <a href="/#/Register" class="nav-link">注册</a>
             </li>
           </ul>
@@ -48,6 +48,26 @@
     </nav>
   </div>
 </template>
+
+<script>
+import store from "@/vuex/store";
+import { mapActions } from "vuex";
+export default {
+  name: "Heaer",
+  created() {
+    this.isLogin();
+  },
+  methods: {
+    ...mapActions(["isLogin", "signOut"]),
+    toLogin() {
+      // 退出转登录
+      this.signOut();
+      this.$router.push("/Login");
+    }
+  },
+  store
+};
+</script>
 
 <style scoped>
 a {
