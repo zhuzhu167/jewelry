@@ -6,7 +6,7 @@
         <a href="#">隐私</a>
       </li>
       <li class="list-inline-item">
-        <a href="#">我们</a>
+        <a href="/#/Code">我们</a>
       </li>
       <li class="list-inline-item">
         <a href="#">帮助</a>

@@ -74,6 +74,6 @@ h1 {
 }
 a {
   color: #007bff;
-  font-weight: 350;
+  font-weight: 300;
 }
 </style>
