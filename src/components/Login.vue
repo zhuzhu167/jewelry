@@ -123,7 +123,7 @@ h2 {
   margin: 40px 8px 10px 8px;
   margin-top: 60px;
   margin-bottom: 45px;
-  color: #000;
+  color: #343a40;
 }
 h4 {
   margin-bottom: 40px;
