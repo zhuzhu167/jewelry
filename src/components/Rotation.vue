@@ -60,14 +60,14 @@ img {
   width: 100%;
 }
 p {
-  color: #343a40;
+  color: #3f475a;
   font-size: 20px;
   font-weight: lighter;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 h1 {
-  color: #343a40;
+  color: #3f475a;
   font-size: 45px;
   font-weight: lighter;
   text-overflow: ellipsis;

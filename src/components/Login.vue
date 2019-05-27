@@ -108,13 +108,6 @@ export default {
 .box >>> .ivu-form-item-error-tip {
   left: 10%;
 }
-a {
-  color: #92badd;
-  display: inline-block;
-  text-decoration: none;
-  font-weight: 400;
-}
-
 h2 {
   text-align: center;
   font-size: 35px;
@@ -123,7 +116,7 @@ h2 {
   margin: 40px 8px 10px 8px;
   margin-top: 60px;
   margin-bottom: 45px;
-  color: #343a40;
+  color: #3f475a;
 }
 h4 {
   margin-bottom: 40px;
