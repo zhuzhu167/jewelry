@@ -19,4 +19,5 @@ export default {
 </script>
 
 <style>
+@import "./css/Animation.css";
 </style>

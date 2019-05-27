@@ -37,10 +37,10 @@
               <a class="nav-link">退出</a>
             </li>
             <li class="nav-item" v-if="!$store.state.is_login">
-              <a href="/#/Login" class="nav-link">登录</a>
+              <a href="/?#/Login" class="nav-link">登录</a>
             </li>
             <li class="nav-item" v-if="!$store.state.is_login">
-              <a href="/#/Register" class="nav-link">注册</a>
+              <a href="/?#/Register" class="nav-link">注册</a>
             </li>
           </ul>
         </div>

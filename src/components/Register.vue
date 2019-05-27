@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);">
+  <div class="container fadeInDown" style="-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);">
     <div class="row">
       <div
         class="col-md-8 banner-sec"
@@ -40,7 +40,7 @@
             >注 册</button>
           </div>
         </Form>
-        <form v-if="this.is_register_success==true">
+        <form class="fadeInto" v-if="this.is_register_success==true">
           <h3 class="text-center text-success" style="margin-top: 130px;">注册成功</h3>
           <div class="text-center" style="margin-top: 140px;">
             <button class="btn btn-primary btn-block btn-lg" @click="toLogin()">立刻登录</button>
@@ -122,6 +122,8 @@ export default {
               this.is_register_success = true;
             }
           });
+        } else {
+          console.log("不能为空");
         }
       });
     },

@@ -5,8 +5,11 @@ import App from './App'
 import router from './router'
 import iView from 'iview'; // iview插件
 import 'iview/dist/styles/iview.css';
-import VueCookies from 'vue-cookies'; // cookies插件
+import VueCookies from 'vue-cookies'; // Cookies插件
+import VueSweetalert from './plugins/vue-sweetalert' // SweetAlert插件
 
+
+Vue.use(VueSweetalert)
 Vue.use(VueCookies);
 Vue.use(iView);
 Vue.config.productionTip = false

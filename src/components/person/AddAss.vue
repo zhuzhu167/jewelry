@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box fadeInDown">
     <div class="container">
       <div class="row" style="box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);">
         <div class="col-md-3">

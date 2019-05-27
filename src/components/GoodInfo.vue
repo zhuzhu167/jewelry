@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <br>
-      <div class="card">
+      <div class="card fadeIn">
         <div class="row">
           <aside class="col-sm-5 border-right">
             <article class="gallery-wrap">

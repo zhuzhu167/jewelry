@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fadeIn">
     <section class="jumbotron text-center" style="border-radius: 0px;">
       <div class="container">
         <h1 class="jumbotron-heading">购 物 车</h1>

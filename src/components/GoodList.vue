@@ -9,7 +9,7 @@
       >
         <div class="product-grid6">
           <div
-            class="product-image6"
+            class="product-image6 fadeInDown"
             v-for="(img_item, img_index) in item.imageList"
             :key="img_index"
           >
@@ -17,7 +17,7 @@
               <img class="pic-1" v-if="img_index == 0" :src="img_item.imageUrl">
             </a>
           </div>
-          <div class="product-content">
+          <div class="product-content fadeInto">
             <h3 class="title" style="font-weight: 340;">{{ item.title }}</h3>
             <div class="price" style="font-weight: 340; color: #007bff;">￥{{ item.commodityPrice }}</div>
           </div>

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import store from '@/vuex/store';
 
 var instance = axios.create( // 常见请求实例配置项
   {
@@ -30,13 +29,17 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response) => {
     // 对响应数据做点什么
-
     return response;
   },
   (error) => {
     // 对响应错误做点什么
-    store.state.errorMess = error.response.data.error.message;
-    store.state.errorpopupSwitch = true;
+    swal({
+      title: '提 示',
+      icon: "warning",
+      button: "确定",
+      dangerMode: true,
+      text: error.response.data.error.message,
+    });
   }
 );
 // 最后暴露实例
