@@ -13,7 +13,7 @@
             <div class="form-group">
               <label class="col-sm" style="font-size:14px">收货人姓名</label>
               <div class="col-sm-10">
-                <input class="form-control" v-model="formData.name">
+                <input class="form-control" v-model="formData.name" required>
               </div>
             </div>
             <div class="form-group">
