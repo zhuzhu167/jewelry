@@ -1,9 +1,7 @@
 <template>
   <div class="fadeIn">
     <section class="jumbotron text-center" style="border-radius: 0px;">
-      <div class="container">
-        <h1 class="jumbotron-heading">挑 选 钻 石</h1>
-      </div>
+      <h1 class="jumbotron-heading">挑 选 钻 石</h1>
     </section>
     <div class="container">
       <div class="row" style="margin-top: 40px;">
