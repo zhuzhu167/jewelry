@@ -1,5 +1,5 @@
 <template>
-  <div class="box fadeIn">
+  <div class="fadeIn">
     <Rotation></Rotation>
 
     <div class="container marketing">
