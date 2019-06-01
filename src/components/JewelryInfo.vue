@@ -84,7 +84,7 @@ export default {
   methods: {
     ...mapActions(["LoadJewelryInfo", "addToCart"]),
     addToC() {
-      if (store.state.is_login) {
+      if (store.state.is_login == true) {
         this.addToCart();
         swal({
           title: "提 示",

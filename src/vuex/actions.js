@@ -78,7 +78,7 @@ export const isLogin = ({
 }) => {
   const token = window.$cookies.get('accessToken');
   const account = window.$cookies.get('account');
-  if (token !== "" && account !== "") {
+  if (token && account) {
     commit('IS_LOGIN', true);
     commit('SET_USER_INFO', account);
   } else {
