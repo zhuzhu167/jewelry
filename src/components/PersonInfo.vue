@@ -115,6 +115,13 @@ export default {
     confirmDelet(uuid) {
       this.DeleteConsignee(uuid).then(result => {
         if (result) {
+          swal({
+            title: "提 示",
+            icon: "success",
+            text: "删除地址成功",
+            buttons: false,
+            timer: 1500
+          });
           this.LoadConsignee();
         }
       });

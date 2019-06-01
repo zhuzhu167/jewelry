@@ -123,6 +123,13 @@ export default {
           this.ModifyPerson(this.formData).then(result => {
             if (result) {
               this.LoadUserInfo();
+              swal({
+                title: "提 示",
+                icon: "success",
+                text: "修改个人资料成功",
+                buttons: false,
+                timer: 1500
+              });
               this.$router.push("/PersonInfo");
             }
           });

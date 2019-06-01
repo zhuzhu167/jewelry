@@ -62,6 +62,13 @@ export default {
     toLogin() {
       // 退出转登录
       this.signOut();
+      swal({
+        title: "提 示",
+        icon: "info",
+        text: "成功退出",
+        buttons: false,
+        timer: 1500
+      });
       this.$router.push("/Login");
     }
   },

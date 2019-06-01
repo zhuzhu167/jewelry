@@ -89,6 +89,13 @@ export default {
         if (valid) {
           this.Login(this.formDate).then(result => {
             if (result) {
+              swal({
+                title: "提 示",
+                icon: "success",
+                text: "登录成功",
+                buttons: false,
+                timer: 1500
+              });
               this.$router.push({
                 path: "/"
               });

@@ -99,7 +99,7 @@ export default {
           icon: "error",
           button: "确定",
           dangerMode: true,
-          text: "请先登录或注册后再购买！"
+          text: "请先登录或注册后再购买"
         });
       }
     }

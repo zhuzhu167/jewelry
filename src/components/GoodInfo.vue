@@ -89,14 +89,24 @@ export default {
   },
   data() {
     return {
-      size: 1
+      size: 0
     };
   },
   methods: {
     ...mapActions(["LoadCommodityInfo", "SetSize"]),
     toSelectJewelry() {
-      this.SetSize(this.size);
-      this.$router.push("/JewelryList");
+      if (this.size > 0) {
+        this.SetSize(this.size);
+        this.$router.push("/JewelryList");
+      } else {
+        swal({
+          title: "提 示",
+          icon: "info",
+          text: "请选择指环尺寸",
+          buttons: false,
+          timer: 1500
+        });
+      }
     }
   },
   store
