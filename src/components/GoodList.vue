@@ -31,6 +31,25 @@
         </div>
       </div>
     </div>
+    <div>
+      <nav>
+        <ul class="pagination box">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous" @click="reChangePage()">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item" v-for="index in 5" :key="index">
+            <a class="page-link" @click="changePage(index)">{{ index }}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next" @click="nextChangePage()">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </template>
 
@@ -50,6 +69,24 @@ export default {
           path: "/GoodInfo"
         });
       }
+    },
+    changePage(pageNum) {
+      if (store.state.pageNum > 0) {
+        store.state.pageNum = pageNum;
+        this.LoadCommodityList();
+      }
+    },
+    reChangePage() {
+      if (store.state.pageNum > 0) {
+        store.state.pageNum--;
+        this.LoadCommodityList();
+      }
+    },
+    nextChangePage() {
+      if (store.state.pageNum > 0) {
+        store.state.pageNum++;
+        this.LoadCommodityList();
+      }
     }
   },
   store
@@ -57,6 +94,11 @@ export default {
 </script>
 
 <style scope>
+.box {
+  width: 220px;
+  margin: auto;
+  margin-top: 70px;
+}
 .product-grid6,
 .product-grid6 .product-image6 {
   overflow: hidden;

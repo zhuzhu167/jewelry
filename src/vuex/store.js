@@ -28,6 +28,8 @@ export default new Vuex.Store({
     commodityList: {}, // 商品列表
     commodityInfo: {}, // 商品信息
     commoditySize: '',
+    pageNum: 1, // 分页
+    pageSize: 12,
 
     jewelryList: {}, // 钻石列表
     jewelryInfo: {}, // 钻石信息
@@ -38,6 +40,7 @@ export default new Vuex.Store({
     token: '', // 请求令牌
     is_login: false, // 是否登录
     signUpStep: 0, // 注册步骤
+
 
 
     errorpopupSwitch: false, // 错误弹窗开关

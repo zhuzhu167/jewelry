@@ -12,7 +12,9 @@ import {
 
 } from '@/api/userAPI.js';
 import {
-  getCart
+  getCart,
+  buy,
+  deleteCart
 } from '@/api/cartAPI.js';
 import {
   getOrder
@@ -21,7 +23,8 @@ import {
   getCommodityList,
   getCommodityInfo,
   getJewelryList,
-  getJewelryInfo
+  getJewelryInfo,
+  addCart
 } from '@/api/goodAPI';
 import {
   getIndexCategory
@@ -95,24 +98,16 @@ export const LoadIndexCategory = ({
   });
 };
 
-// 获取商品列表
+// 获取商品列表 start============================================================
 export const LoadCommodityList = ({
   commit
 }) => {
-  getCommodityList().then(result => {
+  const pageNum = store.state.pageNum;
+  const pageSize = store.state.pageSize;
+  getCommodityList(pageNum, pageSize).then(result => {
     if (result.data.response !== '') {
       console.log(result.data);
       commit('SETCOMMODITYlIST', result.data.response);
-    }
-  });
-};
-// 获取购物车
-export const LoadCart = ({
-  commit
-}) => {
-  getCart().then(result => {
-    if (result.data !== '') {
-      console.log(result.data.cartCommodityVOList);
     }
   });
 };
@@ -177,8 +172,55 @@ export const LoadJewelryInfo = ({
     });
   });
 };
+export const addToCart = ({
+  commit
+}) => {
+  return new Promise(resole => {
+    addCart.thrn(result => {
+      if (result.data !== '') {
+        console.log(result.data)
+      }
+    })
+  })
+}
+// 获取商品列表 end============================================================
 
-// 获取订单
+// 获取购物车 start============================================================
+export const LoadCart = ({
+  commit
+}) => {
+  getCart().then(result => {
+    if (result.data !== '') {
+      console.log(result.data.cartCommodityVOList);
+    }
+  });
+};
+
+export const addToOrder = ({
+  commit
+}) => {
+  return new Promise(resolve => {
+    buy().then(result => {
+      if (result.data !== '') {
+        console.log(result.data)
+      }
+    })
+  })
+}
+export const dCart = ({
+  commit
+}) => {
+  return new Promise(resole => {
+    deteleCart.thrn(result => {
+      if (result.data !== '') {
+        console.log(result.data)
+      }
+    })
+  })
+}
+// 获取购物车 end============================================================
+
+// 获取订单 start============================================================
 export const LoadOrder = ({
   commit
 }) => {
@@ -186,8 +228,9 @@ export const LoadOrder = ({
     if (result.data !== '') {}
   });
 };
+// 获取订单 end============================================================
 
-// 添加收货人信息
+// 添加收货人信息 start============================================================
 export const AddConsignee = ({
   commit
 }, data) => {
@@ -312,6 +355,8 @@ export const ModifyPwd = ({
     });
   });
 };
+// 添加收货人信息 end============================================================
+
 // 退出
 export const signOut = ({
   commit

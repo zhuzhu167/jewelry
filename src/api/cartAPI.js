@@ -4,3 +4,12 @@ export const getCart = () => jaxios({
   url: '/pc/cart/cart',
   method: 'get'
 });
+export const buy = () => jaxios({
+  url: '/pc/cart/cart',
+  method: 'post',
+  data
+})
+export const deleteCart = (uuid) => jaxios({
+  url: `/pc/cart/cart/${uuid}`,
+  method: 'detele',
+})
