@@ -96,8 +96,18 @@ export default {
     ...mapActions(["LoadCommodityInfo", "SetSize"]),
     toSelectJewelry() {
       if (this.size > 0) {
-        this.SetSize(this.size);
-        this.$router.push("/JewelryList");
+        if (store.state.is_login == true) {
+          this.SetSize(this.size);
+          this.$router.push("/JewelryList");
+        } else {
+          swal({
+            title: "提 示",
+            icon: "error",
+            button: "确定",
+            dangerMode: true,
+            text: "请先登录或注册后再购买"
+          });
+        }
       } else {
         swal({
           title: "提 示",

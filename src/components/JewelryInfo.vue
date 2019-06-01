@@ -93,6 +93,7 @@ export default {
           buttons: false,
           timer: 1500
         });
+        this.$router.push("/GoodInfo");
       } else {
         swal({
           title: "提 示",
