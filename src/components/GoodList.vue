@@ -33,7 +33,7 @@
     </div>
     <div>
       <nav>
-        <ul class="pagination box">
+        <ul class="pagination list-box">
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Previous" @click="reChangePage()">
               <span aria-hidden="true">&laquo;</span>
@@ -94,7 +94,7 @@ export default {
 </script>
 
 <style scope>
-.box {
+.list-box {
   width: 220px;
   margin: auto;
   margin-top: 70px;
