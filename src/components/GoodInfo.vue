@@ -55,7 +55,11 @@
                   <dl class="param param-inline">
                     <dt>尺寸：</dt>
                     <dd>
-                      <select class="form-control form-control-sm" style="width:70px;">
+                      <select
+                        class="form-control form-control-sm"
+                        style="width:70px;"
+                        v-model="size"
+                      >
                         <option v-for="index in 10" :key="index">{{ index }}</option>
                       </select>
                     </dd>
@@ -83,9 +87,15 @@ export default {
   created() {
     this.LoadCommodityInfo();
   },
+  data() {
+    return {
+      size: 1
+    };
+  },
   methods: {
     ...mapActions(["LoadCommodityInfo", "SetSize"]),
     toSelectJewelry() {
+      this.SetSize(this.size);
       this.$router.push("/JewelryList");
     }
   },

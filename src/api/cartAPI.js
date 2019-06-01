@@ -4,7 +4,7 @@ export const getCart = () => jaxios({
   url: '/pc/cart/cart',
   method: 'get'
 });
-export const buy = () => jaxios({
+export const buy = (data) => jaxios({
   url: '/pc/cart/cart',
   method: 'post',
   data

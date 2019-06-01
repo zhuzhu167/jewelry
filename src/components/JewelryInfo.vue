@@ -82,13 +82,21 @@ export default {
     this.LoadJewelryInfo();
   },
   methods: {
-    ...mapActions(["LoadJewelryInfo", "isLogin"]),
+    ...mapActions(["LoadJewelryInfo", "addToCart"]),
     addToC() {
-      if (this.isLogin() == true) {
+      if (store.state.is_login) {
+        this.addToCart();
+        swal({
+          title: "提 示",
+          icon: "success",
+          text: "成功加入购物车",
+          buttons: false,
+          timer: 1500
+        });
       } else {
         swal({
           title: "提 示",
-          icon: "warning",
+          icon: "error",
           button: "确定",
           dangerMode: true,
           text: "请先登录或注册后再购买！"

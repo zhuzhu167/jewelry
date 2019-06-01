@@ -76,17 +76,14 @@ export const Register = ({
 export const isLogin = ({
   commit
 }) => {
-  return new Promise(resolve => {
-    const token = window.$cookies.get('accessToken');
-    const account = window.$cookies.get('account');
-    if (token && account) {
-      commit('IS_LOGIN', true);
-      commit('SET_USER_INFO', account);
-      return (true)
-    } else {
-      return (false)
-    }
-  })
+  const token = window.$cookies.get('accessToken');
+  const account = window.$cookies.get('account');
+  if (token !== "" && account !== "") {
+    commit('IS_LOGIN', true);
+    commit('SET_USER_INFO', account);
+  } else {
+    commit('IS_LOGIN', false);
+  }
 };
 
 // 获取首页分类
@@ -161,6 +158,7 @@ export const SetJewelryUuid = ({
 export const SetSize = ({
   commit
 }, data) => {
+  console.log(data);
   window.$cookies.set('Size', data);
 };
 
@@ -180,12 +178,15 @@ export const LoadJewelryInfo = ({
 export const addToCart = ({
   commit
 }) => {
-  return new Promise(resole => {
-    addCart.thrn(result => {
-      if (result.data !== '') {
-        console.log(result.data)
-      }
-    })
+  const data = {
+    commodityUuid: window.$cookies.get('CommodityUuid'),
+    jewelryUuid: window.$cookies.get('JewelryUuid'),
+    size: window.$cookies.get('Size')
+  };
+  addCart(data).then(result => {
+    if (result.data !== '') {
+      console.log(result.data)
+    }
   })
 }
 // 获取商品列表 end============================================================
