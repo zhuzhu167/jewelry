@@ -17,7 +17,7 @@ export const getJewelryList = () => jaxios({
 // 获取钻石信息
 export const getJewelryInfo = uuid => jaxios({
   url: `/pc/commodity/jewelry/${uuid}`,
-  method: ''
+  method: 'get'
 });
 // 加入购物车
 export const addCart = data => jaxios({

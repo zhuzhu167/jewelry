@@ -30,6 +30,7 @@ export default new Vuex.Store({
     commoditySize: '',
     pageNum: 1, // 分页
     pageSize: 12,
+    maxPageNum: 1,
 
     jewelryList: {}, // 钻石列表
     jewelryInfo: {}, // 钻石信息

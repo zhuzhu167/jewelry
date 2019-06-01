@@ -64,3 +64,7 @@ export const SET_JEWELRYLIST = (state, data) => {
 export const SET_JEWELRYINFO = (state, data) => {
   state.jewelryInfo = data;
 };
+// 最大页数
+export const SET_MAXPAGE = (state, data) => {
+  state.maxPageNum = data;
+};

@@ -26,8 +26,8 @@
               <div class="price" style="font-weight: 340;color: #007bff;">￥{{ item.jewelryPrice }}</div>
             </div>
             <ul class="social">
-              <li>
-                <a href data-tip="了解更多" style="font-weight: lighter;">
+              <li @click="toJewelryInfo(item.jewelryUuid)">
+                <a data-tip="了解更多">
                   <i class="fa fa-eye" aria-hidden="true"></i>
                 </a>
               </li>
@@ -47,7 +47,15 @@ export default {
     this.LoadJewelryList();
   },
   methods: {
-    ...mapActions(["LoadJewelryList"])
+    ...mapActions(["LoadJewelryList", "SetJewelryUuid"]),
+    toJewelryInfo(uuid) {
+      if (uuid !== "") {
+        this.SetJewelryUuid(uuid);
+        this.$router.push({
+          path: "/JewelryInfo"
+        });
+      }
+    }
   },
   store
 };

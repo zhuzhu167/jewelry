@@ -15,6 +15,7 @@ import MdPwd from '@/components/person/MdPwd'
 import MdInfo from '@/components/person/MdInfo'
 import JewelryList from '@/components/JewelryList'
 import GoodInfo from '@/components/GoodInfo'
+import JewelryInfo from '@/components/JewelryInfo'
 import Code from '@/components/Code'
 Vue.use(Router)
 
@@ -98,6 +99,11 @@ export default new Router({
       path: '/Code',
       name: 'Code',
       component: Code
+    },
+    {
+      path: '/JewelryInfo',
+      name: 'JewelryInfo',
+      component: JewelryInfo
     }
   ]
 })

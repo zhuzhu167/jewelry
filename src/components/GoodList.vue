@@ -74,6 +74,7 @@ export default {
       if (store.state.pageNum > 0) {
         store.state.pageNum = pageNum;
         this.LoadCommodityList();
+        window.scrollTo(0, 0);
       }
     },
     reChangePage() {
@@ -83,9 +84,17 @@ export default {
       }
     },
     nextChangePage() {
-      if (store.state.pageNum > 0) {
+      if (store.state.pageNum < store.state.maxPageNum) {
         store.state.pageNum++;
         this.LoadCommodityList();
+      } else {
+        swal({
+          title: "提 示",
+          icon: "warning",
+          button: "确定",
+          dangerMode: true,
+          text: "这是最后一页了"
+        });
       }
     }
   },

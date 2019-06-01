@@ -76,12 +76,17 @@ export const Register = ({
 export const isLogin = ({
   commit
 }) => {
-  const token = window.$cookies.get('accessToken');
-  const account = window.$cookies.get('account');
-  if (token && account) {
-    commit('IS_LOGIN', true);
-    commit('SET_USER_INFO', account);
-  }
+  return new Promise(resolve => {
+    const token = window.$cookies.get('accessToken');
+    const account = window.$cookies.get('account');
+    if (token && account) {
+      commit('IS_LOGIN', true);
+      commit('SET_USER_INFO', account);
+      return (true)
+    } else {
+      return (false)
+    }
+  })
 };
 
 // 获取首页分类
@@ -106,7 +111,7 @@ export const LoadCommodityList = ({
   const pageSize = store.state.pageSize;
   getCommodityList(pageNum, pageSize).then(result => {
     if (result.data.response !== '') {
-      console.log(result.data);
+      commit('SET_MAXPAGE', Math.ceil(result.data.total / 12));
       commit('SETCOMMODITYlIST', result.data.response);
     }
   });
@@ -139,7 +144,7 @@ export const LoadJewelryList = ({
     getJewelryList().then(result => {
       if (result.data !== '') {
         commit('SET_JEWELRYLIST', result.data.response);
-        console.log(result);
+        console.log(result.data);
       }
     });
   });
@@ -162,16 +167,16 @@ export const SetSize = ({
 // 获取钻石信息
 export const LoadJewelryInfo = ({
   commit
-}, uuid) => {
-  return new Promise(resolve => {
-    getJewelryInfo(uuid).then(result => {
-      if (result.data !== '') {
-        commit('SET_JEWELRYINFO', result.data.response);
-        console.log(result.data.response);
-      }
-    });
+}) => {
+  const uuid = window.$cookies.get('JewelryUuid');
+  getJewelryInfo(uuid).then(result => {
+    if (result.data !== '') {
+      commit('SET_JEWELRYINFO', result.data);
+    }
   });
 };
+
+// 加入购物车
 export const addToCart = ({
   commit
 }) => {

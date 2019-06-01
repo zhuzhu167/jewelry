@@ -8,7 +8,7 @@
             <article class="gallery-wrap">
               <div class="img-big-wrap">
                 <div
-                  v-for="(imgUrl, index) in $store.state.commodityInfo.imageList"
+                  v-for="(imgUrl, index) in $store.state.jewelryInfo.imageList"
                   v-show="index === 0"
                   :key="index"
                 >
@@ -20,7 +20,7 @@
               <div class="img-small-wrap">
                 <div
                   class="item-gallery"
-                  v-for="(imgUrl, index) in $store.state.commodityInfo.imageList"
+                  v-for="(imgUrl, index) in $store.state.jewelryInfo.imageList"
                   :key="index"
                 >
                   <img :src="imgUrl.imageUrl">
@@ -30,44 +30,42 @@
           </aside>
           <aside class="col-sm-7">
             <article class="card-body p-5">
-              <h2 class="title mb-3">{{ $store.state.commodityInfo.title }}</h2>
+              <h2 class="title mb-3">钻石编号： {{ $store.state.jewelryInfo.jewelryNo}}</h2>
               <p class="price-detail-wrap">
                 <span class="price h3 text-primary">
-                  <span class="currency">￥{{ $store.state.commodityInfo.commodityPrice }}</span>
+                  <span class="currency">￥{{ $store.state.jewelryInfo.jewelryPrice }}</span>
                 </span>
               </p>
-              <dl class="item-property">
-                <hr>
-                <dd>
-                  <p>{{ $store.state.commodityInfo.subhead }}</p>
-                </dd>
+              <dl class="param param-feature">
+                <dt>形状：</dt>
+                <dd>{{ $store.state.jewelryInfo.shape }}</dd>
               </dl>
               <dl class="param param-feature">
-                <dt>材质：</dt>
-                <dd>{{ $store.state.commodityInfo.textureName }}</dd>
+                <dt>颜色：</dt>
+                <dd>{{ $store.state.jewelryInfo.color }}</dd>
               </dl>
               <dl class="param param-feature">
-                <dt>库存：</dt>
-                <dd>{{ $store.state.commodityInfo.store.storeConsumption}}</dd>
+                <dt>净度：</dt>
+                <dd>{{ $store.state.jewelryInfo.clarity }}</dd>
               </dl>
-              <div class="row">
-                <div class="col-sm-5">
-                  <dl class="param param-inline">
-                    <dt>尺寸：</dt>
-                    <dd>
-                      <select class="form-control form-control-sm" style="width:70px;">
-                        <option v-for="index in 10" :key="index">{{ index }}</option>
-                      </select>
-                    </dd>
-                  </dl>
-                </div>
-              </div>
+              <dl class="param param-feature">
+                <dt>切工：</dt>
+                <dd>{{ $store.state.jewelryInfo.cut }}</dd>
+              </dl>
+              <dl class="param param-feature">
+                <dt>抛光：</dt>
+                <dd>{{ $store.state.jewelryInfo.polishing }}</dd>
+              </dl>
+              <dl class="param param-feature">
+                <dt>荧光：</dt>
+                <dd>{{$store.state.jewelryInfo.light }}</dd>
+              </dl>
               <hr>
               <a
-                @click="toSelectJewelry()"
+                @click="addToC()"
                 class="btn btn-lg btn-primary text-white"
                 style="font-weight: 400;"
-              >挑选钻石</a>
+              >加入购物车</a>
             </article>
           </aside>
         </div>
@@ -81,12 +79,21 @@ import store from "@/vuex/store";
 import { mapActions } from "vuex";
 export default {
   created() {
-    this.LoadCommodityInfo();
+    this.LoadJewelryInfo();
   },
   methods: {
-    ...mapActions(["LoadCommodityInfo", "SetSize"]),
-    toSelectJewelry() {
-      this.$router.push("/JewelryList");
+    ...mapActions(["LoadJewelryInfo", "isLogin"]),
+    addToC() {
+      if (this.isLogin() == true) {
+      } else {
+        swal({
+          title: "提 示",
+          icon: "warning",
+          button: "确定",
+          dangerMode: true,
+          text: "请先登录或注册后再购买！"
+        });
+      }
     }
   },
   store
