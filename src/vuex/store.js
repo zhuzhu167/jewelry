@@ -26,6 +26,7 @@ export default new Vuex.Store({
     sumPrice: 0, // 需要支付金额
     buyList: [], // 要下单的商品uuid
     buyReceiverUuid: '', // 下单-收获人uuid
+
     orderCommodityVOList: {}, // 订单列表
 
     commodityList: {}, // 商品列表

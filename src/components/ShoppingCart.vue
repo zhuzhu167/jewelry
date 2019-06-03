@@ -30,14 +30,14 @@
                   v-for="(citem, cindex) in item.cartCommodityList"
                   :key="cindex"
                 >
-                  <td class="w-25 mx-auto align-middle">
+                  <td class="w-20 mx-auto align-middle">
                     <div v-for="(cimg,cimgindex) in citem.imageList" :key="cimgindex">
                       <img v-if="cimgindex == 0 " :src="cimg.imageUrl">
                     </div>
                   </td>
-                  <td class="w-25 mx-auto align-middle">{{ citem.title }}</td>
-                  <td class="w-25 mx-auto align-middle" rowspan="2">￥ {{ citem.commodityPrice }}</td>
-                  <td class="w-25 mx-auto align-middle" rowspan="2">
+                  <td class="w-50 mx-auto align-middle">{{ citem.title }}</td>
+                  <td class="w-15 mx-auto align-middle" rowspan="2">￥ {{ citem.commodityPrice }}</td>
+                  <td class="w-15 mx-auto align-middle" rowspan="2">
                     <button
                       class="btn btn-sm btn-danger"
                       @click="deleteCart(item.cartCommodityUuid)"
@@ -51,15 +51,15 @@
                   v-for="(jitem, jindex) in item.cartJewelryList"
                   :key="jindex+1"
                 >
-                  <td class="w-25">
+                  <td class="w-20">
                     <div v-for="(jimg,jimgindex) in jitem.imageList" :key="jimgindex+1">
                       <img v-if="jimgindex == 0 " :src="jimg.imageUrl">
                     </div>
                   </td>
-                  <td class="w-25 mx-auto text-center align-middle">钻石编号：{{ jitem.jewelryNo }}</td>
+                  <td class="w-40 mx-auto text-center align-middle">钻石编号：{{ jitem.jewelryNo }}</td>
                 </tr>
               </tbody>
-              <tbody>
+              <tbody v-if="$store.state.cartCommodityVOList.total !== 0">
                 <tr>
                   <td></td>
                   <td></td>
@@ -73,8 +73,11 @@
               </tbody>
             </table>
           </div>
+          <div v-if="$store.state.cartCommodityVOList.total === 0">
+            <h5>无购物车信息</h5>
+          </div>
         </div>
-        <div class="col mb-2">
+        <div class="col mb-2" v-if="$store.state.cartCommodityVOList.total !== 0">
           <div style="width:250px; margin-top:30px;" class="col-sm-12 col-md-6 float-right">
             <button
               class="btn btn-lg btn-block btn-success"
@@ -133,6 +136,12 @@ export default {
 </script>
 
 <style scoped>
+h5 {
+  font-weight: 300;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 50px;
+}
 h1 {
   margin-bottom: 1%;
   font-size: 40px;

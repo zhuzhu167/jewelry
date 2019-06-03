@@ -72,3 +72,7 @@ export const SET_MAXPAGE = (state, data) => {
 export const SET_CART = (state, data) => {
   state.cartCommodityVOList = data;
 };
+// 订单列表
+export const SET_ORDER = (state, data) => {
+  state.orderCommodityVOList = data;
+};

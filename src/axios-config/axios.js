@@ -15,7 +15,6 @@ instance.interceptors.request.use(
         'X-Access-Token': token
         // 'Content-Type': 'application/json;charset=UTF-8'
       };
-      console.log(token);
     }
     return config;
   },

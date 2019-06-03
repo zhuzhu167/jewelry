@@ -31,7 +31,7 @@
             </tbody>
           </table>
         </div>
-        <div class="no-c" v-if="$store.state.consigneeList == '' ">
+        <div class="no-c" v-if="$store.state.consigneeList === {} ">
           <h5>
             没有收获人信息，
             <strong>
@@ -52,7 +52,7 @@ export default {
     this.LoadConsignee();
   },
   methods: {
-    ...mapActions(["LoadConsignee"]),
+    ...mapActions(["LoadConsignee", "addToOrder"]),
     toAddAss() {
       this.$router.push({
         name: "AddAss",
@@ -61,7 +61,15 @@ export default {
     },
     setC(uuid) {
       store.state.buyReceiverUuid = uuid;
-      this.$router.push("/Pay");
+      swal({
+        title: "提 示",
+        icon: "success",
+        text: "下单成功",
+        buttons: false,
+        timer: 1000
+      });
+      this.addToOrder();
+      this.$router.push("/ShoppingCart");
     }
   },
   store

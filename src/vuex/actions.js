@@ -18,7 +18,8 @@ import {
   deleteCart
 } from '@/api/cartAPI.js';
 import {
-  getOrder
+  getOrder,
+  deleteOrder
 } from '@/api/orderAPI.js';
 import {
   getCommodityList,
@@ -204,33 +205,35 @@ export const LoadCart = ({
   commit
 }) => {
   getCart().then(result => {
-    if (result.data !== '') {
-      console.log(result.data);
+    if (result.status === 200) {
       commit("SET_CART", result.data);
     }
-  });
+  })
 };
 // 购物车下单
 export const addToOrder = ({
   commit
 }) => {
-  return new Promise(resolve => {
-    const data = {
-      cartCommodityUuidList: store.state.buyList,
-      consigneeUuid: store.state.buyReceiverUuid
+  const data = {
+    cartCommodityUuidList: store.state.buyList,
+    consigneeUuid: store.state.buyReceiverUuid
+  }
+  buy(data).then(reslut => {
+    if (reslut.status === 200) {
+      getCart().then(result => {
+        if (result.status === 200) {
+          commit("SET_CART", result.data);
+        }
+      })
     }
-    buy(data).then(result => {
-      if (result.data !== '') {
-        console.log(result.data)
-      }
-    })
   })
 }
+// 删除购物车
 export const dCart = ({
   commit
 }, uuid) => {
   deleteCart(uuid).then(result => {
-    if (result.data !== '') {
+    if (result.status === 200) {
 
     }
   })
@@ -242,9 +245,20 @@ export const LoadOrder = ({
   commit
 }) => {
   getOrder().then(result => {
-    if (result.data !== '') {}
+    if (result.status === 200) {
+      commit('SET_ORDER', result.data)
+    }
   });
 };
+
+//删除订单
+export const dOrder = ({
+  commit
+}, data) => {
+  deleteOrder(data).then(result => {
+    if (result.status === 200) {}
+  })
+}
 // 获取订单 end============================================================
 
 // 添加收货人信息 start============================================================

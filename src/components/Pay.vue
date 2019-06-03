@@ -37,7 +37,6 @@ export default {
   methods: {
     ...mapActions(["addToOrder"]),
     paySuccess() {
-      this.addToOrder();
       swal({
         title: "提 示",
         icon: "error",
@@ -46,7 +45,6 @@ export default {
         text:
           "别想骗我，你肯定没扫码给钱！不过算了，只要你愿意陪我一辈子，送你一个钻戒又如何？！"
       });
-      this.$router.push("/ShoppingCart");
     }
   },
   store
