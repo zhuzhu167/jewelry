@@ -5,7 +5,7 @@
         <div class="box">
           <Form>
             <FormItem>
-              <img src="http://pry3timq7.bkt.clouddn.com/code.png">
+              <img src="http://pry3timq7.bkt.clouddn.com/10.jpeg">
             </FormItem>
             <FormItem>
               <p>扫码支付,支付完成后点击已支付</p>
@@ -56,7 +56,7 @@ export default {
 <style scoped>
 /* STRUCTURE */
 img {
-  margin-top: 30px;
+  width: 100%;
 }
 
 .wrapper {
