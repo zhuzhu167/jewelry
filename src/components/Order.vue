@@ -39,7 +39,12 @@
                   <td class="w-50 mx-auto align-middle">{{ citem.title }}</td>
                   <td class="w-10 mx-auto align-middle" rowspan="2">￥ {{ item.payPrice }}</td>
                   <td class="w-10 mx-auto align-middle" rowspan="2" v-if="item.orderStatus === 0">
-                    <a href>未付款</a>
+                    <strong>
+                      <a
+                        style="color: #28a745;text-decoration:underline"
+                        @click="payO(item.orderUuid,item.payPrice)"
+                      >付款</a>
+                    </strong>
                   </td>
                   <td
                     class="w-15 mx-auto align-middle"
@@ -90,6 +95,11 @@ export default {
         this.dOrder(uuid);
         this.LoadOrder();
       }
+    },
+    payO(uuid, price) {
+      store.state.orderCommodityUuid = uuid;
+      store.state.sumPrice = price;
+      this.$router.push("/Pay");
     }
   },
   store

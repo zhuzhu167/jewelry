@@ -168,18 +168,18 @@ export default {
     doRegister(name) {
       this.$refs[name].validate(valid => {
         if (valid) {
-          // this.Register(this.formDate).then(result => {
-          //   if (result) {
-          //     this.is_register_success = true;
-          //   }
-          // });
+          this.Register(this.formDate).then(result => {
+            if (result) {
+              this.is_register_success = true;
+            }
+          });
         }
       });
     },
     code(phone) {
       if (phone !== "") {
         if (!this.canClick) return; //改动的是这两行代码
-        this.LoadCode();
+        this.LoadCode(phone);
         this.canClick = false;
         this.content = this.totalTime + "s重新发送";
         let clock = window.setInterval(() => {
@@ -188,9 +188,8 @@ export default {
           if (this.totalTime < 0) {
             window.clearInterval(clock);
             this.content = "重新发送验证码";
-            this.totalTime = 10;
+            this.totalTime = 60;
             this.canClick = true; //这里重新开启
-            this.LoadCode();
           }
         }, 1000);
       } else {

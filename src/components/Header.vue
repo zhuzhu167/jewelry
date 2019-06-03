@@ -67,7 +67,7 @@ export default {
         icon: "info",
         text: "成功退出",
         buttons: false,
-        timer: 1500
+        timer: 1000
       });
       this.$router.push("/Login");
     }

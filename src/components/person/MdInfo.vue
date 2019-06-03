@@ -20,14 +20,6 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm" style="font-size:14px">手机号</label>
-                <div class="col-sm-10">
-                  <FormItem prop="phone">
-                    <input class="form-control" v-model="formData.phone">
-                  </FormItem>
-                </div>
-              </div>
-              <div class="form-group">
                 <label class="col-sm" style="font-size:14px">邮箱号</label>
                 <div class="col-sm-10">
                   <FormItem prop="email">
@@ -57,8 +49,7 @@ export default {
     return {
       formData: {
         email: store.state.personInfo.email,
-        name: store.state.personInfo.username,
-        phone: store.state.personInfo.phone
+        name: store.state.personInfo.username
       },
       ruleInline: {
         email: [
@@ -86,24 +77,6 @@ export default {
               } else if (value !== "") {
                 if (/[^a-zA-Z0-9\u4E00-\u9FA5]/g.test(value)) {
                   callback(new Error("不能含有非法字符"));
-                } else {
-                  callback();
-                }
-              }
-            },
-            trigger: "blur"
-          }
-        ],
-        phone: [
-          {
-            validator: (rule, value, callback) => {
-              if (value === "") {
-                callback(new Error("请输入手机号"));
-              } else if (value !== "") {
-                if (/[\W]/g.test(value)) {
-                  callback(new Error("不能含有非法字符"));
-                } else if (!/^1[34578]\d{9}$/.test(value)) {
-                  callback(new Error("请输入正确的手机格式"));
                 } else {
                   callback();
                 }

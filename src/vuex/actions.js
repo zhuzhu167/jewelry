@@ -19,7 +19,8 @@ import {
 } from '@/api/cartAPI.js';
 import {
   getOrder,
-  deleteOrder
+  deleteOrder,
+  payOrder
 } from '@/api/orderAPI.js';
 import {
   getCommodityList,
@@ -77,8 +78,11 @@ export const Register = ({
 export const LoadCode = ({
   commit
 }, data) => {
-  getCode().then(result => {
-    if (result.data !== "") {
+  const num = {
+    phone: data
+  }
+  getCode(num).then(result => {
+    if (result.status === 200) {
       console.log(result.data)
     }
   })
@@ -153,7 +157,6 @@ export const LoadJewelryList = ({
     getJewelryList().then(result => {
       if (result.data !== '') {
         commit('SET_JEWELRYLIST', result.data.response);
-
       }
     });
   });
@@ -257,6 +260,17 @@ export const dOrder = ({
 }, data) => {
   deleteOrder(data).then(result => {
     if (result.status === 200) {}
+  })
+}
+
+// 付款
+export const payO = ({
+  commit
+}, data) => {
+  payOrder(data).then(result => {
+    if (result.status === 200) {
+
+    }
   })
 }
 // 获取订单 end============================================================

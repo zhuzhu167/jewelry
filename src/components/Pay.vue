@@ -35,16 +35,19 @@ import { mapActions } from "vuex";
 export default {
   name: "Pay",
   methods: {
-    ...mapActions(["addToOrder"]),
+    ...mapActions(["payO"]),
     paySuccess() {
-      swal({
-        title: "提 示",
-        icon: "error",
-        button: "确定",
-        dangerMode: true,
-        text:
-          "别想骗我，你肯定没扫码给钱！不过算了，只要你愿意陪我一辈子，送你一个钻戒又如何？！"
-      });
+      if (store.state.sumPrice !== 0 && store.state.orderCommodityUuid !== "") {
+        this.payO(store.state.orderCommodityUuid);
+        swal({
+          title: "提 示",
+          icon: "error",
+          button: "确定",
+          dangerMode: true,
+          text:
+            "别想骗我，你肯定没扫码给钱！不过算了，只要你愿意陪我一辈子，送你一个钻戒又如何？！"
+        });
+      }
     }
   },
   store

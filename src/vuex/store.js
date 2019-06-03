@@ -13,21 +13,17 @@ export default new Vuex.Store({
       password: ''
     }, // 用户信息
 
-    personInfo: {
-      account: '无',
-      email: '无',
-      phone: '无',
-      username: '无'
-    }, // 个人资料
+    personInfo: {}, // 个人资料
 
     categoryList: {}, // 首页分类列表
 
     cartCommodityVOList: {}, // 购物车列表
-    sumPrice: 0, // 需要支付金额
     buyList: [], // 要下单的商品uuid
     buyReceiverUuid: '', // 下单-收获人uuid
 
     orderCommodityVOList: {}, // 订单列表
+    orderCommodityUuid: '', // 要付款订单的uuid
+    sumPrice: 0, // 需要支付金额
 
     commodityList: {}, // 商品列表
     commodityInfo: {}, // 商品信息

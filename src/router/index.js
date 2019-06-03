@@ -138,9 +138,9 @@ export default new Router({
         requireAuth: true,
       },
       beforeEnter: (to, from, next) => {
-        if (store.state.sumPrice == 0 && store.state.buyList == '' && store.state.buyReceiverUuid == '') {
+        if (store.state.sumPrice == 0 && store.stateorderCommodityUuid == "") {
           next({
-            path: '/ShoppingCart'
+            path: '/Order'
           })
         } else {
           next();
@@ -155,7 +155,7 @@ export default new Router({
         requireAuth: true,
       },
       beforeEnter: (to, from, next) => {
-        if (store.state.sumPrice == 0 && store.state.buyList == '') {
+        if (store.state.buyReceiverUuid == '' && store.state.buyList == '') {
           next({
             path: '/ShoppingCart'
           })

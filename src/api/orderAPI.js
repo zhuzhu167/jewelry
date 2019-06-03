@@ -9,3 +9,8 @@ export const deleteOrder = (uuid) => jaxios({
   url: `/pc/order/order/${uuid}`,
   method: 'delete'
 })
+// 付款
+export const payOrder = (uuid) => jaxios({
+  url: `/pc/order/pay/${uuid}`,
+  method: 'put'
+})
