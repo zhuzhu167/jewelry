@@ -11,6 +11,12 @@ export const register = data => jaxios({
   method: 'post',
   data
 });
+// 短信验证
+export const getCode = data => jaxios({
+  url: '/pc/user/registerCode',
+  method: 'post',
+  data
+})
 // 获取个人资料
 export const getUserInfo = () => jaxios({
   url: '/pc/user/person',

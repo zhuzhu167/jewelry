@@ -95,7 +95,11 @@ export default {
             buttons: false,
             timer: 1500
           });
-          this.$router.push("/PersonInfo");
+          if (this.$route.params.where == "SelectConsignee") {
+            this.$router.push("/SelectConsignee");
+          } else {
+            this.$router.push("/PersonInfo");
+          }
         }
       });
     },

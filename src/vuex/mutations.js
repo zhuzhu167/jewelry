@@ -68,3 +68,7 @@ export const SET_JEWELRYINFO = (state, data) => {
 export const SET_MAXPAGE = (state, data) => {
   state.maxPageNum = data;
 };
+// 购物车列表
+export const SET_CART = (state, data) => {
+  state.cartCommodityVOList = data;
+};

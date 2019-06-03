@@ -11,5 +11,5 @@ export const buy = (data) => jaxios({
 })
 export const deleteCart = (uuid) => jaxios({
   url: `/pc/cart/cart/${uuid}`,
-  method: 'detele',
+  method: 'delete',
 })

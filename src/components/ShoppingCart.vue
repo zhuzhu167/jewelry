@@ -10,37 +10,64 @@
       <div class="row">
         <div class="col-12">
           <div class="table-responsive">
-            <table class="table table-hover text-center">
+            <table class="table table-bordered text-center">
               <thead>
                 <tr>
-                  <th scope="col" width="18%">图 片</th>
-                  <th scope="col" width="50%">标 题</th>
-                  <th scope="col" width="10%">价 钱</th>
-                  <th scope="col" width="12%">操 作</th>
+                  <th class="ml-0 mr-0">图 片</th>
+                  <th class="ml-0 mr-0">标 题</th>
+                  <th class="ml-0 mr-0">价 钱</th>
+                  <th class="ml-0 mr-0">操 作</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr v-for="index in 5" :key="index">
-                  <td>
-                    <img src="https://static.darryring.com/images/2016-07-11/1468219559.jpg">
+              <tbody
+                style="margin-top: 30px;"
+                class="w-100"
+                v-for="(item, index) in $store.state.cartCommodityVOList.response"
+                :key="index"
+              >
+                <tr
+                  class="ml-0 mr-0"
+                  v-for="(citem, cindex) in item.cartCommodityList"
+                  :key="cindex"
+                >
+                  <td class="w-25 mx-auto align-middle">
+                    <div v-for="(cimg,cimgindex) in citem.imageList" :key="cimgindex">
+                      <img v-if="cimgindex == 0 " :src="cimg.imageUrl">
+                    </div>
                   </td>
-                  <td>Tiffany True系列铂金槽式镶嵌钻戒圈</td>
-
-                  <td>￥ 10000</td>
-                  <td>
-                    <button class="btn btn-sm btn-danger">
+                  <td class="w-25 mx-auto align-middle">{{ citem.title }}</td>
+                  <td class="w-25 mx-auto align-middle" rowspan="2">￥ {{ citem.commodityPrice }}</td>
+                  <td class="w-25 mx-auto align-middle" rowspan="2">
+                    <button
+                      class="btn btn-sm btn-danger"
+                      @click="deleteCart(item.cartCommodityUuid)"
+                    >
                       <i class="fa fa-minus"></i>
                     </button>
                   </td>
                 </tr>
+                <tr
+                  class="ml-0 mr-0 text-center"
+                  v-for="(jitem, jindex) in item.cartJewelryList"
+                  :key="jindex+1"
+                >
+                  <td class="w-25">
+                    <div v-for="(jimg,jimgindex) in jitem.imageList" :key="jimgindex+1">
+                      <img v-if="jimgindex == 0 " :src="jimg.imageUrl">
+                    </div>
+                  </td>
+                  <td class="w-25 mx-auto text-center align-middle">钻石编号：{{ jitem.jewelryNo }}</td>
+                </tr>
+              </tbody>
+              <tbody>
                 <tr>
                   <td></td>
                   <td></td>
                   <td>
                     <strong>总金额：</strong>
                   </td>
-                  <td class="text-right">
-                    <strong>346,2222290</strong>
+                  <td>
+                    <strong>{{ $store.state.cartCommodityVOList.sumPrice }}</strong>
                   </td>
                 </tr>
               </tbody>
@@ -48,8 +75,11 @@
           </div>
         </div>
         <div class="col mb-2">
-          <div style="width:250px;" class="col-sm-12 col-md-6 float-right">
-            <button class="btn btn-lg btn-block btn-success">支付</button>
+          <div style="width:250px; margin-top:30px;" class="col-sm-12 col-md-6 float-right">
+            <button
+              class="btn btn-lg btn-block btn-success"
+              @click="toPay($store.state.cartCommodityVOList.sumPrice,$store.state.cartCommodityVOList.response)"
+            >支付</button>
           </div>
         </div>
       </div>
@@ -65,7 +95,38 @@ export default {
     this.LoadCart();
   },
   methods: {
-    ...mapActions(["LoadCart"])
+    ...mapActions(["LoadCart", "dCart"]),
+    deleteCart(uuid) {
+      if (uuid !== "") {
+        swal({
+          title: "提 示",
+          icon: "success",
+          text: "成功删除购物车记录",
+          buttons: false,
+          timer: 1000
+        });
+        this.dCart(uuid);
+        this.LoadCart();
+      }
+    },
+    toPay(price, buyList) {
+      if (price > 0) {
+        store.state.buyList = [];
+        for (var i = 0; i < buyList.length; i++) {
+          store.state.buyList.push(buyList[i].cartCommodityUuid);
+        }
+        store.state.sumPrice = price;
+        this.$router.push("/SelectConsignee");
+      } else {
+        swal({
+          title: "提 示",
+          icon: "error",
+          text: "没有可支付的商品，请先去添加",
+          buttons: false,
+          timer: 1500
+        });
+      }
+    }
   },
   store
 };
@@ -78,7 +139,9 @@ h1 {
   font-weight: 340;
 }
 img {
-  width: 150px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 100px;
 }
 th,
 td {

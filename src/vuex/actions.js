@@ -8,7 +8,8 @@ import {
   modifyConsignee,
   modifyPerson,
   modifyPwd,
-  addConsignee
+  addConsignee,
+  getCode
 
 } from '@/api/userAPI.js';
 import {
@@ -71,6 +72,16 @@ export const Register = ({
     });
   });
 };
+// 获取手机验证码
+export const LoadCode = ({
+  commit
+}, data) => {
+  getCode().then(result => {
+    if (result.data !== "") {
+      console.log(result.data)
+    }
+  })
+}
 
 // 判断是否登陆
 export const isLogin = ({
@@ -94,7 +105,7 @@ export const LoadIndexCategory = ({
     getIndexCategory().then(result => {
       if (result !== '') {
         commit('SET_CATEGORYLIST', result.data);
-        console.log(result);
+
       }
     });
   });
@@ -141,7 +152,7 @@ export const LoadJewelryList = ({
     getJewelryList().then(result => {
       if (result.data !== '') {
         commit('SET_JEWELRYLIST', result.data.response);
-        console.log(result.data);
+
       }
     });
   });
@@ -158,7 +169,6 @@ export const SetJewelryUuid = ({
 export const SetSize = ({
   commit
 }, data) => {
-  console.log(data);
   window.$cookies.set('Size', data);
 };
 
@@ -184,9 +194,7 @@ export const addToCart = ({
     size: window.$cookies.get('Size')
   };
   addCart(data).then(result => {
-    if (result.data !== '') {
-      console.log(result.data)
-    }
+    if (result.data !== '') {}
   })
 }
 // 获取商品列表 end============================================================
@@ -197,16 +205,21 @@ export const LoadCart = ({
 }) => {
   getCart().then(result => {
     if (result.data !== '') {
-      console.log(result.data.cartCommodityVOList);
+      console.log(result.data);
+      commit("SET_CART", result.data);
     }
   });
 };
-
+// 购物车下单
 export const addToOrder = ({
   commit
 }) => {
   return new Promise(resolve => {
-    buy().then(result => {
+    const data = {
+      cartCommodityUuidList: store.state.buyList,
+      consigneeUuid: store.state.buyReceiverUuid
+    }
+    buy(data).then(result => {
       if (result.data !== '') {
         console.log(result.data)
       }
@@ -215,13 +228,11 @@ export const addToOrder = ({
 }
 export const dCart = ({
   commit
-}) => {
-  return new Promise(resole => {
-    deteleCart.thrn(result => {
-      if (result.data !== '') {
-        console.log(result.data)
-      }
-    })
+}, uuid) => {
+  deleteCart(uuid).then(result => {
+    if (result.data !== '') {
+
+    }
   })
 }
 // 获取购物车 end============================================================
@@ -257,9 +268,7 @@ export const LoadConsignee = ({
   commit
 }) => {
   getConsignee().then(result => {
-    if (result.total !== 0) {
-      commit('SET_CONSIGNEELIST', result.data.response);
-    }
+    commit('SET_CONSIGNEELIST', result.data.response);
   });
 };
 
@@ -270,13 +279,8 @@ export const DeleteConsignee = ({
   return new Promise(resolve => {
     deleteConsignee(data).then(result => {
       if (result !== '') {
-        console.log('删除收货人信息成功');
         resolve(true);
         return true;
-      } else {
-        console.log('删除收货人信息失败');
-        resolve(false);
-        return false;
       }
     });
   });
@@ -297,11 +301,10 @@ export const ModifyConsignee = ({
     const uuid = store.state.consigneeUuid;
     modifyConsignee(data, uuid).then(result => {
       if (result !== '') {
-        console.log('修改收货人信息成功');
+
         resolve(true);
         return true;
       } else {
-        console.log('修改收货人信息失败');
         resolve(false);
         return false;
       }
@@ -316,8 +319,6 @@ export const LoadUserInfo = ({
   getUserInfo().then(result => {
     if (result.data !== '') {
       commit('SET_PERSONINFO', result.data);
-    } else {
-      console.log('获取个人资料失败');
     }
   });
 };
@@ -327,14 +328,13 @@ export const ModifyPerson = ({
   commit
 }, data) => {
   return new Promise(resolve => {
-    console.info(data);
     modifyPerson(data).then(result => {
       if (result.status === 200) {
-        console.log('修改个人资料成功');
+
         resolve(true);
         return true;
       } else {
-        console.log('修改个人资料失败');
+
         resolve(false);
         return false;
       }
@@ -349,12 +349,12 @@ export const ModifyPwd = ({
   return new Promise(resolve => {
     modifyPwd(data).then(result => {
       if (result !== '') {
-        console.log(result);
-        console.log('修改密码成功');
+
+
         resolve(true);
         return true;
       } else {
-        console.log('修改密码失败');
+
         resolve(false);
         return false;
       }

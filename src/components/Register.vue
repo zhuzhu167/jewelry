@@ -1,10 +1,7 @@
 <template>
   <div class="container fadeInDown" style="-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);">
     <div class="row">
-      <div
-        class="col-md-8 banner-sec"
-        style="background: url(http://pry3timq7.bkt.clouddn.com/9.webp) no-repeat bottom;"
-      ></div>
+      <div class="col-md-8 banner-sec" style="background: #3f4c6b no-repeat bottom;"></div>
       <div class="col-md-4 register-sec">
         <h2 class="text-center">您好，新用户</h2>
         <Form
@@ -33,15 +30,20 @@
             </FormItem>
           </div>
           <div class="form-group">
-            <label for="exampleInputAddress2" class="text-uppercase" prop="re_password">输入手机号</label>
+            <label for="exampleInputAddress2" class="text-uppercase" prop="phone">输入手机号</label>
             <FormItem prop="phone">
               <input type="text" class="form-control" v-model="formDate.phone">
             </FormItem>
           </div>
           <div class="form-group">
-            <label for="exampleInputAddress2" class="text-uppercase" prop="re_password">输入验证码</label>
-            <FormItem prop="code">
-              <input type="text" class="form-control" v-model="formDate.code">
+            <label for="exampleInputAddress2" class="text-uppercase" prop="code">输入验证码</label>
+            <FormItem prop="code" class="form-inline input-btn">
+              <input style="width: 47%;" type="text" class="form-control" v-model="formDate.code">
+              <button
+                class="btn btn-primary code-btn"
+                :class="{disabled: !this.canClick}"
+                @click="code(formDate.phone)"
+              >{{ this.content }}</button>
             </FormItem>
           </div>
           <div style="margin-top: 50px;">
@@ -70,6 +72,9 @@ export default {
   name: "InputMess",
   data() {
     return {
+      content: "发送验证码", // 按钮里显示的内容
+      totalTime: 60, //记录具体倒计时时间
+      canClick: true,
       formDate: {
         account: "",
         password: "",
@@ -143,10 +148,10 @@ export default {
         code: [
           {
             validator: (rule, value, callback) => {
-              if (value === "") {
+              if (value === 0) {
                 callback(new Error("请输入验证码"));
-              } else if (value.length !== 6) {
-                callback(new Error("输入正确的验证码"));
+              } else if (!/^\d{4}$/.test(value)) {
+                callback(new Error("请输入四位整数的验证码"));
               } else {
                 callback();
               }
@@ -159,7 +164,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["Register"]),
+    ...mapActions(["Register", "LoadCode"]),
     doRegister(name) {
       this.$refs[name].validate(valid => {
         if (valid) {
@@ -171,6 +176,33 @@ export default {
         }
       });
     },
+    code(phone) {
+      if (phone !== "") {
+        if (!this.canClick) return; //改动的是这两行代码
+        this.LoadCode();
+        this.canClick = false;
+        this.content = this.totalTime + "s重新发送";
+        let clock = window.setInterval(() => {
+          this.totalTime--;
+          this.content = this.totalTime + "s重新发送";
+          if (this.totalTime < 0) {
+            window.clearInterval(clock);
+            this.content = "重新发送验证码";
+            this.totalTime = 10;
+            this.canClick = true; //这里重新开启
+            this.LoadCode();
+          }
+        }, 1000);
+      } else {
+        swal({
+          title: "提 示",
+          icon: "info",
+          text: "请填写手机号，再获取验证码",
+          buttons: false,
+          timer: 1500
+        });
+      }
+    },
     toLogin() {
       this.$router.push("/Login");
     }
@@ -180,6 +212,22 @@ export default {
 </script>
 
 <style scoped>
+img {
+  width: 100%;
+}
+.disabled {
+  color: #57a3f3;
+  cursor: not-allowed;
+}
+.input-btn >>> .ivu-form-item-content {
+  width: 100%;
+}
+.code-btn {
+  width: 50%;
+  right: 0px;
+  top: 0px;
+  position: absolute;
+}
 .register-block {
   background: #de6262; /* fallback for old browsers */
   background: -webkit-linear-gradient(

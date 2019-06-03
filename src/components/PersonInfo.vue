@@ -127,7 +127,10 @@ export default {
       });
     },
     toAdd() {
-      this.$router.push("/AddAss");
+      this.$router.push({
+        name: "AddAss",
+        params: { where: "PersonInfo" }
+      });
     },
     modify(data) {
       this.setConsigneeUuid(data);

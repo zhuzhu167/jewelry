@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from "@/vuex/store";
 import HelloWorld from '@/components/HelloWorld'
 import Header from '@/components/Header'
 import Index from '@/components/Index'
@@ -16,11 +17,17 @@ import MdInfo from '@/components/person/MdInfo'
 import JewelryList from '@/components/JewelryList'
 import GoodInfo from '@/components/GoodInfo'
 import JewelryInfo from '@/components/JewelryInfo'
+import Pay from '@/components/Pay'
+import SelectConsignee from '@/components/SelectConsignee'
 import Code from '@/components/Code'
+import {
+  Store
+} from 'vuex';
 Vue.use(Router)
 
 export default new Router({
   routes: [{
+
       path: '/HelloWorld',
       name: 'HelloWorld',
       component: HelloWorld
@@ -48,17 +55,26 @@ export default new Router({
     {
       path: '/PersonInfo',
       name: 'PersonInfo',
-      component: PersonInfo
+      component: PersonInfo,
+      meta: {
+        requireAuth: true,
+      }
     },
     {
       path: '/ShoppingCart',
       name: 'ShoppingCart',
-      component: ShoppingCart
+      component: ShoppingCart,
+      meta: {
+        requireAuth: true,
+      }
     },
     {
       path: '/Order',
       name: 'Order',
-      component: Order
+      component: Order,
+      meta: {
+        requireAuth: true,
+      }
     },
     {
       path: '/GoodList',
@@ -73,17 +89,26 @@ export default new Router({
     {
       path: '/MdAss',
       name: 'MdAss',
-      component: MdAss
+      component: MdAss,
+      meta: {
+        requireAuth: true,
+      }
     },
     {
       path: '/MdPwd',
       name: 'MdPwd',
-      component: MdPwd
+      component: MdPwd,
+      meta: {
+        requireAuth: true,
+      }
     },
     {
       path: '/MdInfo',
       name: 'MdInfo',
-      component: MdInfo
+      component: MdInfo,
+      meta: {
+        requireAuth: true,
+      }
     },
     {
       path: '/JewelryList',
@@ -104,6 +129,40 @@ export default new Router({
       path: '/JewelryInfo',
       name: 'JewelryInfo',
       component: JewelryInfo
+    },
+    {
+      path: '/Pay',
+      name: 'Pay',
+      component: Pay,
+      meta: {
+        requireAuth: true,
+      },
+      beforeEnter: (to, from, next) => {
+        if (store.state.sumPrice == 0 && store.state.buyList == '' && store.state.buyReceiverUuid == '') {
+          next({
+            path: '/ShoppingCart'
+          })
+        } else {
+          next();
+        }
+      }
+    },
+    {
+      path: '/SelectConsignee',
+      name: 'SelectConsignee',
+      component: SelectConsignee,
+      meta: {
+        requireAuth: true,
+      },
+      beforeEnter: (to, from, next) => {
+        if (store.state.sumPrice == 0 && store.state.buyList == '') {
+          next({
+            path: '/ShoppingCart'
+          })
+        } else {
+          next();
+        }
+      }
     }
   ]
 })
