@@ -32,6 +32,18 @@
               <input type="password" class="form-control" v-model="formDate.re_password">
             </FormItem>
           </div>
+          <div class="form-group">
+            <label for="exampleInputAddress2" class="text-uppercase" prop="re_password">输入手机号</label>
+            <FormItem prop="phone">
+              <input type="text" class="form-control" v-model="formDate.phone">
+            </FormItem>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputAddress2" class="text-uppercase" prop="re_password">输入验证码</label>
+            <FormItem prop="code">
+              <input type="text" class="form-control" v-model="formDate.code">
+            </FormItem>
+          </div>
           <div style="margin-top: 50px;">
             <button
               type="submit"
@@ -61,7 +73,9 @@ export default {
       formDate: {
         account: "",
         password: "",
-        re_password: ""
+        re_password: "",
+        phone: "",
+        code: ""
       },
       ruleInline: {
         account: [
@@ -107,6 +121,38 @@ export default {
             },
             trigger: "blur"
           }
+        ],
+        phone: [
+          {
+            validator: (rule, value, callback) => {
+              if (value === "") {
+                callback(new Error("请输入手机号"));
+              } else if (value !== "") {
+                if (/[\W]/g.test(value)) {
+                  callback(new Error("不能含有非法字符"));
+                } else if (!/^1[34578]\d{9}$/.test(value)) {
+                  callback(new Error("请输入正确的手机格式"));
+                } else {
+                  callback();
+                }
+              }
+            },
+            trigger: "blur"
+          }
+        ],
+        code: [
+          {
+            validator: (rule, value, callback) => {
+              if (value === "") {
+                callback(new Error("请输入验证码"));
+              } else if (value.length !== 6) {
+                callback(new Error("输入正确的验证码"));
+              } else {
+                callback();
+              }
+            },
+            trigger: "blur"
+          }
         ]
       },
       is_register_success: false // 是否注册成功
@@ -117,13 +163,11 @@ export default {
     doRegister(name) {
       this.$refs[name].validate(valid => {
         if (valid) {
-          this.Register(this.formDate).then(result => {
-            if (result) {
-              this.is_register_success = true;
-            }
-          });
-        } else {
-          console.log("不能为空");
+          // this.Register(this.formDate).then(result => {
+          //   if (result) {
+          //     this.is_register_success = true;
+          //   }
+          // });
         }
       });
     },
