@@ -1,7 +1,10 @@
 <template>
   <div class="container fadeInDown" style="-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);">
     <div class="row">
-      <div class="col-md-8 banner-sec" style="background: #3f4c6b no-repeat bottom;"></div>
+      <div
+        class="col-md-8 banner-sec"
+        style="background: url(http://pry3timq7.bkt.clouddn.com/b1.webp) no-repeat bottom;"
+      ></div>
       <div class="col-md-4 register-sec">
         <h2 class="text-center">您好，新用户</h2>
         <Form
