@@ -52,9 +52,14 @@
                     v-if="item.orderStatus === 1"
                   >{{ "已付款" }}</td>
                   <td class="w-10 mx-auto align-middle" rowspan="2">
-                    <button class="btn btn-sm btn-danger" @click="d_Order(item.orderUuid)">
+                    <button
+                      class="btn btn-sm btn-danger"
+                      v-if="item.orderStatus === 0"
+                      @click="d_Order(item.orderUuid)"
+                    >
                       <i class="fa fa-minus"></i>
                     </button>
+                    <button class="btn btn-sm btn-primary" v-if="item.orderStatus === 1">查询物流</button>
                   </td>
                 </tr>
                 <tr

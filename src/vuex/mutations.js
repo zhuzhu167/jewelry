@@ -64,9 +64,13 @@ export const SET_JEWELRYLIST = (state, data) => {
 export const SET_JEWELRYINFO = (state, data) => {
   state.jewelryInfo = data;
 };
-// 最大页数
+// 商品最大页数
 export const SET_MAXPAGE = (state, data) => {
   state.maxPageNum = data;
+};
+// 钻石最大页数
+export const SET_JMAXPAGE = (state, data) => {
+  state.jmaxPageNum = data;
 };
 // 购物车列表
 export const SET_CART = (state, data) => {

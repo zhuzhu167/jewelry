@@ -10,8 +10,8 @@ export const getCommodityInfo = uuid => jaxios({
   method: 'get'
 });
 // 获取钻石列表
-export const getJewelryList = () => jaxios({
-  url: '/pc/commodity/jewelryIntroduction',
+export const getJewelryList = (pageNum, pageSize) => jaxios({
+  url: `/pc/commodity/jewelryIntroduction?pageNum=${pageNum}&pageSize=${pageSize}`,
   method: 'get'
 });
 // 获取钻石信息

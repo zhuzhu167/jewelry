@@ -14,7 +14,19 @@
             alt
             class="mr-2 rounded"
           >
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom">
+          <p
+            class="media-body pb-3 mb-0 small lh-125 border-bottom"
+            v-if="personInfo.username == ''"
+          >
+            <strong class="d-block">
+              <h5>用 户 名：</h5>
+            </strong>
+            {{ $store.state.userInfo.account }}
+          </p>
+          <p
+            class="media-body pb-3 mb-0 small lh-125 border-bottom"
+            v-if="personInfo.username != ''"
+          >
             <strong class="d-block">
               <h5>用 户 名：</h5>
             </strong>
@@ -40,7 +52,13 @@
             alt
             class="mr-2 rounded"
           >
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom" v-if="personInfo.email == ''">
+            <strong class="d-block">
+              <h5>邮 箱 号：</h5>
+            </strong>
+            {{ '请添加邮箱' }}
+          </p>
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom" v-if="personInfo.email != ''">
             <strong class="d-block">
               <h5>邮 箱 号：</h5>
             </strong>

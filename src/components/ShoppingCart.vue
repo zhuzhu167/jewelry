@@ -81,7 +81,7 @@
           <div style="width:250px; margin-top:30px;" class="col-sm-12 col-md-6 float-right">
             <button
               class="btn btn-lg btn-block btn-success"
-              @click="toPay($store.state.cartCommodityVOList.response)"
+              @click="toPay($store.state.cartCommodityVOList.sumPrice,$store.state.cartCommodityVOList.response)"
             >支付</button>
           </div>
         </div>
@@ -112,7 +112,7 @@ export default {
         this.LoadCart();
       }
     },
-    toPay(buyList) {
+    toPay(price, buyList) {
       if (price > 0) {
         store.state.buyList = [];
         for (var i = 0; i < buyList.length; i++) {

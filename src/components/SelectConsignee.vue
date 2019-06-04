@@ -31,7 +31,7 @@
             </tbody>
           </table>
         </div>
-        <div class="no-c" v-if="$store.state.consigneeList === {} ">
+        <div class="no-c" v-if="$store.state.consigneeList.length == 0">
           <h5>
             没有收获人信息，
             <strong>
@@ -39,6 +39,7 @@
             </strong>
           </h5>
         </div>
+        {{$store.state.consigneeList}}
       </div>
     </main>
   </div>

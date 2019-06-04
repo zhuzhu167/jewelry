@@ -153,9 +153,12 @@ export const SetCommodityUuid = ({
 export const LoadJewelryList = ({
   commit
 }) => {
+  const pageNum = store.state.jpageNum;
+  const pageSize = store.state.jpageSize;
   return new Promise(resolve => {
-    getJewelryList().then(result => {
-      if (result.data !== '') {
+    getJewelryList(pageNum, pageSize).then(result => {
+      if (result.status === 200) {
+        commit('SET_JMAXPAGE', Math.ceil(result.data.total / 12));
         commit('SET_JEWELRYLIST', result.data.response);
       }
     });
@@ -269,7 +272,11 @@ export const payO = ({
 }, data) => {
   payOrder(data).then(result => {
     if (result.status === 200) {
-
+      getOrder().then(result => {
+        if (result.status === 200) {
+          commit('SET_ORDER', result.data)
+        }
+      });
     }
   })
 }

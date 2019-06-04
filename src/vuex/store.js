@@ -8,10 +8,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    userInfo: {
-      account: '',
-      password: ''
-    }, // 用户信息
+    userInfo: {}, // 用户信息
 
     personInfo: {}, // 个人资料
 
@@ -34,6 +31,9 @@ export default new Vuex.Store({
 
     jewelryList: {}, // 钻石列表
     jewelryInfo: {}, // 钻石信息
+    jpageNum: 1, // 分页
+    jpageSize: 12,
+    jmaxPageNum: 1,
 
     consigneeList: {}, // 收货人信息列表
     consigneeInfo: {}, // 收货人信息

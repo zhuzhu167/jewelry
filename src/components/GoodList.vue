@@ -71,16 +71,32 @@ export default {
       }
     },
     changePage(pageNum) {
-      if (store.state.pageNum > 0) {
+      if (store.state.maxPageNum >= pageNum) {
         store.state.pageNum = pageNum;
         this.LoadCommodityList();
         window.scrollTo(0, 0);
+      } else {
+        swal({
+          title: "提 示",
+          icon: "info",
+          buttons: false,
+          timer: 1000,
+          text: "没有更多内容了噢"
+        });
       }
     },
     reChangePage() {
-      if (store.state.pageNum > 0) {
+      if (store.state.pageNum > 1) {
         store.state.pageNum--;
         this.LoadCommodityList();
+      } else {
+        swal({
+          title: "提 示",
+          icon: "info",
+          buttons: false,
+          timer: 1000,
+          text: "已经回到第 " + store.state.pageNum + " 页了啦"
+        });
       }
     },
     nextChangePage() {
@@ -91,9 +107,9 @@ export default {
         swal({
           title: "提 示",
           icon: "warning",
-          button: "确定",
-          dangerMode: true,
-          text: "这是最后一页了"
+          buttons: false,
+          timer: 1000,
+          text: "这是最后 1 页了啦"
         });
       }
     }

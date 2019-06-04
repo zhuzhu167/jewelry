@@ -36,6 +36,25 @@
         </div>
       </div>
     </div>
+    <div>
+      <nav>
+        <ul class="pagination list-box">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous" @click="reChangePage()">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item" v-for="index in 5" :key="index">
+            <a class="page-link" @click="changePage(index)">{{ index }}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next" @click="nextChangePage()">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </template>
 
@@ -55,6 +74,49 @@ export default {
           path: "/JewelryInfo"
         });
       }
+    },
+    changePage(pageNum) {
+      if (store.state.jmaxPageNum > pageNum) {
+        store.state.jpageNum = pageNum;
+        this.LoadJewelryList();
+        window.scrollTo(0, 0);
+      } else {
+        swal({
+          title: "提 示",
+          icon: "info",
+          buttons: false,
+          timer: 1000,
+          text: "没有更多内容了噢"
+        });
+      }
+    },
+    reChangePage() {
+      if (store.state.jpageNum > 1) {
+        store.state.jpageNum--;
+        this.LoadJewelryList();
+      } else {
+        swal({
+          title: "提 示",
+          icon: "info",
+          buttons: false,
+          timer: 1000,
+          text: "已经回到 " + store.state.jpageNum + " 页了啦"
+        });
+      }
+    },
+    nextChangePage() {
+      if (store.state.jpageNum < store.state.jmaxPageNum) {
+        store.state.jpageNum++;
+        this.LoadJewelryList();
+      } else {
+        swal({
+          title: "提 示",
+          icon: "warning",
+          buttons: false,
+          timer: 1000,
+          text: "这是最后 1 页了啦"
+        });
+      }
     }
   },
   store
@@ -62,6 +124,11 @@ export default {
 </script>
 
 <style scope>
+.list-box {
+  width: 220px;
+  margin: auto;
+  margin-top: 70px;
+}
 h1 {
   margin-bottom: 1%;
   font-size: 40px;
