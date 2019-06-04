@@ -39,7 +39,6 @@
             </strong>
           </h5>
         </div>
-        {{$store.state.consigneeList}}
       </div>
     </main>
   </div>
