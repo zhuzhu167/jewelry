@@ -38,7 +38,6 @@ export default {
     ...mapActions(["payO"]),
     paySuccess() {
       if (store.state.sumPrice !== 0 && store.state.orderCommodityUuid !== "") {
-        this.payO(store.state.orderCommodityUuid);
         swal({
           title: "提 示",
           icon: "error",
@@ -47,6 +46,8 @@ export default {
           text:
             "别想骗我，你肯定没扫码给钱！不过算了，只要你愿意陪我一辈子，送你一个钻戒又如何？！"
         });
+        this.payO(store.state.orderCommodityUuid);
+        this.$router.push("/Order");
       }
     }
   },
