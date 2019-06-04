@@ -23,6 +23,8 @@ export default new Vuex.Store({
     sumPrice: 0, // 需要支付金额
 
     commodityList: {}, // 商品列表
+    vCommodityInfoUuid: "", // 正在查看的商品uuid
+    vCommodityInfoSize: 0, // 正在查看的商品尺寸
     commodityInfo: {}, // 商品信息
     commoditySize: '',
     pageNum: 1, // 分页
@@ -31,6 +33,7 @@ export default new Vuex.Store({
 
     jewelryList: {}, // 钻石列表
     jewelryInfo: {}, // 钻石信息
+    vJewelryInfoUuid: "", //正在查看的钻石uuid
     jpageNum: 1, // 分页
     jpageSize: 12,
     jmaxPageNum: 1,

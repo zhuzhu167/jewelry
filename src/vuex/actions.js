@@ -123,9 +123,17 @@ export const LoadCommodityList = ({
   const pageNum = store.state.pageNum;
   const pageSize = store.state.pageSize;
   getCommodityList(pageNum, pageSize).then(result => {
-    if (result.data.response !== '') {
+    if (result.status === 200) {
       commit('SET_MAXPAGE', Math.ceil(result.data.total / 12));
       commit('SETCOMMODITYlIST', result.data.response);
+    } else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "商品列表加载失败"
+      });
     }
   });
 };
@@ -136,8 +144,16 @@ export const LoadCommodityInfo = ({
 }) => {
   const uuid = window.$cookies.get('CommodityUuid');
   getCommodityInfo(uuid).then(result => {
-    if (result.data.response !== '') {
+    if (result.status === 200) {
       commit('SET_COMMODITYINFO', result.data);
+    } else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "商品详情加载失败"
+      });
     }
   });
 };
@@ -146,7 +162,9 @@ export const LoadCommodityInfo = ({
 export const SetCommodityUuid = ({
   commit
 }, uuid) => {
-  window.$cookies.set('CommodityUuid', uuid);
+  if (uuid !== "") {
+    window.$cookies.set('CommodityUuid', uuid);
+  }
 };
 
 // 获取钻石列表
@@ -155,13 +173,19 @@ export const LoadJewelryList = ({
 }) => {
   const pageNum = store.state.jpageNum;
   const pageSize = store.state.jpageSize;
-  return new Promise(resolve => {
-    getJewelryList(pageNum, pageSize).then(result => {
-      if (result.status === 200) {
-        commit('SET_JMAXPAGE', Math.ceil(result.data.total / 12));
-        commit('SET_JEWELRYLIST', result.data.response);
-      }
-    });
+  getJewelryList(pageNum, pageSize).then(result => {
+    if (result.status === 200) {
+      commit('SET_JMAXPAGE', Math.ceil(result.data.total / 12));
+      commit('SET_JEWELRYLIST', result.data.response);
+    } else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "钻书列表加载失败"
+      });
+    }
   });
 };
 
@@ -169,14 +193,18 @@ export const LoadJewelryList = ({
 export const SetJewelryUuid = ({
   commit
 }, uuid) => {
-  window.$cookies.set('JewelryUuid', uuid);
+  if (uuid !== "") {
+    window.$cookies.set('JewelryUuid', uuid);
+  }
 };
 
 // 设置指环尺寸
 export const SetSize = ({
   commit
 }, data) => {
-  window.$cookies.set('Size', data);
+  if (data !== "") {
+    window.$cookies.set('Size', data);
+  }
 };
 
 // 获取钻石信息
@@ -185,8 +213,16 @@ export const LoadJewelryInfo = ({
 }) => {
   const uuid = window.$cookies.get('JewelryUuid');
   getJewelryInfo(uuid).then(result => {
-    if (result.data !== '') {
+    if (result.status === 200) {
       commit('SET_JEWELRYINFO', result.data);
+    } else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "钻书详情加载失败"
+      });
     }
   });
 };
@@ -200,9 +236,35 @@ export const addToCart = ({
     jewelryUuid: window.$cookies.get('JewelryUuid'),
     size: window.$cookies.get('Size')
   };
-  addCart(data).then(result => {
-    if (result.data !== '') {}
-  })
+  if (data.commodityUuid != "" && data.jewelryUuid != "" && data.size != 0) {
+    addCart(data).then(result => {
+      if (result.status === 200) {
+        swal({
+          title: "提 示",
+          icon: "success",
+          text: "成功加入购物车",
+          buttons: false,
+          timer: 1000
+        });
+      } else {
+        swal({
+          title: "提 示",
+          icon: "error",
+          text: "加入购物车失败",
+          buttons: false,
+          timer: 1000
+        });
+      }
+    })
+  } else {
+    swal({
+      title: "提 示",
+      icon: "error",
+      buttons: false,
+      timer: 1000,
+      text: "提交数据不全，无法加入购物车"
+    });
+  }
 }
 // 获取商品列表 end============================================================
 
@@ -213,6 +275,14 @@ export const LoadCart = ({
   getCart().then(result => {
     if (result.status === 200) {
       commit("SET_CART", result.data);
+    } else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "加载购物车信息失败"
+      });
     }
   })
 };
@@ -224,29 +294,65 @@ export const addToOrder = ({
     cartCommodityUuidList: store.state.buyList,
     consigneeUuid: store.state.buyReceiverUuid
   }
-  buy(data).then(reslut => {
-    if (reslut.status === 200) {
-      getCart().then(result => {
-        if (result.status === 200) {
-          commit("SET_CART", result.data);
-        }
-      })
-    }
-  })
+  if (data.cartCommodityUuidList && data.consigneeUuid != "") {
+    buy(data).then(reslut => {
+      if (reslut.status === 200) {
+        getCart().then(result => {
+          if (result.status === 200) {
+            commit("SET_CART", result.data);
+          }
+        })
+      } else {
+        swal({
+          title: "提 示",
+          icon: "error",
+          buttons: false,
+          timer: 1000,
+          text: "下单失败"
+        });
+      }
+    })
+  } else {
+    swal({
+      title: "提 示",
+      icon: "error",
+      buttons: false,
+      timer: 1000,
+      text: "提交数据不全，无法下单"
+    });
+  }
 }
 // 删除购物车
 export const dCart = ({
   commit
 }, uuid) => {
-  deleteCart(uuid).then(result => {
-    if (result.status === 200) {
-      getCart().then(result => {
-        if (result.status === 200) {
-          commit("SET_CART", result.data);
-        }
-      })
-    }
-  })
+  if (uuid != "") {
+    deleteCart(uuid).then(result => {
+      if (result.status === 200) {
+        getCart().then(result => {
+          if (result.status === 200) {
+            commit("SET_CART", result.data);
+          }
+        })
+      } else {
+        swal({
+          title: "提 示",
+          icon: "error",
+          buttons: false,
+          timer: 1000,
+          text: "删除购物车信息失败"
+        });
+      }
+    })
+  } else {
+    swal({
+      title: "提 示",
+      icon: "error",
+      buttons: false,
+      timer: 1000,
+      text: "提交数据不全，无法删除"
+    });
+  }
 }
 // 获取购物车 end============================================================
 
@@ -257,6 +363,14 @@ export const LoadOrder = ({
   getOrder().then(result => {
     if (result.status === 200) {
       commit('SET_ORDER', result.data)
+    } else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "加载订单信息失败"
+      });
     }
   });
 };
@@ -265,30 +379,50 @@ export const LoadOrder = ({
 export const dOrder = ({
   commit
 }, data) => {
-  deleteOrder(data).then(result => {
-    if (result.status === 200) {
-      getOrder().then(result => {
-        if (result.status === 200) {
-          commit('SET_ORDER', result.data)
-        }
-      });
-    }
-  })
+  if (data != "") {
+    deleteOrder(data).then(result => {
+      if (result.status === 200) {
+        getOrder().then(result => {
+          if (result.status === 200) {
+            commit('SET_ORDER', result.data)
+          }
+        });
+      } else {
+        swal({
+          title: "提 示",
+          icon: "error",
+          buttons: false,
+          timer: 1000,
+          text: "删除订单信息失败"
+        });
+      }
+    })
+  } else {
+    swal({
+      title: "提 示",
+      icon: "error",
+      buttons: false,
+      timer: 1000,
+      text: "提交数据不全，无法删除"
+    });
+  }
 }
-
+// ---------------------------------------------------------------------------------
 // 付款
 export const payO = ({
   commit
-}, data) => {
-  payOrder(data).then(result => {
-    if (result.status === 200) {
-      getOrder().then(result => {
-        if (result.status === 200) {
-          commit('SET_ORDER', result.data)
-        }
-      });
-    }
-  })
+}, uuid) => {
+  if (uuid != "") {
+    payOrder(uuid).then(result => {
+      if (result.status === 200) {
+        getOrder().then(result => {
+          if (result.status === 200) {
+            commit('SET_ORDER', result.data)
+          }
+        });
+      }
+    })
+  }
 }
 // 获取订单 end============================================================
 
@@ -296,39 +430,66 @@ export const payO = ({
 export const AddConsignee = ({
   commit
 }, data) => {
-  return new Promise(resolve => {
-    addConsignee(data).then(result => {
-      if (result.status === 200) {
-        resolve(true);
-        return true;
-      } else {
-        resolve(false);
-        return false;
-      }
-    });
+
+  addConsignee(data).then(result => {
+    if (result.status === 200) {} else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "无法添加收货人信息"
+      });
+    }
   });
+
 };
 // 获取收货人列表信息
 export const LoadConsignee = ({
   commit
 }) => {
   getConsignee().then(result => {
-    commit('SET_CONSIGNEELIST', result.data.response);
+    if (result.status === 200) {
+      commit('SET_CONSIGNEELIST', result.data.response);
+    } else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "加载收货人信息失败"
+      });
+    }
   });
 };
 
 // 删除收货人信息
 export const DeleteConsignee = ({
   commit
-}, data) => {
-  return new Promise(resolve => {
-    deleteConsignee(data).then(result => {
-      if (result !== '') {
-        resolve(true);
-        return true;
+}, uuid) => {
+  if (uuid != "") {
+    deleteConsignee(uuid).then(result => {
+      if (result.status === 200) {
+        return (true)
+      } else {
+        swal({
+          title: "提 示",
+          icon: "error",
+          buttons: false,
+          timer: 1000,
+          text: "删除收货人信息失败"
+        });
       }
     });
-  });
+  } else {
+    swal({
+      title: "提 示",
+      icon: "error",
+      buttons: false,
+      timer: 1000,
+      text: "数据不全，删除收货人信息失败"
+    });
+  }
 };
 // 修改收货人信息-赋值UUID
 export const setConsigneeUuid = ({
@@ -339,22 +500,30 @@ export const setConsigneeUuid = ({
 };
 // 修改收货人信息
 export const ModifyConsignee = ({
-    commit
-  },
-  data) => {
-  return new Promise(resolve => {
-    const uuid = store.state.consigneeUuid;
+  commit
+}, data) => {
+  const uuid = store.state.consigneeUuid;
+  if (uuid != "") {
     modifyConsignee(data, uuid).then(result => {
-      if (result !== '') {
-
-        resolve(true);
-        return true;
-      } else {
-        resolve(false);
-        return false;
+      if (result.status === 200) {} else {
+        swal({
+          title: "提 示",
+          icon: "error",
+          buttons: false,
+          timer: 1000,
+          text: "修改收货人信息失败"
+        });
       }
     });
-  });
+  } else {
+    swal({
+      title: "提 示",
+      icon: "error",
+      buttons: false,
+      timer: 1000,
+      text: "数据不全，修改收货人信息失败"
+    });
+  }
 };
 
 // 获取个人资料
@@ -364,6 +533,14 @@ export const LoadUserInfo = ({
   getUserInfo().then(result => {
     if (result.data !== '') {
       commit('SET_PERSONINFO', result.data);
+    } else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "加载个人资料失败"
+      });
     }
   });
 };

@@ -86,13 +86,6 @@ export default {
     addToC() {
       if (store.state.is_login == true) {
         this.addToCart();
-        swal({
-          title: "提 示",
-          icon: "success",
-          text: "成功加入购物车",
-          buttons: false,
-          timer: 1500
-        });
         this.$router.push("/GoodList");
       } else {
         swal({
