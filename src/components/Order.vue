@@ -98,7 +98,13 @@ export default {
     d_Order(uuid) {
       if (uuid !== "") {
         this.dOrder(uuid);
-        this.LoadOrder();
+        swal({
+          title: "提 示",
+          icon: "success",
+          text: "删除订单成功",
+          buttons: false,
+          timer: 1000
+        });
       }
     },
     payO(uuid, price) {

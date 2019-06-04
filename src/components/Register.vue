@@ -7,13 +7,7 @@
       ></div>
       <div class="col-md-4 register-sec">
         <h2 class="text-center">您好，新用户</h2>
-        <Form
-          v-if="this.is_register_success==false"
-          class="register-form"
-          :model="formDate"
-          ref="formInline"
-          :rules="ruleInline"
-        >
+        <Form class="register-form" :model="formDate" ref="formInline" :rules="ruleInline">
           <div class="form-group">
             <label for="exampleInputName1" class="text-uppercase">账 号</label>
             <FormItem prop="account">
@@ -57,12 +51,6 @@
             >注 册</button>
           </div>
         </Form>
-        <form class="fadeInto" v-if="this.is_register_success==true">
-          <h3 class="text-center text-success" style="margin-top: 130px;">注册成功</h3>
-          <div class="text-center" style="margin-top: 140px;">
-            <button class="btn btn-primary btn-block btn-lg" @click="toLogin()">立刻登录</button>
-          </div>
-        </form>
       </div>
     </div>
   </div>
@@ -173,7 +161,16 @@ export default {
         if (valid) {
           this.Register(this.formDate).then(result => {
             if (result) {
-              this.is_register_success = true;
+              swal({
+                title: "提 示",
+                icon: "success",
+                text: "注册成功",
+                buttons: false,
+                timer: 1200
+              });
+              this.$router.push({
+                path: "/Login"
+              });
             }
           });
         }

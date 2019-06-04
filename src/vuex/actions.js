@@ -240,7 +240,11 @@ export const dCart = ({
 }, uuid) => {
   deleteCart(uuid).then(result => {
     if (result.status === 200) {
-
+      getCart().then(result => {
+        if (result.status === 200) {
+          commit("SET_CART", result.data);
+        }
+      })
     }
   })
 }
@@ -262,7 +266,13 @@ export const dOrder = ({
   commit
 }, data) => {
   deleteOrder(data).then(result => {
-    if (result.status === 200) {}
+    if (result.status === 200) {
+      getOrder().then(result => {
+        if (result.status === 200) {
+          commit('SET_ORDER', result.data)
+        }
+      });
+    }
   })
 }
 

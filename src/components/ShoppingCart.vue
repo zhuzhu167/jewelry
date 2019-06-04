@@ -109,7 +109,6 @@ export default {
           timer: 1000
         });
         this.dCart(uuid);
-        this.LoadCart();
       }
     },
     toPay(price, buyList) {

@@ -86,9 +86,7 @@
                 <th>邮 政 编 号</th>
                 <th>操 作</th>
                 <th>
-                  <button class="btn btn-sm btn-success" @click="toAdd()">
-                    <i class="fa fa-plus"></i>
-                  </button>
+                  <a style="color: #007bff;" @click="toAdd()">添 加</a>
                 </th>
               </tr>
             </thead>
@@ -99,12 +97,10 @@
                 <td>{{ item.phone }}</td>
                 <td>{{ item.zipCode }}</td>
                 <td>
-                  <button class="btn btn-sm btn-primary" @click="modify(item)">修改</button>
+                  <a style="color: #007bff;" @click="modify(item)">修 改</a>
                 </td>
                 <td>
-                  <button class="btn btn-sm btn-danger" @click="confirmDelet(item.receiverUuid)">
-                    <i class="fa fa-minus"></i>
-                  </button>
+                  <a style="color: red;" @click="confirmDelet(item.receiverUuid)">删 除</a>
                 </td>
               </tr>
             </tbody>
