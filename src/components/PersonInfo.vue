@@ -16,7 +16,7 @@
           >
           <p
             class="media-body pb-3 mb-0 small lh-125 border-bottom"
-            v-if="personInfo.username == ''"
+            v-if="personInfo.username === ''"
           >
             <strong class="d-block">
               <h5>用 户 名：</h5>
@@ -25,12 +25,12 @@
           </p>
           <p
             class="media-body pb-3 mb-0 small lh-125 border-bottom"
-            v-if="personInfo.username != ''"
+            v-if="personInfo.username !== ''"
           >
             <strong class="d-block">
               <h5>用 户 名：</h5>
             </strong>
-            {{ $store.state.userInfo.account }}
+            {{ personInfo.username }}
           </p>
         </div>
         <div class="media text-muted pt-3">
