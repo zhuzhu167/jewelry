@@ -83,6 +83,8 @@ export default {
                 callback(new Error("不能为空"));
               } else if (value.length < 6 || value.length > 12) {
                 callback(new Error("长度应该为6-12位"));
+              } else if (value !== this.formData.oldPwd) {
+                callback(new Error("不能与原密码一样"));
               } else {
                 callback();
               }
