@@ -20,9 +20,6 @@ import JewelryInfo from '@/components/JewelryInfo'
 import Pay from '@/components/Pay'
 import SelectConsignee from '@/components/SelectConsignee'
 import Code from '@/components/Code'
-import {
-  Store
-} from 'vuex';
 Vue.use(Router)
 
 export default new Router({
