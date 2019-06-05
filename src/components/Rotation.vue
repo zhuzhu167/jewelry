@@ -96,7 +96,7 @@ a {
   font-weight: 300;
 } */
 .banner {
-  background: url(/static/images/b1.jpg) no-repeat center;
+  background: url(http://cdn-jewelry.ykthink.cn/b1.webp) no-repeat center;
   background-size: cover;
   min-height: 800px;
 }
