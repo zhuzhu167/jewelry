@@ -39,7 +39,7 @@ export const Login = ({
   return new Promise(resolve => {
     login(data).then(result => {
       if (result.data.token !== '') {
-        commit('SET_USER_INFO', data);
+        commit('SET_USER_INFO', data.username);
         commit('SET_TOKEN', result.data.token);
         commit('IS_LOGIN', true);
         window.$cookies.set('accessToken', result.data.token);
@@ -431,9 +431,16 @@ export const payO = ({
 export const AddConsignee = ({
   commit
 }, data) => {
-
   addConsignee(data).then(result => {
-    if (result.status === 200) {} else {
+    if (result.status === 200) {
+      swal({
+        title: "提 示",
+        icon: "success",
+        text: "添加地址成功",
+        buttons: false,
+        timer: 1500
+      });
+    } else {
       swal({
         title: "提 示",
         icon: "error",
@@ -468,10 +475,31 @@ export const LoadConsignee = ({
 export const DeleteConsignee = ({
   commit
 }, uuid) => {
-  if (uuid != "") {
+  if (uuid !== "") {
+    console.log(uuid);
+    console.log("shanchu");
     deleteConsignee(uuid).then(result => {
       if (result.status === 200) {
-        return (true)
+        swal({
+          title: "提 示",
+          icon: "success",
+          text: "删除地址成功",
+          buttons: false,
+          timer: 1500
+        });
+        getConsignee().then(result => {
+          if (result.status === 200) {
+            commit('SET_CONSIGNEELIST', result.data.response);
+          } else {
+            swal({
+              title: "提 示",
+              icon: "error",
+              buttons: false,
+              timer: 1000,
+              text: "加载收货人信息失败"
+            });
+          }
+        });
       } else {
         swal({
           title: "提 示",
@@ -553,11 +581,9 @@ export const ModifyPerson = ({
   return new Promise(resolve => {
     modifyPerson(data).then(result => {
       if (result.status === 200) {
-
         resolve(true);
         return true;
       } else {
-
         resolve(false);
         return false;
       }

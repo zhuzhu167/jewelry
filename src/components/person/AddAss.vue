@@ -86,20 +86,12 @@ export default {
     ...mapActions(["LoadConsignee", "AddConsignee"]),
     add() {
       this.AddConsignee(this.formData).then(result => {
-        if (result) {
+        if (this.$route.params.where === "SelectConsignee") {
           this.LoadConsignee();
-          swal({
-            title: "提 示",
-            icon: "success",
-            text: "添加地址成功",
-            buttons: false,
-            timer: 1500
-          });
-          if (this.$route.params.where == "SelectConsignee") {
-            this.$router.push("/SelectConsignee");
-          } else {
-            this.$router.push("/PersonInfo");
-          }
+          this.$router.push("/SelectConsignee");
+        } else {
+          this.LoadConsignee();
+          this.$router.push("/PersonInfo");
         }
       });
     },
