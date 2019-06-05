@@ -20,5 +20,4 @@ export default {
 
 <style>
 @import "./css/Animation.css";
-@import "./css/style.css";
 </style>
