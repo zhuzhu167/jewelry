@@ -78,17 +78,8 @@ export default {
     ...mapActions(["LoadConsignee", "ModifyConsignee"]),
     modify() {
       this.ModifyConsignee(this.formData).then(result => {
-        if (result) {
-          this.LoadConsignee();
-          swal({
-            title: "提 示",
-            icon: "success",
-            text: "修改地址成功",
-            buttons: false,
-            timer: 1500
-          });
-          this.$router.push("/PersonInfo");
-        }
+        this.LoadConsignee();
+        this.$router.push("/PersonInfo");
       });
     },
     cancel() {

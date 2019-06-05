@@ -534,7 +534,15 @@ export const ModifyConsignee = ({
   const uuid = store.state.consigneeUuid;
   if (uuid != "") {
     modifyConsignee(data, uuid).then(result => {
-      if (result.status === 200) {} else {
+      if (result.status === 200) {
+        swal({
+          title: "提 示",
+          icon: "success",
+          buttons: false,
+          timer: 1000,
+          text: "修改收货人信息成功"
+        });
+      } else {
         swal({
           title: "提 示",
           icon: "error",
