@@ -8,7 +8,7 @@
             <li>
               <div class="slider-info">
                 <h4 class="fadeInDown">Jewelry Source</h4>
-                <p>以现代精神诠释优雅魅力, 光影绰约间彰显曲线交错的缱绻美感</p>
+                <p>以现代精神诠释优雅魅力</p>
               </div>
             </li>
           </ul>
