@@ -30,7 +30,7 @@
             <strong class="d-block">
               <h5>用 户 名：</h5>
             </strong>
-            {{ personInfo.username }}
+            {{ $store.state.userInfo.account }}
           </p>
         </div>
         <div class="media text-muted pt-3">

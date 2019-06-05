@@ -56,6 +56,10 @@ export const SETCOMMODITYlIST = (state, data) => {
 export const SET_COMMODITYINFO = (state, data) => {
   state.commodityInfo = data;
 };
+// 商品uuid
+export const SET_COMMODITYINFOUUID = (state, data) => {
+  state.vCommodityInfoUuid = data;
+};
 // 钻石列表
 export const SET_JEWELRYLIST = (state, data) => {
   state.jewelryList = data;

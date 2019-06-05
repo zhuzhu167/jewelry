@@ -117,7 +117,7 @@ export default new Router({
       name: 'GoodInfo',
       component: GoodInfo,
       beforeEnter: (to, from, next) => {
-        if (from.name !== "GoodList") {
+        if (from.name !== "GoodList" && store.state.vCommodityInfoUuid != "") {
           history.go(-1)
         } else {
           next();

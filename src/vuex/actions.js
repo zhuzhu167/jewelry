@@ -163,6 +163,7 @@ export const SetCommodityUuid = ({
   commit
 }, uuid) => {
   if (uuid !== "") {
+    commit('SET_COMMODITYINFOUUID', uuid);
     window.$cookies.set('CommodityUuid', uuid);
   }
 };
