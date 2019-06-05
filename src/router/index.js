@@ -118,7 +118,14 @@ export default new Router({
     {
       path: '/GoodInfo',
       name: 'GoodInfo',
-      component: GoodInfo
+      component: GoodInfo,
+      beforeEnter: (to, from, next) => {
+        if (from.name !== "GoodList") {
+          history.go(-1)
+        } else {
+          next();
+        }
+      }
     },
     {
       path: '/Code',
@@ -128,7 +135,14 @@ export default new Router({
     {
       path: '/JewelryInfo',
       name: 'JewelryInfo',
-      component: JewelryInfo
+      component: JewelryInfo,
+      beforeEnter: (to, from, next) => {
+        if (from.name !== "JewelryList") {
+          history.go(-1)
+        } else {
+          next();
+        }
+      }
     },
     {
       path: '/Pay',

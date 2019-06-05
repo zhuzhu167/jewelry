@@ -1,9 +1,6 @@
 <template>
   <div>
-    <nav
-      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-      id="ftco-navbar"
-    >
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light">
       <div class="container">
         <a class="navbar-brand" style="font-size: 27px;" href="/#/">JewelrySource</a>
         <button
@@ -80,5 +77,8 @@ export default {
 a {
   font-size: 17px;
   font-weight: 200;
+}
+.navbar {
+  background-color: #000;
 }
 </style>
