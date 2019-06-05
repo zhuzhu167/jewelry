@@ -106,7 +106,7 @@ export default {
   width: 100%;
 }
 .col-md-3 {
-  background: #343a40;
+  background: #000;
   padding: 4%;
 }
 .contact-info {
