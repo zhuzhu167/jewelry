@@ -55,13 +55,12 @@
                   <dl class="param param-inline">
                     <dt>尺寸：</dt>
                     <dd>
-                      <select
-                        class="form-control form-control-sm"
+                      <Select
                         style="width:70px;"
                         v-model="size"
                       >
-                        <option v-for="index in 10" :key="index">{{ index }}</option>
-                      </select>
+                        <Option v-for="index in 10" :key="index">{{ index }}</option>
+                      </Select>
                     </dd>
                   </dl>
                 </div>
