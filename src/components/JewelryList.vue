@@ -23,7 +23,7 @@
             </div>
             <div class="product-content">
               <h3 class="title" style="font-weight: 340;">钻石编号： {{ item.jewelryNo }}</h3>
-              <div class="price" style="font-weight: 340;color: #007bff;">￥{{ item.jewelryPrice }}</div>
+              <div class="price" style="font-weight: 340;color: #2d8cf0;">￥{{ item.jewelryPrice }}</div>
             </div>
             <ul class="social">
               <li @click="toJewelryInfo(item.jewelryUuid)">

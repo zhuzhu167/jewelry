@@ -86,7 +86,7 @@
                 <th>邮 政 编 号</th>
                 <th>操 作</th>
                 <th>
-                  <a style="color: #007bff;" @click="toAdd()">添 加</a>
+                  <a style="color: #2d8cf0;" @click="toAdd()">添 加</a>
                 </th>
               </tr>
             </thead>
@@ -97,7 +97,7 @@
                 <td>{{ item.phone }}</td>
                 <td>{{ item.zipCode }}</td>
                 <td>
-                  <a style="color: #007bff;" @click="modify(item)">修 改</a>
+                  <a style="color: #2d8cf0;" @click="modify(item)">修 改</a>
                 </td>
                 <td>
                   <a style="color: red;" @click="confirmDelet(item.receiverUuid)">删 除</a>

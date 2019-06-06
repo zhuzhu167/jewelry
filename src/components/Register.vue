@@ -280,7 +280,7 @@ img {
   margin-bottom: 19px;
   font-weight: 300;
   font-size: 30px;
-  color: #007bff;
+  color: #2d8cf0;
 }
 label {
   font-size: 14px;

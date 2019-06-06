@@ -125,7 +125,7 @@ h2 {
 }
 h4 {
   margin-bottom: 40px;
-  color: #007bff;
+  color: #2d8cf0;
 }
 
 /* STRUCTURE */
@@ -176,7 +176,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type="button"] {
-  background-color: #007bff;
+  background-color: #2d8cf0;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -198,7 +198,7 @@ input[type="button"] {
 }
 
 input[type="button"]:hover {
-  background-color: #007bff;
+  background-color: #2d8cf0;
 }
 
 input[type="button"]:active,

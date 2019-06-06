@@ -7,7 +7,12 @@
     </section>
 
     <div class="container box">
-      <Table size="large" :columns="columns10" :data="$store.state.orderCommodityVOList.response"></Table>
+      <Table
+        border
+        size="large"
+        :columns="columns10"
+        :data="$store.state.orderCommodityVOList.response"
+      ></Table>
     </div>
   </div>
 </template>

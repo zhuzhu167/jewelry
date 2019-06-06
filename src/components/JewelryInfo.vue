@@ -61,11 +61,7 @@
                 <dd>{{$store.state.jewelryInfo.light }}</dd>
               </dl>
               <hr>
-              <a
-                @click="addToC()"
-                class="btn btn-lg btn-primary text-white"
-                style="font-weight: 400;"
-              >加入购物车</a>
+              <Button type="primary" @click="addToC()" style="margin-top:30px;">加入购物车</Button>
             </article>
           </aside>
         </div>
@@ -141,7 +137,7 @@ a {
   font-weight: 340;
 }
 dd {
-  color: #007bff;
+  color: #2d8cf0;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 15px;

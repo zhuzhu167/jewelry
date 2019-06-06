@@ -67,11 +67,7 @@
                 </div>
               </div>
               <hr>
-              <a
-                @click="toSelectJewelry()"
-                class="btn btn-lg btn-primary text-white"
-                style="font-weight: 400;"
-              >挑选钻石</a>
+              <Button type="primary" @click="toSelectJewelry()" style="margin-top:30px;">挑选钻石</Button>
             </article>
           </aside>
         </div>
@@ -162,7 +158,7 @@ a {
   font-weight: 340;
 }
 dd {
-  color: #007bff;
+  color: #2d8cf0;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 15px;

@@ -19,9 +19,9 @@
           </div>
           <div class="product-content fadeInto">
             <h3 class="title" style="font-weight: 340;">{{ item.title }}</h3>
-            <div class="price" style="font-weight: 340; color: #007bff;">￥{{ item.commodityPrice }}</div>
+            <div class="price" style="font-weight: 340; color: #2d8cf0;">￥{{ item.commodityPrice }}</div>
           </div>
-          <ul class="social" style="color: #007bff;">
+          <ul class="social" style="color: #2d8cf0;">
             <li @click="toGoodInfo(item.commodityUuid)">
               <a data-tip="了解更多">
                 <i class="fa fa-eye" aria-hidden="true"></i>

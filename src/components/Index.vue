@@ -82,7 +82,7 @@ p {
   margin-top: 20px;
 }
 a {
-  color: #007bff;
+  color: #2d8cf0;
   font-weight: 300;
 }
 </style>

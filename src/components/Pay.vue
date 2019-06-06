@@ -101,13 +101,13 @@ h2.inactive {
 
 h2.active {
   color: #0d0d0d;
-  border-bottom: 2px solid #007bff;
+  border-bottom: 2px solid #2d8cf0;
 }
 
 /* FORM TYPOGRAPHY*/
 
 input[type="button"] {
-  background-color: #007bff;
+  background-color: #2d8cf0;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -129,7 +129,7 @@ input[type="button"] {
 }
 
 input[type="button"]:hover {
-  background-color: #007bff;
+  background-color: #2d8cf0;
 }
 
 input[type="button"]:active,
