@@ -542,14 +542,6 @@ export const ModifyConsignee = ({
           timer: 1000,
           text: "修改收货人信息成功"
         });
-      } else {
-        swal({
-          title: "提 示",
-          icon: "error",
-          buttons: false,
-          timer: 1000,
-          text: "修改收货人信息失败"
-        });
       }
     });
   } else {
@@ -603,20 +595,19 @@ export const ModifyPerson = ({
 export const ModifyPwd = ({
   commit
 }, data) => {
-  return new Promise(resolve => {
-    modifyPwd(data).then(result => {
-      if (result !== '') {
 
-
-        resolve(true);
-        return true;
-      } else {
-
-        resolve(false);
-        return false;
-      }
-    });
+  modifyPwd(data).then(result => {
+    if (result.status === 200) {
+      swal({
+        title: "提 示",
+        icon: "success",
+        text: "修改密码成功",
+        buttons: false,
+        timer: 1500
+      });
+    }
   });
+
 };
 // 添加收货人信息 end============================================================
 

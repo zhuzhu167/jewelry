@@ -32,13 +32,23 @@ instance.interceptors.response.use(
   },
   (error) => {
     // 对响应错误做点什么
-    swal({
-      title: '提 示',
-      icon: "warning",
-      button: "确定",
-      dangerMode: true,
-      text: error.response.data.error.message,
-    });
+    if (error.response.data.error.reason !== "") {
+      swal({
+        title: '提 示',
+        icon: "warning",
+        button: "确定",
+        dangerMode: true,
+        text: error.response.data.error.reason
+      });
+    } else {
+      swal({
+        title: '提 示',
+        icon: "warning",
+        button: "确定",
+        dangerMode: true,
+        text: error.response.data.error.message
+      });
+    }
   }
 );
 // 最后暴露实例

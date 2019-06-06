@@ -7,7 +7,8 @@
     </section>
 
     <div class="container mb-4">
-      <div class="row">
+      <Table :columns="columns1" :data="$store.state.cartCommodityVOList.response"></Table>
+      <!-- <div class="row">
         <div class="col-12">
           <div class="table-responsive">
             <table class="table table-bordered text-center">
@@ -85,7 +86,7 @@
             >支付</button>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
 </template>
@@ -96,6 +97,24 @@ import store from "@/vuex/store";
 export default {
   created() {
     this.LoadCart();
+  },
+  data() {
+    return {
+      columns1: [
+        {
+          title: "Name",
+          key: "name"
+        },
+        {
+          title: "Age",
+          key: "age"
+        },
+        {
+          title: "Address",
+          key: "address"
+        }
+      ]
+    };
   },
   methods: {
     ...mapActions(["LoadCart", "dCart"]),
