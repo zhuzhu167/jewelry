@@ -49,7 +49,7 @@
               </dl>
               <dl class="param param-feature">
                 <dt>荧光：</dt>
-                <dd>{{$store.state.jewelryInfo.light }}</dd>
+                <dd>{{$store.state.jewelryInfo.light }}12</dd>
               </dl>
               <hr>
               <Button type="primary" @click="addToC()" style="margin-top:30px;">加入购物车</Button>
