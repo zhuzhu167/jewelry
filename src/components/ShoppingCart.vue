@@ -7,8 +7,7 @@
     </section>
 
     <div class="container mb-4">
-      <Table :columns="columns1" :data="$store.state.cartCommodityVOList.response"></Table>
-      <!-- <div class="row">
+      <div class="row">
         <div class="col-12">
           <div class="table-responsive">
             <table class="table table-bordered text-center">
@@ -86,7 +85,7 @@
             >支付</button>
           </div>
         </div>
-      </div>-->
+      </div>
     </div>
   </div>
 </template>
