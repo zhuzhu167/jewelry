@@ -17,15 +17,6 @@
                   </a>
                 </div>
               </div>
-              <div class="img-small-wrap">
-                <div
-                  class="item-gallery"
-                  v-for="(imgUrl, index) in $store.state.jewelryInfo.imageList"
-                  :key="index"
-                >
-                  <img :src="imgUrl.imageUrl">
-                </div>
-              </div>
             </article>
           </aside>
           <aside class="col-sm-7">

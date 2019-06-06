@@ -17,15 +17,6 @@
                   </a>
                 </div>
               </div>
-              <div class="img-small-wrap">
-                <div
-                  class="item-gallery"
-                  v-for="(imgUrl, index) in $store.state.commodityInfo.imageList"
-                  :key="index"
-                >
-                  <img :src="imgUrl.imageUrl">
-                </div>
-              </div>
             </article>
           </aside>
           <aside class="col-sm-7">
@@ -56,10 +47,9 @@
                     <dt>尺寸：</dt>
                     <dd>
                       <Select
-                        style="width:70px;"
                         v-model="size"
                       >
-                        <Option v-for="index in 10" :key="index">{{ index }}</option>
+                        <Option v-for="index in 5" :value="index" :key="index">{{ index }}</option>
                       </Select>
                     </dd>
                   </dl>
