@@ -52,14 +52,8 @@ export default {
   props: {
     row: {}
   },
-  data() {
-    return {
-      list: {}
-    };
-  },
   methods: {
-    ...mapActions(["LoadOrder"]),
-    out() {}
+    ...mapActions(["LoadOrder"])
   },
   store
 };
