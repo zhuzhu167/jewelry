@@ -31,6 +31,7 @@
                 <dt>形状：</dt>
                 <dd>{{ $store.state.jewelryInfo.shape }}</dd>
               </dl>
+
               <dl class="param param-feature">
                 <dt>颜色：</dt>
                 <dd>{{ $store.state.jewelryInfo.color }}</dd>
