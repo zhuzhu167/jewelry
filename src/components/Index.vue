@@ -76,9 +76,7 @@ export default {
 
 <style scoped>
 h2 {
-  font-size: 40px;
   margin-top: 30px;
-  font-weight: 200;
 }
 p {
   margin-top: 20px;

@@ -10,8 +10,8 @@
       <div class="row">
         <div class="col-12">
           <div class="table-responsive">
-            <table class="table table-bordered text-center">
-              <thead>
+            <table size="large" class="table table-hover table-bordered text-center">
+              <thead class="bg-light">
                 <tr>
                   <th class="ml-0 mr-0">图 片</th>
                   <th class="ml-0 mr-0">标 题</th>
@@ -38,12 +38,7 @@
                   <td class="w-50 mx-auto align-middle">{{ citem.title }}</td>
                   <td class="w-15 mx-auto align-middle" rowspan="2">￥ {{ citem.commodityPrice }}</td>
                   <td class="w-15 mx-auto align-middle" rowspan="2">
-                    <button
-                      class="btn btn-sm btn-danger"
-                      @click="deleteCart(item.cartCommodityUuid)"
-                    >
-                      <i class="fa fa-minus"></i>
-                    </button>
+                    <Button type="error" @click="deleteCart(item.cartCommodityUuid)">删除</Button>
                   </td>
                 </tr>
                 <tr
@@ -79,10 +74,11 @@
         </div>
         <div class="col mb-2" v-if="$store.state.cartCommodityVOList.total !== 0">
           <div style="width:250px; margin-top:30px;" class="col-sm-12 col-md-6 float-right">
-            <button
-              class="btn btn-lg btn-block btn-success"
+            <Button
+              type="success"
+              class="btn-block"
               @click="toPay($store.state.cartCommodityVOList.sumPrice,$store.state.cartCommodityVOList.response)"
-            >支付</button>
+            >下 单</Button>
           </div>
         </div>
       </div>
@@ -164,14 +160,6 @@ h1 {
   font-weight: 340;
 }
 img {
-  margin-bottom: 10px;
-  margin-top: 10px;
-  width: 100px;
-}
-th,
-td {
-  color: #000;
-  font-size: 18px;
-  font-weight: 300;
+  width: 80px;
 }
 </style>

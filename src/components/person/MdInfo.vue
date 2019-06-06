@@ -30,8 +30,8 @@
             </Form>
             <div class="form-group" style="margin-top: 40px;">
               <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn" @click="modify('formInline')">保存</button>
-                <button class="btn" @click="cancel()">取消</button>
+                <Button type="primary" @click="modify('formInline')">保存</Button>
+                <Button type="primary" @click="cancel()">取消</Button>
               </div>
             </div>
           </div>
@@ -147,9 +147,7 @@ export default {
   font-weight: 400;
 }
 .contact-form button {
-  background: #007bff;
   color: #fff;
-  font-weight: 400;
   width: 25%;
 }
 .contact-form button:focus {

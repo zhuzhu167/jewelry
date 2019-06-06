@@ -70,7 +70,7 @@ table {
   margin-bottom: 0rem;
 }
 img {
-  width: 150px;
+  width: 80px;
 }
 </style>
 

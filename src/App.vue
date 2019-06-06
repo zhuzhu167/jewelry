@@ -20,4 +20,14 @@ export default {
 
 <style>
 @import "./css/Animation.css";
+td {
+  color: #657180;
+  font-size: 14px;
+  font-weight: unset;
+}
+th {
+  font-size: 14px;
+  font-weight: bold;
+  color: #464c5b;
+}
 </style>

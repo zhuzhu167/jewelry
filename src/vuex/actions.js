@@ -433,12 +433,25 @@ export const AddConsignee = ({
 }, data) => {
   addConsignee(data).then(result => {
     if (result.status === 200) {
-      swal({
-        title: "提 示",
-        icon: "success",
-        text: "添加地址成功",
-        buttons: false,
-        timer: 1500
+      getConsignee().then(result => {
+        if (result.status === 200) {
+          commit('SET_CONSIGNEELIST', result.data.response);
+          swal({
+            title: "提 示",
+            icon: "success",
+            text: "添加地址成功",
+            buttons: false,
+            timer: 1500
+          });
+        } else {
+          swal({
+            title: "提 示",
+            icon: "error",
+            buttons: false,
+            timer: 1000,
+            text: "加载收货人信息失败"
+          });
+        }
       });
     } else {
       swal({
@@ -480,16 +493,16 @@ export const DeleteConsignee = ({
     console.log("shanchu");
     deleteConsignee(uuid).then(result => {
       if (result.status === 200) {
-        swal({
-          title: "提 示",
-          icon: "success",
-          text: "删除地址成功",
-          buttons: false,
-          timer: 1500
-        });
         getConsignee().then(result => {
           if (result.status === 200) {
             commit('SET_CONSIGNEELIST', result.data.response);
+            swal({
+              title: "提 示",
+              icon: "success",
+              text: "删除地址成功",
+              buttons: false,
+              timer: 1500
+            });
           } else {
             swal({
               title: "提 示",
@@ -535,12 +548,25 @@ export const ModifyConsignee = ({
   if (uuid != "") {
     modifyConsignee(data, uuid).then(result => {
       if (result.status === 200) {
-        swal({
-          title: "提 示",
-          icon: "success",
-          buttons: false,
-          timer: 1000,
-          text: "修改收货人信息成功"
+        getConsignee().then(result => {
+          if (result.status === 200) {
+            commit('SET_CONSIGNEELIST', result.data.response);
+            swal({
+              title: "提 示",
+              icon: "success",
+              buttons: false,
+              timer: 1000,
+              text: "修改收货人信息成功"
+            });
+          } else {
+            swal({
+              title: "提 示",
+              icon: "error",
+              buttons: false,
+              timer: 1000,
+              text: "加载收货人信息失败"
+            });
+          }
         });
       }
     });

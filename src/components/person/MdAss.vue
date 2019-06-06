@@ -54,8 +54,8 @@
             </div>
             <div class="form-group" style="margin-top: 40px;">
               <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn" @click="modify()">修改</button>
-                <button class="btn" @click="cancel()">取消</button>
+                <Button type="primary" @click="modify()">修改</Button>
+                <Button type="primary" @click="cancel()">取消</Button>
               </div>
             </div>
           </div>
@@ -78,7 +78,6 @@ export default {
     ...mapActions(["LoadConsignee", "ModifyConsignee"]),
     modify() {
       this.ModifyConsignee(this.formData).then(result => {
-        this.LoadConsignee();
         this.$router.push("/PersonInfo");
       });
     },
@@ -117,9 +116,7 @@ export default {
   font-weight: 400;
 }
 .contact-form button {
-  background: #007bff;
   color: #fff;
-  font-weight: 400;
   width: 25%;
 }
 .contact-form button:focus {

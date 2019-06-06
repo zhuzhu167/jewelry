@@ -66,8 +66,8 @@
           </p>
         </div>
         <small class="d-block text-right mt-3 col" style="font-size: 17px;">
-          <button class="btn btn-sm btn-primary" @click="toMdPwd()">修改密码</button>
-          <button class="btn btn-sm btn-primary" @click="toMdInfo()">修改资料</button>
+          <Button type="primary" @click="toMdPwd()">修改密码</Button>
+          <Button type="primary" @click="toMdInfo()">修改资料</Button>
         </small>
       </div>
       <section class="jumbotron text-center bg-white">
@@ -77,8 +77,8 @@
       </section>
       <div class="box">
         <div class="table-responsive">
-          <table class="table table-hover text-center">
-            <thead>
+          <table class="table table-hover table-bordered text-center">
+            <thead class="bg-light">
               <tr>
                 <th>收 货 人</th>
                 <th>收 货 地 址</th>
@@ -160,22 +160,16 @@ h1 {
   font-weight: 340;
 }
 h5 {
-  font-weight: 300;
+  font-weight: normal;
   margin-bottom: 15px;
 }
 p {
-  color: #000;
-  font-weight: 300;
-  font-size: 20px;
+  color: #464c5b;
+  font-weight: normal;
+  font-size: 14px;
 }
 .box {
   padding: 16px;
   color: #6c757d;
-}
-th,
-td {
-  color: #000;
-  font-size: 20px;
-  font-weight: 300;
 }
 </style>
