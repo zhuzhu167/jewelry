@@ -78,10 +78,12 @@ export default {
     ...mapActions(["LoadConsignee", "ModifyConsignee"]),
     modify() {
       this.ModifyConsignee(this.formData).then(result => {
+        store.state.consigneeUuid = "";
         this.$router.push("/PersonInfo");
       });
     },
     cancel() {
+      store.state.consigneeUuid = "";
       this.$router.push("/PersonInfo");
     }
   },

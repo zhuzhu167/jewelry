@@ -81,7 +81,16 @@ export default new Router({
     {
       path: '/AddAss',
       name: 'AddAss',
-      component: AddAss
+      component: AddAss,
+      beforeEnter: (to, from, next) => {
+        if (from.name !== "PersonInfo") {
+          next({
+            path: 'PersonInfo'
+          })
+        } else {
+          next();
+        }
+      }
     },
     {
       path: '/MdAss',
@@ -89,6 +98,19 @@ export default new Router({
       component: MdAss,
       meta: {
         requireAuth: true,
+      },
+      beforeEnter: (to, from, next) => {
+        if (from.name !== "PersonInfo") {
+          next({
+            path: 'PersonInfo'
+          })
+        } else if (store.state.consigneeUuid == '') {
+          next({
+            path: 'PersonInfo'
+          })
+        } else {
+          next();
+        }
       }
     },
     {
@@ -97,6 +119,15 @@ export default new Router({
       component: MdPwd,
       meta: {
         requireAuth: true,
+      },
+      beforeEnter: (to, from, next) => {
+        if (from.name !== "PersonInfo") {
+          next({
+            path: 'PersonInfo'
+          })
+        } else {
+          next();
+        }
       }
     },
     {
@@ -105,6 +136,15 @@ export default new Router({
       component: MdInfo,
       meta: {
         requireAuth: true,
+      },
+      beforeEnter: (to, from, next) => {
+        if (from.name !== "PersonInfo") {
+          next({
+            path: 'PersonInfo'
+          })
+        } else {
+          next();
+        }
       }
     },
     {

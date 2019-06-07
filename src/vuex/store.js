@@ -18,7 +18,7 @@ export default new Vuex.Store({
     buyList: [], // 要下单的商品uuid
     buyReceiverUuid: '', // 下单-收获人uuid
 
-    orderCommodityVOList: {}, // 订单列表
+    orderCommodityVOList: [], // 订单列表
     orderCommodityUuid: '', // 要付款订单的uuid
     sumPrice: 0, // 需要支付金额
 
@@ -38,21 +38,12 @@ export default new Vuex.Store({
     jpageSize: 12,
     jmaxPageNum: 1,
 
-    consigneeList: {}, // 收货人信息列表
-    consigneeInfo: {}, // 收货人信息
+    consigneeList: [], // 收货人信息列表
+    consigneeInfo: [], // 收货人信息
+    consigneeUuid: "",
 
     token: '', // 请求令牌
     is_login: false, // 是否登录
-    signUpStep: 0, // 注册步骤
-
-
-
-    errorpopupSwitch: false, // 错误弹窗开关
-    addSwitch: false, // 添加钻石开关
-    addAddressSwitch: false, // 添加收货地址开关
-    cPwsSwitch: false, // 修改密码开关
-    cInfoSwitch: false, // 修改个人资料开关
-    cRASwitch: false, // 修改收货地址开关
     errorMess: ''
   },
   getters,

@@ -31,24 +31,7 @@ instance.interceptors.response.use(
     return response;
   },
   (error) => {
-    // 对响应错误做点什么
-    if (error.response.data.error.reason !== "") {
-      swal({
-        title: '提 示',
-        icon: "warning",
-        button: "确定",
-        dangerMode: true,
-        text: error.response.data.error.reason
-      });
-    } else {
-      swal({
-        title: '提 示',
-        icon: "warning",
-        button: "确定",
-        dangerMode: true,
-        text: error.response.data.error.message
-      });
-    }
+    return error.response
   }
 );
 // 最后暴露实例

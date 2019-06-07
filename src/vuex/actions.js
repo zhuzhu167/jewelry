@@ -459,7 +459,7 @@ export const AddConsignee = ({
         icon: "error",
         buttons: false,
         timer: 1000,
-        text: "无法添加收货人信息"
+        text: "添加收货人信息失败"
       });
     }
   });
@@ -539,6 +539,7 @@ export const setConsigneeUuid = ({
 }, data) => {
   commit('SET_CONSIGNEELIST_UUID', data.receiverUuid);
   commit('SET_CONSIGNEEINFO', data);
+  return (true)
 };
 // 修改收货人信息
 export const ModifyConsignee = ({
@@ -567,6 +568,15 @@ export const ModifyConsignee = ({
               text: "加载收货人信息失败"
             });
           }
+        });
+      } else {
+        console.log(result.status)
+        swal({
+          title: "提 示",
+          icon: "error",
+          buttons: false,
+          timer: 1000,
+          text: "数据不全，修改收货人信息失败"
         });
       }
     });

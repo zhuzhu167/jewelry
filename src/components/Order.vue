@@ -77,23 +77,41 @@ export default {
           width: 150,
           align: "center",
           render: (h, params) => {
-            return h("div", [
-              h(
-                "Button",
-                {
-                  props: {
-                    type: "error",
-                    size: "small"
-                  },
-                  on: {
-                    click: () => {
-                      this.d_Order(params.row.orderUuid);
+            if (params.row.orderStatus == "0") {
+              return h("div", [
+                h(
+                  "Button",
+                  {
+                    props: {
+                      type: "error",
+                      size: "small"
+                    },
+                    on: {
+                      click: () => {
+                        this.d_Order(params.row.orderUuid);
+                      }
                     }
-                  }
-                },
-                "删除"
-              )
-            ]);
+                  },
+                  "删除"
+                )
+              ]);
+            } else if (params.row.orderStatus == "1") {
+              return h("div", [
+                h(
+                  "Button",
+                  {
+                    props: {
+                      type: "primary",
+                      size: "small"
+                    },
+                    on: {
+                      click: () => {}
+                    }
+                  },
+                  "查询物流"
+                )
+              ]);
+            }
           }
         }
       ]

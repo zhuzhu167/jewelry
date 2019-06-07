@@ -75,7 +75,7 @@
           <h1 class="jumbotron-heading">收 货 信 息</h1>
         </div>
       </section>
-      <div class="box">
+      <!-- <div class="box">
         <div class="table-responsive">
           <table class="table table-hover table-bordered text-center">
             <thead class="bg-light">
@@ -106,7 +106,8 @@
             </tbody>
           </table>
         </div>
-      </div>
+      </div>-->
+      <Table border :columns="columns2" :data="$store.state.consigneeList"></Table>
     </main>
   </div>
 </template>
@@ -118,6 +119,125 @@ export default {
   created() {
     this.LoadUserInfo();
     this.LoadConsignee();
+  },
+  data() {
+    return {
+      columns2: [
+        {
+          title: "姓 名",
+          key: "name",
+          align: "center",
+          width: 120,
+
+          render: (h, params) => {
+            return h("div", [
+              h("Icon", {
+                props: {
+                  type: "person"
+                }
+              }),
+              h("strong", params.row.name)
+            ]);
+          }
+        },
+        {
+          title: "地 址",
+          width: 360,
+          align: "center",
+          render: (h, params) => {
+            return h("div", [
+              h(
+                "div",
+                params.row.province +
+                  params.row.city +
+                  params.row.district +
+                  params.row.address
+              )
+            ]);
+          }
+        },
+        {
+          title: "联系方式",
+          key: "phone",
+          align: "center",
+          width: 170
+        },
+        {
+          title: "邮 政 编 号",
+          key: "zipCode",
+          align: "center",
+          width: 158
+        },
+        {
+          title: "操作",
+          key: "action",
+          width: 150,
+          align: "center",
+          render: (h, params) => {
+            return h("div", [
+              h(
+                "Button",
+                {
+                  props: {
+                    type: "error",
+                    size: "small"
+                  },
+                  on: {
+                    click: () => {
+                      this.modify(params.row);
+                    }
+                  }
+                },
+                "修改"
+              )
+            ]);
+          }
+        },
+        {
+          key: "action",
+          width: 150,
+          align: "center",
+          renderHeader: (h, params) => {
+            return h("div", [
+              h(
+                "Button",
+                {
+                  props: {
+                    type: "success",
+                    size: "small"
+                  },
+                  on: {
+                    click: () => {
+                      this.toAdd();
+                    }
+                  }
+                },
+                "添加"
+              )
+            ]);
+          },
+          render: (h, params) => {
+            return h("div", [
+              h(
+                "Button",
+                {
+                  props: {
+                    type: "error",
+                    size: "small"
+                  },
+                  on: {
+                    click: () => {
+                      this.confirmDelet(params.row.receiverUuid);
+                    }
+                  }
+                },
+                "删除"
+              )
+            ]);
+          }
+        }
+      ]
+    };
   },
   methods: {
     ...mapActions([
@@ -136,8 +256,13 @@ export default {
       });
     },
     modify(data) {
-      this.setConsigneeUuid(data);
-      this.$router.push("/MdAss");
+      this.setConsigneeUuid(data).then(result => {
+        if (result === true) {
+          this.$router.push("/MdAss");
+        } else {
+          console.log(result);
+        }
+      });
     },
     toMdPwd() {
       this.$router.push("/MdPwd");
