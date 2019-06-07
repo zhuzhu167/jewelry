@@ -106,13 +106,10 @@ export const isLogin = ({
 export const LoadIndexCategory = ({
   commit
 }) => {
-  return new Promise(resolve => {
-    getIndexCategory().then(result => {
-      if (result !== '') {
-        commit('SET_CATEGORYLIST', result.data);
-
-      }
-    });
+  getIndexCategory().then(result => {
+    if (result.status === 200) {
+      commit('SET_CATEGORYLIST', result.data);
+    }
   });
 };
 
@@ -120,9 +117,10 @@ export const LoadIndexCategory = ({
 export const LoadCommodityList = ({
   commit
 }) => {
+  const uuid = store.state.categoryUuid;
   const pageNum = store.state.pageNum;
   const pageSize = store.state.pageSize;
-  getCommodityList(pageNum, pageSize).then(result => {
+  getCommodityList(uuid, pageNum, pageSize).then(result => {
     if (result.status === 200) {
       commit('SET_MAXPAGE', Math.ceil(result.data.total / 12));
       commit('SETCOMMODITYlIST', result.data.response);

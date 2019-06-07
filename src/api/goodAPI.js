@@ -1,7 +1,7 @@
 import jaxios from '../axios-config/axios';
 // 获取商品列表
-export const getCommodityList = (pageNum, pageSize) => jaxios({
-  url: `/pc/commodity/commodityIntroduction?pageNum=${pageNum}&pageSize=${pageSize}`,
+export const getCommodityList = (categoryUuid, pageNum, pageSize) => jaxios({
+  url: `/pc/commodity/commodityIntroduction?categoryUuid=${categoryUuid}&pageNum=${pageNum}&pageSize=${pageSize}`,
   method: 'get'
 });
 // 获取商品信息

@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-12">
           <div class="table-responsive">
-            <table size="large" class="table table-hover table-bordered text-center">
+            <table size="large" class="table table-bordered text-center">
               <thead class="bg-light">
                 <tr>
                   <th class="ml-0 mr-0">图 片</th>
@@ -36,7 +36,7 @@
                     </div>
                   </td>
                   <td class="w-50 mx-auto align-middle">{{ citem.title }}</td>
-                  <td class="w-15 mx-auto align-middle" rowspan="2">￥ {{ citem.commodityPrice }}</td>
+                  <td class="w-15 mx-auto align-middle">￥ {{ citem.commodityPrice }}</td>
                   <td class="w-15 mx-auto align-middle" rowspan="2">
                     <Button type="error" @click="deleteCart(item.cartCommodityUuid)">删除</Button>
                   </td>
@@ -51,7 +51,8 @@
                       <img v-if="jimgindex == 0 " :src="jimg.imageUrl">
                     </div>
                   </td>
-                  <td class="w-40 mx-auto text-center align-middle">钻石编号：{{ jitem.jewelryNo }}</td>
+                  <td class="w-50 mx-auto text-center align-middle">钻石编号：{{ jitem.jewelryNo }}</td>
+                  <td class="w-15 mx-auto align-middle">￥ {{ jitem.jewelryPrice }}</td>
                 </tr>
               </tbody>
               <tbody v-if="$store.state.cartCommodityVOList.total !== 0">

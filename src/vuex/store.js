@@ -12,7 +12,8 @@ export default new Vuex.Store({
 
     personInfo: {}, // 个人资料
 
-    categoryList: {}, // 首页分类列表
+    categoryList: [], // 首页分类列表
+    categoryUuid: "", // 分类uuid
 
     cartCommodityVOList: {}, // 购物车列表
     buyList: [], // 要下单的商品uuid
