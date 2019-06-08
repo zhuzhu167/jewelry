@@ -13,11 +13,9 @@
         <div class="col-md-7 order-md-2">
           <h2 class="featurette-heading">{{ item.categoryName }}</h2>
           <p class="lead">
-            拉开爱情的帷幕，唱响柔情的序曲，讲句甜蜜的台词，在爱情的舞台上，愿为你打造一世幸福 ——
-            <a
-              style="color: #2d8cf0;"
-              @click="toGoodList(item.categoryUuid)"
-            >了解更多</a>
+            2019年，我们将推出 Forever 全新系列，快来感受它的魅力
+            <br>
+            <a style="color: #2d8cf0;" @click="toGoodList(item.categoryUuid)">了解更多</a>
           </p>
         </div>
         <div class="col-md-5 order-md-1">
@@ -40,11 +38,9 @@
         <div class="col-md-7">
           <h2 class="featurette-heading">{{ item.categoryName }}</h2>
           <p class="lead">
-            你轻轻的，走进了我的心里，和我的心灵有个约定，只要说，你爱我，我就会永生永世等你 ——
-            <a
-              style="color: #2d8cf0;"
-              @click="toGoodList(item.categoryUuid)"
-            >了解更多</a>
+            你轻轻的，走进了我的心里，和我的心灵有个约定，只要说，你爱我，我就会永生永世等你
+            <br>
+            <a style="color: #2d8cf0;" @click="toGoodList(item.categoryUuid)">了解更多</a>
           </p>
         </div>
         <div class="col-md-5">
@@ -67,11 +63,9 @@
         <div class="col-md-7 order-md-2">
           <h2 class="featurette-heading">{{ item.categoryName }}</h2>
           <p class="lead">
-            拉开爱情的帷幕，唱响柔情的序曲，讲句甜蜜的台词，在爱情的舞台上，愿为你打造一世幸福 ——
-            <a
-              style="color: #2d8cf0;"
-              @click="toGoodList(item.categoryUuid)"
-            >了解更多</a>
+            拉开爱情的帷幕，唱响柔情的序曲，讲句甜蜜的台词，在爱情的舞台上，愿为你打造一世幸福
+            <br>
+            <a style="color: #2d8cf0;" @click="toGoodList(item.categoryUuid)">了解更多</a>
           </p>
         </div>
         <div class="col-md-5 order-md-1">
@@ -94,11 +88,9 @@
         <div class="col-md-7">
           <h2 class="featurette-heading">{{ item.categoryName }}</h2>
           <p class="lead">
-            玫瑰花的香味飘荡在空气中，巧克力的甜蜜洋溢在喜悦中，没有华丽的辞藻，只有真心的表白：爱你的心，永远不变 ——
-            <a
-              style="color: #2d8cf0;"
-              @click="toGoodList(item.categoryUuid)"
-            >了解更多</a>
+            玫瑰花的香味飘荡在空气中，巧克力的甜蜜洋溢在喜悦中，没有华丽的辞藻，只有真心的表白：爱你的心，永远不变
+            <br>
+            <a style="color: #2d8cf0;" @click="toGoodList(item.categoryUuid)">了解更多</a>
           </p>
         </div>
         <div class="col-md-5">
