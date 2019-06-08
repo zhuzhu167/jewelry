@@ -75,38 +75,6 @@
           <h1 class="jumbotron-heading">收 货 信 息</h1>
         </div>
       </section>
-      <!-- <div class="box">
-        <div class="table-responsive">
-          <table class="table table-hover table-bordered text-center">
-            <thead class="bg-light">
-              <tr>
-                <th>收 货 人</th>
-                <th>收 货 地 址</th>
-                <th>联 系 方 式</th>
-                <th>邮 政 编 号</th>
-                <th>操 作</th>
-                <th>
-                  <a style="color: #2d8cf0;" @click="toAdd()">添 加</a>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(item, index) in $store.state.consigneeList" :key="index">
-                <td>{{ item.name }}</td>
-                <td>{{ item.province+item.city+item.district+item.address }}</td>
-                <td>{{ item.phone }}</td>
-                <td>{{ item.zipCode }}</td>
-                <td>
-                  <a style="color: #2d8cf0;" @click="modify(item)">修 改</a>
-                </td>
-                <td>
-                  <a style="color: red;" @click="confirmDelet(item.receiverUuid)">删 除</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>-->
       <Table border :columns="columns2" :data="$store.state.consigneeList"></Table>
     </main>
   </div>
