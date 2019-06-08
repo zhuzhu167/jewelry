@@ -28,6 +28,7 @@ export default {
         {
           type: "expand",
           width: 50,
+          align: "center",
           render: (h, params) => {
             return h(expandRow, {
               props: { row: params.row.orderCommodityList }
@@ -38,21 +39,54 @@ export default {
         {
           title: "订单编号",
           key: "orderNo",
+          align: "center",
           width: 200
         },
         {
           title: "是否付款",
-          key: "orderStatus",
-          width: 150
+
+          align: "center",
+          width: 150,
+          render: (h, params) => {
+            if (params.row.orderStatus === 1) {
+              return h("div", [h("div", "已付款")]);
+            } else if (params.row.orderStatus === 0) {
+              return h("div", [
+                h(
+                  "Button",
+                  {
+                    props: {
+                      type: "success",
+                      size: "small"
+                    },
+                    on: {
+                      click: () => {
+                        swal({
+                          title: "提 示",
+                          icon: "info",
+                          text: "正在完善",
+                          buttons: false,
+                          timer: 1000
+                        });
+                      }
+                    }
+                  },
+                  "付款"
+                )
+              ]);
+            }
+          }
         },
         {
           title: "价格",
           key: "payPrice",
+          align: "center",
           width: 150
         },
         {
           title: "收货人",
           width: 108,
+          align: "center",
           key: "receiverName"
         },
         {
