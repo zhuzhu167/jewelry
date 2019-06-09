@@ -130,6 +130,8 @@ export default {
       }
     },
     toL() {
+      store.state.categoryUuid = "";
+      store.state.pageNum = 1;
       this.$router.push("/GoodList");
     }
   },
