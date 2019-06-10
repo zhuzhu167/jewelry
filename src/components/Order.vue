@@ -186,7 +186,6 @@ h5 {
   margin-top: 50px;
 }
 h1 {
-  font-family: "Times New Roman", Georgia, Serif;
   margin-bottom: 1%;
   font-size: 40px;
   font-weight: 340;

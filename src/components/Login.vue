@@ -114,7 +114,6 @@ export default {
   left: 10%;
 }
 h2 {
-  font-family: "Times New Roman", Georgia, Serif;
   text-align: center;
   font-size: 35px;
   font-weight: 600;
@@ -125,7 +124,6 @@ h2 {
   color: #3f475a;
 }
 h4 {
-  font-family: "Times New Roman", Georgia, Serif;
   margin-bottom: 40px;
   color: #2d8cf0;
 }

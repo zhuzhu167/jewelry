@@ -161,11 +161,9 @@ export default {
   margin-bottom: 30px;
 }
 h2 {
-  font-family: "Times New Roman", Georgia, Serif;
   margin-top: 30px;
 }
 p {
-  font-family: "Times New Roman", Georgia, Serif;
   margin-top: 30px;
 }
 a {
