@@ -14,8 +14,10 @@
           <h2 class="featurette-heading">{{ item.categoryName }}</h2>
           <p class="lead">
             2019年，我们将推出 Forever 全新系列，快来感受它的魅力
-            <br>
-            <a style="color: #2d8cf0;" @click="toGoodList(item.categoryUuid)">了解更多</a>
+            <a
+              style="color: #2d8cf0;"
+              @click="toGoodList(item.categoryUuid)"
+            >了解更多</a>
           </p>
         </div>
         <div class="col-md-5 order-md-1">
@@ -39,8 +41,10 @@
           <h2 class="featurette-heading">{{ item.categoryName }}</h2>
           <p class="lead">
             你轻轻的，走进了我的心里，和我的心灵有个约定，只要说，你爱我，我就会永生永世等你
-            <br>
-            <a style="color: #2d8cf0;" @click="toGoodList(item.categoryUuid)">了解更多</a>
+            <a
+              style="color: #2d8cf0;"
+              @click="toGoodList(item.categoryUuid)"
+            >了解更多</a>
           </p>
         </div>
         <div class="col-md-5">
@@ -64,8 +68,10 @@
           <h2 class="featurette-heading">{{ item.categoryName }}</h2>
           <p class="lead">
             拉开爱情的帷幕，唱响柔情的序曲，讲句甜蜜的台词，在爱情的舞台上，愿为你打造一世幸福
-            <br>
-            <a style="color: #2d8cf0;" @click="toGoodList(item.categoryUuid)">了解更多</a>
+            <a
+              style="color: #2d8cf0;"
+              @click="toGoodList(item.categoryUuid)"
+            >了解更多</a>
           </p>
         </div>
         <div class="col-md-5 order-md-1">
@@ -89,8 +95,10 @@
           <h2 class="featurette-heading">{{ item.categoryName }}</h2>
           <p class="lead">
             玫瑰花的香味飘荡在空气中，巧克力的甜蜜洋溢在喜悦中，没有华丽的辞藻，只有真心的表白：爱你的心，永远不变
-            <br>
-            <a style="color: #2d8cf0;" @click="toGoodList(item.categoryUuid)">了解更多</a>
+            <a
+              style="color: #2d8cf0; "
+              @click="toGoodList(item.categoryUuid)"
+            >了解更多</a>
           </p>
         </div>
         <div class="col-md-5">
@@ -105,7 +113,9 @@
       <hr class="featurette-divider">
 
       <div class="row featurette">
-        <div class="all" @click="toL()">查看全部商品</div>
+        <div class="all" @click="toL()">
+          <p>查看全部商品</p>
+        </div>
       </div>
 
       <hr class="featurette-divider">
@@ -148,14 +158,15 @@ export default {
   color: #2d8cf0;
   cursor: pointer;
   margin: auto;
-  margin-top: 30px;
   margin-bottom: 30px;
 }
 h2 {
+  font-family: "Times New Roman", Georgia, Serif;
   margin-top: 30px;
 }
 p {
-  margin-top: 20px;
+  font-family: "Times New Roman", Georgia, Serif;
+  margin-top: 30px;
 }
 a {
   font-weight: 300;
