@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light">
       <div class="container">
-        <a class="navbar-brand" style="font-size: 27px;" href="/#/">JewelrySource</a>
+        <a class="navbar-brand" style="font-size: 30px;" href="/#/">JewelrySource</a>
         <button
           class="navbar-toggler"
           type="button"

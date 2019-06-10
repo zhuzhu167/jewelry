@@ -7,7 +7,7 @@
           <ul class="rslides" id="slider">
             <li>
               <div class="slider-info">
-                <h4 class="fadeInDown">JEWELRY SOURCE</h4>
+                <h4 class="fadeInDown" style="font-family: Italianno-Regular-1;">Jewelry Source</h4>
                 <p>以现代精神诠释优雅魅力</p>
               </div>
             </li>
@@ -21,6 +21,7 @@
 
 <style scoped>
 @import "./css/style.css";
+@import "./css/font.css";
 .banner {
   background: url(http://cdn-jewelry.ykthink.cn/b1.webp) no-repeat center;
   background-size: cover;

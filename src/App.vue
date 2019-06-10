@@ -21,8 +21,9 @@ export default {
 
 <style>
 @import "./css/Animation.css";
+@import "./css/font.css";
 body {
-  font-family: "Times New Roman", Georgia, Serif;
+  font-family: FangZhengShuSongJianTi-1;
 }
 td {
   color: #657180;
