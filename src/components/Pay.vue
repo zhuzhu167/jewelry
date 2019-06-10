@@ -43,8 +43,7 @@ export default {
           icon: "error",
           button: "确定",
           dangerMode: true,
-          text:
-            "别想骗我，你肯定没扫码给钱！不过算了，只要你愿意陪我一辈子，送你一个钻戒又如何？！"
+          text: "我知道你肯定没给钱！所以我也不会发货，嘻嘻！"
         });
         this.payO(store.state.orderCommodityUuid);
         this.$router.push("/Order");

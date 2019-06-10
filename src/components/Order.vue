@@ -61,13 +61,7 @@ export default {
                     },
                     on: {
                       click: () => {
-                        swal({
-                          title: "提 示",
-                          icon: "info",
-                          text: "正在完善",
-                          buttons: false,
-                          timer: 1000
-                        });
+                        this.payO(params.row.orderUuid, params.row.payPrice);
                       }
                     }
                   },
