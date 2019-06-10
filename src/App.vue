@@ -21,7 +21,6 @@ export default {
 
 <style>
 @import "./css/Animation.css";
-@import "./css/font.css";
 body {
   font-family: FangZhengShuSongJianTi-1;
 }
