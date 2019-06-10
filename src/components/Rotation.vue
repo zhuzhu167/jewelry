@@ -7,7 +7,7 @@
           <ul class="rslides" id="slider">
             <li>
               <div class="slider-info">
-                <h4 class="fadeInDown">Jewelry Source</h4>
+                <h4 class="fadeInDown">JEWELRY SOURCE</h4>
                 <p>以现代精神诠释优雅魅力</p>
               </div>
             </li>

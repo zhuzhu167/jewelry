@@ -487,18 +487,19 @@ h1 a.navbar-brand span {
 }
 
 .slider-info h4 {
-  font-size: 5em;
-  font-family: 'Great Vibes', cursive;
+  font-size: 7em;
+  font-family: "Times New Roman", Georgia, Serif;
   color: #FFF;
-  letter-spacing: 3px;
+  letter-spacing: 5px;
   margin: 0px 0px 10px;
   margin-bottom: 50px;
 
 }
 
 .slider-info p {
-  font-size: 24px;
-  font-weight: 400;
+  font-size: 3em;
+  font-family: "Times New Roman", Georgia, Serif;
+  font-weight: 300;
   color: #d3d8d8;
   line-height: 35px;
 }
