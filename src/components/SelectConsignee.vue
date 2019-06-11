@@ -8,7 +8,7 @@
       </section>
       <div class="box">
         <div class="table-responsive" v-if="$store.state.consigneeList !== '' ">
-          <table class="table table-hover text-center">
+          <!-- <table class="table table-hover text-center">
             <thead>
               <tr>
                 <th>收 货 人</th>
@@ -29,7 +29,8 @@
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table>-->
+          <Table border :columns="columns2" :data="$store.state.consigneeList"></Table>
         </div>
         <div class="no-c" v-if="$store.state.consigneeList.length == 0">
           <h5>
@@ -50,6 +51,82 @@ import { mapActions } from "vuex";
 export default {
   created() {
     this.LoadConsignee();
+  },
+  data() {
+    return {
+      columns2: [
+        {
+          title: "姓 名",
+          key: "name",
+          align: "center",
+          width: 150,
+
+          render: (h, params) => {
+            return h("div", [
+              h("Icon", {
+                props: {
+                  type: "person"
+                }
+              }),
+              h("strong", params.row.name)
+            ]);
+          }
+        },
+        {
+          title: "地 址",
+          width: 400,
+          align: "center",
+          render: (h, params) => {
+            return h("div", [
+              h(
+                "div",
+                params.row.province +
+                  params.row.city +
+                  params.row.district +
+                  params.row.address
+              )
+            ]);
+          }
+        },
+        {
+          title: "联系方式",
+          key: "phone",
+          align: "center",
+          width: 200
+        },
+        {
+          title: "邮 政 编 号",
+          key: "zipCode",
+          align: "center",
+          width: 170
+        },
+        {
+          title: "操作",
+          key: "action",
+          width: 156,
+          align: "center",
+          render: (h, params) => {
+            return h("div", [
+              h(
+                "Button",
+                {
+                  props: {
+                    type: "primary",
+                    size: "small"
+                  },
+                  on: {
+                    click: () => {
+                      this.setC(params.row.receiverUuid);
+                    }
+                  }
+                },
+                "选择"
+              )
+            ]);
+          }
+        }
+      ]
+    };
   },
   methods: {
     ...mapActions(["LoadConsignee", "addToOrder"]),

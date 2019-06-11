@@ -81,16 +81,7 @@ export default new Router({
     {
       path: '/AddAss',
       name: 'AddAss',
-      component: AddAss,
-      beforeEnter: (to, from, next) => {
-        if (from.name !== "PersonInfo") {
-          next({
-            path: 'PersonInfo'
-          })
-        } else {
-          next();
-        }
-      }
+      component: AddAss
     },
     {
       path: '/MdAss',
