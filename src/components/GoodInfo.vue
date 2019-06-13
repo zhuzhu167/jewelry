@@ -39,7 +39,7 @@
               </dl>
               <dl class="param param-feature">
                 <dt>库存：</dt>
-                <dd>正在完善</dd>
+                <dd>{{ $store.state.commodityInfo.store }}</dd>
               </dl>
               <div class="row">
                 <div class="col-sm-5">
