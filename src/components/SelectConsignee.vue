@@ -8,28 +8,6 @@
       </section>
       <div class="box">
         <div class="table-responsive" v-if="$store.state.consigneeList !== '' ">
-          <!-- <table class="table table-hover text-center">
-            <thead>
-              <tr>
-                <th>收 货 人</th>
-                <th>收 货 地 址</th>
-                <th>联 系 方 式</th>
-                <th>邮 政 编 号</th>
-                <th>操 作</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(item, index) in $store.state.consigneeList" :key="index">
-                <td>{{ item.name }}</td>
-                <td>{{ item.province+item.city+item.district+item.address }}</td>
-                <td>{{ item.phone }}</td>
-                <td>{{ item.zipCode }}</td>
-                <td>
-                  <button class="btn btn-sm btn-primary" @click="setC(item.receiverUuid)">选择</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>-->
           <Table border :columns="columns2" :data="$store.state.consigneeList"></Table>
         </div>
         <div class="no-c" v-if="$store.state.consigneeList.length == 0">

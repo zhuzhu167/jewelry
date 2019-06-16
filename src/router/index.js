@@ -20,23 +20,7 @@ const JewelryInfo = resolve => require(['@/components/JewelryInfo'], resolve);
 const Pay = resolve => require(['@/components/Pay'], resolve);
 const SelectConsignee = resolve => require(['@/components/SelectConsignee'], resolve);
 const Code = resolve => require(['@/components/Code'], resolve);
-// import Index from '@/components/Index'
-// import Login from '@/components/Login'
-// import Register from '@/components/Register'
-// import PersonInfo from '@/components/PersonInfo'
-// import ShoppingCart from '@/components/ShoppingCart'
-// import Order from '@/components/Order'
-// import GoodList from '@/components/GoodList'
-// import AddAss from '@/components/person/AddAss'
-// import MdAss from '@/components/person/MdAss'
-// import MdPwd from '@/components/person/MdPwd'
-// import MdInfo from '@/components/person/MdInfo'
-// import JewelryList from '@/components/JewelryList'
-// import GoodInfo from '@/components/GoodInfo'
-// import JewelryInfo from '@/components/JewelryInfo'
-// import Pay from '@/components/Pay'
-// import SelectConsignee from '@/components/SelectConsignee'
-// import Code from '@/components/Code'
+
 Vue.use(Router)
 
 export default new Router({

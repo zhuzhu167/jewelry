@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import iView from 'iview'; // iview插件
 import 'iview/dist/styles/iview.css';
 import VueCookies from 'vue-cookies'; // Cookies插件
 import VueSweetalert from './plugins/vue-sweetalert' // SweetAlert插件
@@ -11,7 +10,20 @@ import VueSweetalert from './plugins/vue-sweetalert' // SweetAlert插件
 
 Vue.use(VueSweetalert)
 Vue.use(VueCookies);
-Vue.use(iView);
+import {
+  Button,
+  Table,
+  Form,
+  FormItem,
+  Select,
+  Option
+} from 'iview';
+Vue.component('Button', Button);
+Vue.component('Table', Table);
+Vue.component('Form', Form);
+Vue.component('FormItem', FormItem);
+Vue.component('Select', Select);
+Vue.component('Option', Option);
 Vue.config.productionTip = false
 router.beforeEach((to, from, next) => {
   if (to.meta.requireAuth) { // 判断该路由是否需要登录权限
