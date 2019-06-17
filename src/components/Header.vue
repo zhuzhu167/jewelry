@@ -12,8 +12,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="oi oi-menu"></span>
-          <i class="fa fa-bars" aria-hidden="true"></i>
+          <span style="color: #fff" class="oi oi-menu">更多</span>
         </button>
 
         <div class="collapse navbar-collapse" id="ftco-nav">
