@@ -38,7 +38,7 @@ export const Login = ({
 }, data) => {
   return new Promise(resolve => {
     login(data).then(result => {
-      if (result.data.token !== '') {
+      if (result.status === 200) {
         commit('SET_USER_INFO', data.username);
         commit('SET_TOKEN', result.data.token);
         commit('IS_LOGIN', true);
@@ -47,8 +47,6 @@ export const Login = ({
         resolve(true);
         return true;
       } else {
-        commit('SET_ERROR', result.data.console.error);
-        commit('TURN_ERRORPOPUPSWITCH', true);
         resolve(false);
         return false;
       }
