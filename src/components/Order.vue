@@ -152,13 +152,17 @@ export default {
     ...mapActions(["LoadOrder", "dOrder"]),
     d_Order(uuid) {
       if (uuid !== "") {
-        this.dOrder(uuid);
-        swal({
-          title: "提 示",
-          icon: "success",
-          text: "删除订单成功",
-          buttons: false,
-          timer: 1000
+        this.dOrder(uuid).then(result => {
+          if (result) {
+            this.LoadOrder();
+            swal({
+              title: "提 示",
+              icon: "success",
+              text: "删除订单成功",
+              buttons: false,
+              timer: 1000
+            });
+          }
         });
       }
     },

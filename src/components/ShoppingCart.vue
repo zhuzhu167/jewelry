@@ -116,14 +116,18 @@ export default {
     ...mapActions(["LoadCart", "dCart"]),
     deleteCart(uuid) {
       if (uuid !== "") {
-        swal({
-          title: "提 示",
-          icon: "success",
-          text: "成功删除购物车记录",
-          buttons: false,
-          timer: 1000
+        this.dCart(uuid).then(result => {
+          if (result) {
+            this.LoadCart();
+            swal({
+              title: "提 示",
+              icon: "success",
+              text: "成功删除购物车记录",
+              buttons: false,
+              timer: 1000
+            });
+          }
         });
-        this.dCart(uuid);
       }
     },
     toPay(price, buyList) {

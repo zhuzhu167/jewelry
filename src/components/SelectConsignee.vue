@@ -116,15 +116,14 @@ export default {
     },
     setC(uuid) {
       store.state.buyReceiverUuid = uuid;
-      swal({
-        title: "提 示",
-        icon: "success",
-        text: "下单成功",
-        buttons: false,
-        timer: 1000
+      this.addToOrder().then(result => {
+        if (result) {
+          this.LoadConsignee();
+          this.$router.push("/ShoppingCart");
+        } else {
+          this.$router.push("/ShoppingCart");
+        }
       });
-      this.addToOrder();
-      this.$router.push("/ShoppingCart");
     }
   },
   store

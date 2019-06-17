@@ -35,18 +35,22 @@ import { mapActions } from "vuex";
 export default {
   name: "Pay",
   methods: {
-    ...mapActions(["payO"]),
+    ...mapActions(["payO", "LoadOrder"]),
     paySuccess() {
       if (store.state.sumPrice !== 0 && store.state.orderCommodityUuid !== "") {
-        swal({
-          title: "提 示",
-          icon: "success",
-          button: "确定",
-          dangerMode: true,
-          text: "支付成功，请留意查收你的包裹"
+        this.payO(store.state.orderCommodityUuid).then(result => {
+          if (result) {
+            this.LoadOrder();
+            swal({
+              title: "提 示",
+              icon: "success",
+              button: "确定",
+              dangerMode: true,
+              text: "支付成功"
+            });
+          }
+          this.$router.push("/Order");
         });
-        this.payO(store.state.orderCommodityUuid);
-        this.$router.push("/Order");
       }
     }
   },

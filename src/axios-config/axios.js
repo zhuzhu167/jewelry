@@ -31,18 +31,7 @@ instance.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response.status === 403 || error.response.status === 401) {
-      swal({
-        title: "提 示",
-        icon: "error",
-        buttons: false,
-        timer: 1000,
-        text: error.response.data.error.message
-      });
-      return error.response
-    } else {
-      return error.response
-    }
+    return error.response
   }
 );
 // 最后暴露实例

@@ -86,10 +86,13 @@ export default {
     ...mapActions(["LoadConsignee", "AddConsignee"]),
     add() {
       this.AddConsignee(this.formData).then(result => {
-        if (this.$route.params.where === "SelectConsignee") {
-          this.$router.push("/SelectConsignee");
-        } else {
-          this.$router.push("/PersonInfo");
+        if (result) {
+          this.LoadConsignee();
+          if (this.$route.params.where === "SelectConsignee") {
+            this.$router.push("/SelectConsignee");
+          } else {
+            this.$router.push("/PersonInfo");
+          }
         }
       });
     },

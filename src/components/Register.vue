@@ -179,19 +179,22 @@ export default {
     code(phone) {
       if (phone !== "") {
         if (!this.canClick) return; //改动的是这两行代码
-        this.LoadCode(phone);
-        this.canClick = false;
-        this.content = this.totalTime + "s重新发送";
-        let clock = window.setInterval(() => {
-          this.totalTime--;
-          this.content = this.totalTime + "s重新发送";
-          if (this.totalTime < 0) {
-            window.clearInterval(clock);
-            this.content = "重新发送验证码";
-            this.totalTime = 60;
-            this.canClick = true; //这里重新开启
+        this.LoadCode(phone).then(result => {
+          if (result) {
+            this.canClick = false;
+            this.content = this.totalTime + "s重新发送";
+            let clock = window.setInterval(() => {
+              this.totalTime--;
+              this.content = this.totalTime + "s重新发送";
+              if (this.totalTime < 0) {
+                window.clearInterval(clock);
+                this.content = "重新发送验证码";
+                this.totalTime = 60;
+                this.canClick = true; //这里重新开启
+              }
+            }, 1000);
           }
-        }, 1000);
+        });
       } else {
         swal({
           title: "提 示",

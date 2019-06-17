@@ -215,7 +215,11 @@ export default {
       "setConsigneeUuid"
     ]),
     confirmDelet(uuid) {
-      this.DeleteConsignee(uuid);
+      this.DeleteConsignee(uuid).then(result => {
+        if (result) {
+          this.LoadConsignee();
+        }
+      });
     },
     toAdd() {
       this.$router.push({

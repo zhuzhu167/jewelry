@@ -47,6 +47,13 @@ export const Login = ({
         resolve(true);
         return true;
       } else {
+        swal({
+          title: "提 示",
+          icon: "error",
+          text: result.data.error.message,
+          buttons: false,
+          timer: 1000
+        });
         resolve(false);
         return false;
       }
@@ -64,8 +71,13 @@ export const Register = ({
         resolve(true);
         return true;
       } else {
-        commit('SET_ERROR', '注册失败');
-        commit('TURN_ERRORPOPUPSWITCH', true);
+        swal({
+          title: "提 示",
+          icon: "error",
+          text: result.data.error.message,
+          buttons: false,
+          timer: 1000
+        });
         resolve(false);
         return false;
       }
@@ -79,11 +91,24 @@ export const LoadCode = ({
   const num = {
     phone: data
   }
-  getCode(num).then(result => {
-    if (result.status === 200) {
-      console.log(result.data)
-    }
-  })
+  return new Promise(resolve => {
+    getCode(num).then(result => {
+      if (result.status === 200) {
+        resolve(true);
+        return true;
+      } else {
+        swal({
+          title: "提 示",
+          icon: "error",
+          text: result.data.error.message,
+          buttons: false,
+          timer: 1000
+        });
+        resolve(false);
+        return false;
+      }
+    })
+  });
 }
 
 // 判断是否登陆
@@ -122,14 +147,6 @@ export const LoadCommodityList = ({
     if (result.status === 200) {
       commit('SET_MAXPAGE', Math.ceil(result.data.total / 12));
       commit('SETCOMMODITYlIST', result.data.response);
-    } else {
-      swal({
-        title: "提 示",
-        icon: "error",
-        buttons: false,
-        timer: 1000,
-        text: "商品列表加载失败"
-      });
     }
   });
 };
@@ -142,14 +159,6 @@ export const LoadCommodityInfo = ({
   getCommodityInfo(uuid).then(result => {
     if (result.status === 200) {
       commit('SET_COMMODITYINFO', result.data);
-    } else {
-      swal({
-        title: "提 示",
-        icon: "error",
-        buttons: false,
-        timer: 1000,
-        text: "商品详情加载失败"
-      });
     }
   });
 };
@@ -174,14 +183,6 @@ export const LoadJewelryList = ({
     if (result.status === 200) {
       commit('SET_JMAXPAGE', Math.ceil(result.data.total / 12));
       commit('SET_JEWELRYLIST', result.data.response);
-    } else {
-      swal({
-        title: "提 示",
-        icon: "error",
-        buttons: false,
-        timer: 1000,
-        text: "钻书列表加载失败"
-      });
     }
   });
 };
@@ -212,14 +213,6 @@ export const LoadJewelryInfo = ({
   getJewelryInfo(uuid).then(result => {
     if (result.status === 200) {
       commit('SET_JEWELRYINFO', result.data);
-    } else {
-      swal({
-        title: "提 示",
-        icon: "error",
-        buttons: false,
-        timer: 1000,
-        text: "钻书详情加载失败"
-      });
     }
   });
 };
@@ -247,7 +240,7 @@ export const addToCart = ({
         swal({
           title: "提 示",
           icon: "error",
-          text: "加入购物车失败",
+          text: result.data.error.message,
           buttons: false,
           timer: 1000
         });
@@ -272,14 +265,6 @@ export const LoadCart = ({
   getCart().then(result => {
     if (result.status === 200) {
       commit("SET_CART", result.data);
-    } else {
-      swal({
-        title: "提 示",
-        icon: "error",
-        buttons: false,
-        timer: 1000,
-        text: "加载购物车信息失败"
-      });
     }
   })
 };
@@ -287,69 +272,82 @@ export const LoadCart = ({
 export const addToOrder = ({
   commit
 }) => {
-  const data = {
-    cartCommodityUuidList: store.state.buyList,
-    consigneeUuid: store.state.buyReceiverUuid
-  }
-  if (data.cartCommodityUuidList && data.consigneeUuid != "") {
-    buy(data).then(reslut => {
-      if (reslut.status === 200) {
-        getCart().then(result => {
-          if (result.status === 200) {
-            commit("SET_CART", result.data);
-          }
-        })
-      } else {
-        swal({
-          title: "提 示",
-          icon: "error",
-          buttons: false,
-          timer: 1000,
-          text: "下单失败"
-        });
-      }
-    })
-  } else {
-    swal({
-      title: "提 示",
-      icon: "error",
-      buttons: false,
-      timer: 1000,
-      text: "提交数据不全，无法下单"
-    });
-  }
+  return new Promise(resolve => {
+    const data = {
+      cartCommodityUuidList: store.state.buyList,
+      consigneeUuid: store.state.buyReceiverUuid
+    }
+    if (data.cartCommodityUuidList && data.consigneeUuid != "") {
+      buy(data).then(reslut => {
+        if (reslut.status === 200) {
+          swal({
+            title: "提 示",
+            icon: "success",
+            buttons: false,
+            timer: 1000,
+            text: "下单成功"
+          });
+          resolve(true);
+          return true;
+        } else {
+          swal({
+            title: "提 示",
+            icon: "error",
+            buttons: false,
+            timer: 1000,
+            text: "下单失败"
+          });
+          resolve(false);
+          return false;
+        }
+      })
+    } else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "提交数据不全，无法下单"
+      });
+      resolve(false);
+      return false;
+    }
+  })
 }
 // 删除购物车
 export const dCart = ({
   commit
 }, uuid) => {
-  if (uuid != "") {
-    deleteCart(uuid).then(result => {
-      if (result.status === 200) {
-        getCart().then(result => {
-          if (result.status === 200) {
-            commit("SET_CART", result.data);
-          }
-        })
-      } else {
-        swal({
-          title: "提 示",
-          icon: "error",
-          buttons: false,
-          timer: 1000,
-          text: "删除购物车信息失败"
-        });
-      }
-    })
-  } else {
-    swal({
-      title: "提 示",
-      icon: "error",
-      buttons: false,
-      timer: 1000,
-      text: "提交数据不全，无法删除"
-    });
-  }
+  return new Promise(resolve => {
+    if (uuid != "") {
+      deleteCart(uuid).then(result => {
+        if (result.status === 200) {
+          resolve(true);
+          return true;
+        } else {
+          swal({
+            title: "提 示",
+            icon: "error",
+            buttons: false,
+            timer: 1000,
+            text: "删除购物车信息失败"
+          });
+          resolve(false);
+          return false;
+        }
+      })
+    } else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "提交数据不全，无法删除"
+      });
+      resolve(false);
+      return false;
+    }
+  })
 }
 // 获取购物车 end============================================================
 
@@ -360,14 +358,6 @@ export const LoadOrder = ({
   getOrder().then(result => {
     if (result.status === 200) {
       commit('SET_ORDER', result.data)
-    } else {
-      swal({
-        title: "提 示",
-        icon: "error",
-        buttons: false,
-        timer: 1000,
-        text: "加载订单信息失败"
-      });
     }
   });
 };
@@ -376,50 +366,76 @@ export const LoadOrder = ({
 export const dOrder = ({
   commit
 }, data) => {
-  if (data != "") {
-    deleteOrder(data).then(result => {
-      if (result.status === 200) {
-        getOrder().then(result => {
-          if (result.status === 200) {
-            commit('SET_ORDER', result.data)
-          }
-        });
-      } else {
-        swal({
-          title: "提 示",
-          icon: "error",
-          buttons: false,
-          timer: 1000,
-          text: "删除订单信息失败"
-        });
-      }
-    })
-  } else {
-    swal({
-      title: "提 示",
-      icon: "error",
-      buttons: false,
-      timer: 1000,
-      text: "提交数据不全，无法删除"
-    });
-  }
+  return new Promise(resolve => {
+    if (data != "") {
+      deleteOrder(data).then(result => {
+        if (result.status === 200) {
+          swal({
+            title: "提 示",
+            icon: "success",
+            buttons: false,
+            timer: 1000,
+            text: "删除成功"
+          });
+          resolve(true);
+          return true;
+        } else {
+          swal({
+            title: "提 示",
+            icon: "error",
+            buttons: false,
+            timer: 1000,
+            text: "删除失败"
+          });
+          resolve(false);
+          return false;
+        }
+      })
+    } else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "提交数据不全，无法删除"
+      });
+      resolve(false);
+      return false;
+    }
+  })
 }
 // ---------------------------------------------------------------------------------
 // 付款
 export const payO = ({
   commit
 }, uuid) => {
-  if (uuid != "") {
-    payOrder(uuid).then(result => {
-      if (result.status === 200) {
-        getOrder().then(result => {
-          if (result.status === 200) {
-            commit('SET_ORDER', result.data)
-          }
-        });
-      }
-    })
-  }
+  return new Promise(resolve => {
+    if (uuid != "") {
+      payOrder(uuid).then(result => {
+        if (result.status === 200) {
+          swal({
+            title: "提 示",
+            icon: "success",
+            buttons: false,
+            timer: 1000,
+            text: "付款成功"
+          });
+          resolve(true);
+          return true;
+        } else {
+          swal({
+            title: "提 示",
+            icon: "error",
+            text: result.data.error.message,
+            buttons: false,
+            timer: 1000
+          });
+          resolve(false);
+          return false;
+        }
+      })
+    }
+  })
 }
 // 获取订单 end============================================================
 
@@ -427,39 +443,31 @@ export const payO = ({
 export const AddConsignee = ({
   commit
 }, data) => {
-  addConsignee(data).then(result => {
-    if (result.status === 200) {
-      getConsignee().then(result => {
-        if (result.status === 200) {
-          commit('SET_CONSIGNEELIST', result.data.response);
-          swal({
-            title: "提 示",
-            icon: "success",
-            text: "添加地址成功",
-            buttons: false,
-            timer: 1500
-          });
-        } else {
-          swal({
-            title: "提 示",
-            icon: "error",
-            buttons: false,
-            timer: 1000,
-            text: "加载收货人信息失败"
-          });
-        }
-      });
-    } else {
-      swal({
-        title: "提 示",
-        icon: "error",
-        buttons: false,
-        timer: 1000,
-        text: "添加收货人信息失败"
-      });
-    }
-  });
-
+  return new Promise(resolve => {
+    addConsignee(data).then(result => {
+      if (result.status === 200) {
+        swal({
+          title: "提 示",
+          icon: "success",
+          buttons: false,
+          timer: 1000,
+          text: "添加成功"
+        });
+        resolve(true);
+        return true;
+      } else {
+        swal({
+          title: "提 示",
+          icon: "error",
+          buttons: false,
+          timer: 1000,
+          text: "添加失败"
+        });
+        resolve(false);
+        return false;
+      }
+    });
+  })
 };
 // 获取收货人列表信息
 export const LoadConsignee = ({
@@ -468,14 +476,6 @@ export const LoadConsignee = ({
   getConsignee().then(result => {
     if (result.status === 200) {
       commit('SET_CONSIGNEELIST', result.data.response);
-    } else {
-      swal({
-        title: "提 示",
-        icon: "error",
-        buttons: false,
-        timer: 1000,
-        text: "加载收货人信息失败"
-      });
     }
   });
 };
@@ -484,50 +484,45 @@ export const LoadConsignee = ({
 export const DeleteConsignee = ({
   commit
 }, uuid) => {
-  if (uuid !== "") {
-    console.log(uuid);
-    console.log("shanchu");
-    deleteConsignee(uuid).then(result => {
-      if (result.status === 200) {
-        getConsignee().then(result => {
-          if (result.status === 200) {
-            commit('SET_CONSIGNEELIST', result.data.response);
-            swal({
-              title: "提 示",
-              icon: "success",
-              text: "删除地址成功",
-              buttons: false,
-              timer: 1500
-            });
-          } else {
-            swal({
-              title: "提 示",
-              icon: "error",
-              buttons: false,
-              timer: 1000,
-              text: "加载收货人信息失败"
-            });
-          }
-        });
-      } else {
-        swal({
-          title: "提 示",
-          icon: "error",
-          buttons: false,
-          timer: 1000,
-          text: "删除收货人信息失败"
-        });
-      }
-    });
-  } else {
-    swal({
-      title: "提 示",
-      icon: "error",
-      buttons: false,
-      timer: 1000,
-      text: "数据不全，删除收货人信息失败"
-    });
-  }
+  return new Promise(resolve => {
+    if (uuid !== "") {
+      console.log(uuid);
+      console.log("shanchu");
+      deleteConsignee(uuid).then(result => {
+        if (result.status === 200) {
+          swal({
+            title: "提 示",
+            icon: "success",
+            buttons: false,
+            timer: 1000,
+            text: "删除成功"
+          });
+          resolve(true);
+          return true;
+        } else {
+          swal({
+            title: "提 示",
+            icon: "error",
+            buttons: false,
+            timer: 1000,
+            text: "删除失败"
+          });
+          resolve(false);
+          return false;
+        }
+      });
+    } else {
+      swal({
+        title: "提 示",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+        text: "数据不全，删除收货人信息失败"
+      });
+      resolve(false);
+      return false;
+    }
+  })
 };
 // 修改收货人信息-赋值UUID
 export const setConsigneeUuid = ({
@@ -541,69 +536,57 @@ export const setConsigneeUuid = ({
 export const ModifyConsignee = ({
   commit
 }, data) => {
-  const uuid = store.state.consigneeUuid;
-  if (uuid != "") {
-    modifyConsignee(data, uuid).then(result => {
-      if (result.status === 200) {
-        getConsignee().then(result => {
-          if (result.status === 200) {
-            commit('SET_CONSIGNEELIST', result.data.response);
-            swal({
-              title: "提 示",
-              icon: "success",
-              buttons: false,
-              timer: 1000,
-              text: "修改收货人信息成功"
-            });
-          } else {
-            swal({
-              title: "提 示",
-              icon: "error",
-              buttons: false,
-              timer: 1000,
-              text: "加载收货人信息失败"
-            });
-          }
-        });
-      } else {
-        console.log(result.status)
-        swal({
-          title: "提 示",
-          icon: "error",
-          buttons: false,
-          timer: 1000,
-          text: "数据不全，修改收货人信息失败"
-        });
-      }
-    });
-  } else {
-    swal({
-      title: "提 示",
-      icon: "error",
-      buttons: false,
-      timer: 1000,
-      text: "数据不全，修改收货人信息失败"
-    });
-  }
-};
-
-// 获取个人资料
-export const LoadUserInfo = ({
-  commit
-}) => {
-  getUserInfo().then(result => {
-    if (result.data !== '') {
-      commit('SET_PERSONINFO', result.data);
+  return new Promise(resolve => {
+    const uuid = store.state.consigneeUuid;
+    if (uuid != "") {
+      modifyConsignee(data, uuid).then(result => {
+        if (result.status === 200) {
+          swal({
+            title: "提 示",
+            icon: "success",
+            buttons: false,
+            timer: 1000,
+            text: "修改成功"
+          });
+          resolve(true);
+          return true;
+        } else {
+          swal({
+            title: "提 示",
+            icon: "error",
+            text: result.data.error.message,
+            buttons: false,
+            timer: 1000
+          });
+          resolve(false);
+          return false;
+        }
+      });
     } else {
       swal({
         title: "提 示",
         icon: "error",
         buttons: false,
         timer: 1000,
-        text: "加载个人资料失败"
+        text: "数据不全，修改失败"
       });
+      resolve(false);
+      return false;
     }
-  });
+  })
+};
+
+// 获取个人资料
+export const LoadUserInfo = ({
+  commit
+}) => {
+  return new Promise(resolve => {
+    getUserInfo().then(result => {
+      if (result.data !== '') {
+        commit('SET_PERSONINFO', result.data);
+      }
+    });
+  })
 };
 
 // 修改个人资料
@@ -613,6 +596,13 @@ export const ModifyPerson = ({
   return new Promise(resolve => {
     modifyPerson(data).then(result => {
       if (result.status === 200) {
+        swal({
+          title: "提 示",
+          icon: "success",
+          text: "修改成功",
+          buttons: false,
+          timer: 1500
+        });
         resolve(true);
         return true;
       } else {
@@ -627,19 +617,31 @@ export const ModifyPerson = ({
 export const ModifyPwd = ({
   commit
 }, data) => {
-
-  modifyPwd(data).then(result => {
-    if (result.status === 200) {
-      swal({
-        title: "提 示",
-        icon: "success",
-        text: "修改密码成功",
-        buttons: false,
-        timer: 1500
-      });
-    }
-  });
-
+  return new Promise(resolve => {
+    modifyPwd(data).then(result => {
+      if (result.status === 200) {
+        swal({
+          title: "提 示",
+          icon: "success",
+          text: "修改密码成功",
+          buttons: false,
+          timer: 1500
+        });
+        resolve(true);
+        return true;
+      } else {
+        swal({
+          title: "提 示",
+          icon: "error",
+          text: result.data.error.message,
+          buttons: false,
+          timer: 1000
+        });
+        resolve(false);
+        return false;
+      }
+    });
+  })
 };
 // 添加收货人信息 end============================================================
 

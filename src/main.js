@@ -5,10 +5,6 @@ import App from './App'
 import router from './router'
 import 'iview/dist/styles/iview.css';
 import VueCookies from 'vue-cookies'; // Cookies插件
-import VueSweetalert from './plugins/vue-sweetalert' // SweetAlert插件
-
-
-Vue.use(VueSweetalert)
 Vue.use(VueCookies);
 import {
   Button,
@@ -39,7 +35,6 @@ router.beforeEach((to, from, next) => {
       swal({
         title: "提 示",
         icon: "error",
-        buttons: false,
         timer: 1500,
         text: "请先登录"
       });
