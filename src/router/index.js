@@ -181,7 +181,7 @@ export default new Router({
         requireAuth: true,
       },
       beforeEnter: (to, from, next) => {
-        if (store.state.sumPrice == 0 && store.stateorderCommodityUuid == "") {
+        if (store.state.sumPrice == 0) {
           next({
             path: '/Order'
           })
