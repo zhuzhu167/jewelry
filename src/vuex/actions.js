@@ -293,9 +293,9 @@ export const addToOrder = ({
           swal({
             title: "提 示",
             icon: "error",
+            text: result.data.error.message,
             buttons: false,
-            timer: 1000,
-            text: "下单失败"
+            timer: 1000
           });
           resolve(false);
           return false;
