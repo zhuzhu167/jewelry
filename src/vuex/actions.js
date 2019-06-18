@@ -278,8 +278,8 @@ export const addToOrder = ({
       consigneeUuid: store.state.buyReceiverUuid
     }
     if (data.cartCommodityUuidList && data.consigneeUuid != "") {
-      buy(data).then(reslut => {
-        if (reslut.status === 200) {
+      buy(data).then(result => {
+        if (result.status === 200) {
           swal({
             title: "提 示",
             icon: "success",
