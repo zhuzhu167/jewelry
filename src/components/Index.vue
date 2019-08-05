@@ -3,7 +3,7 @@
     <Rotation></Rotation>
 
     <div class="container marketing" style="margin-top: 100px;">
-      <hr class="featurette-divider">
+      <hr class="featurette-divider" />
       <div
         class="row featurette"
         v-for="(item,index) in $store.state.categoryList"
@@ -25,11 +25,11 @@
             class="featurette-image img-fluid mx-auto"
             src="https://static.darryring.com/images/2016-07-25/1469436495.jpg"
             alt="Generic placeholder image"
-          >
+          />
         </div>
       </div>
 
-      <hr class="featurette-divider">
+      <hr class="featurette-divider" />
 
       <div
         class="row featurette"
@@ -52,11 +52,11 @@
             class="featurette-image img-fluid mx-auto"
             src="https://static.darryring.com/images/2016-07-11/1468219559.jpg"
             alt="Generic placeholder image"
-          >
+          />
         </div>
       </div>
 
-      <hr class="featurette-divider">
+      <hr class="featurette-divider" />
 
       <div
         class="row featurette"
@@ -79,11 +79,11 @@
             class="featurette-image img-fluid mx-auto"
             src="https://static.darryring.com/images/2016-07-25/1469436495.jpg"
             alt="Generic placeholder image"
-          >
+          />
         </div>
       </div>
 
-      <hr class="featurette-divider">
+      <hr class="featurette-divider" />
 
       <div
         class="row featurette"
@@ -106,19 +106,18 @@
             class="featurette-image img-fluid mx-auto"
             src="https://static.darryring.com/images/2018-09-06/1536218624.jpg"
             alt="Generic placeholder image"
-          >
+          />
         </div>
       </div>
 
-      <hr class="featurette-divider">
+      <hr class="featurette-divider" />
 
       <div class="row featurette">
         <div class="all" @click="toL()">
           <p>查看全部商品</p>
         </div>
       </div>
-
-      <hr class="featurette-divider">
+      <hr class="featurette-divider" />
     </div>
   </div>
 </template>

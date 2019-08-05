@@ -330,7 +330,7 @@ export const dCart = ({
             icon: "error",
             buttons: false,
             timer: 1000,
-            text: "删除购物车信息失败"
+            text: result.data.error.message,
           });
           resolve(false);
           return false;

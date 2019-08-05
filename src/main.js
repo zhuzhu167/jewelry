@@ -12,7 +12,8 @@ import {
   Form,
   FormItem,
   Select,
-  Option
+  Option,
+  BackTop
 } from 'iview';
 Vue.component('Button', Button);
 Vue.component('Table', Table);
@@ -20,7 +21,9 @@ Vue.component('Form', Form);
 Vue.component('FormItem', FormItem);
 Vue.component('Select', Select);
 Vue.component('Option', Option);
-Vue.config.productionTip = false
+Vue.component('BackTop', BackTop);
+Vue.config.devtools = true;
+Vue.config.productionTip = false;
 router.beforeEach((to, from, next) => {
   if (to.meta.requireAuth) { // 判断该路由是否需要登录权限
     if (window.$cookies.get('accessToken') && window.$cookies.get('account')) {

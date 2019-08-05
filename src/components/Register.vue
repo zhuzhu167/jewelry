@@ -3,7 +3,7 @@
     <div class="row">
       <div
         class="col-md-8 banner-sec"
-        style="background: url(http://pry3timq7.bkt.clouddn.com/b1.webp) no-repeat bottom;"
+        style="background: url(http://cdn-jewelry.ykthink.cn/b1.webp) no-repeat bottom;"
       ></div>
       <div class="col-md-4 register-sec">
         <h2 class="text-center">您好，新用户</h2>
@@ -11,31 +11,31 @@
           <div class="form-group">
             <label for="exampleInputName1" class="text-uppercase">账 号</label>
             <FormItem prop="account">
-              <input type="text" class="form-control" v-model="formDate.account">
+              <input type="text" class="form-control" v-model="formDate.account" />
             </FormItem>
           </div>
           <div class="form-group">
             <label for="exampleInputAddress1" class="text-uppercase">密 码</label>
             <FormItem prop="password">
-              <input type="password" class="form-control" v-model="formDate.password">
+              <input type="password" class="form-control" v-model="formDate.password" />
             </FormItem>
           </div>
           <div class="form-group">
             <label for="exampleInputAddress2" class="text-uppercase" prop="re_password">重新输入密码</label>
             <FormItem prop="re_password">
-              <input type="password" class="form-control" v-model="formDate.re_password">
+              <input type="password" class="form-control" v-model="formDate.re_password" />
             </FormItem>
           </div>
           <div class="form-group">
             <label for="exampleInputAddress2" class="text-uppercase" prop="phone">输入手机号</label>
             <FormItem prop="phone">
-              <input type="text" class="form-control" v-model="formDate.phone">
+              <input type="text" class="form-control" v-model="formDate.phone" />
             </FormItem>
           </div>
           <div class="form-group">
             <label for="exampleInputAddress2" class="text-uppercase" prop="code">输入验证码</label>
             <FormItem prop="code" class="form-inline input-btn">
-              <input style="width: 47%;" type="text" class="form-control" v-model="formDate.code">
+              <input style="width: 47%;" type="text" class="form-control" v-model="formDate.code" />
               <button
                 class="btn btn-primary code-btn"
                 :class="{disabled: !this.canClick}"
